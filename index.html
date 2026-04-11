@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuesioner Penelitian – FEB UPR 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #f0dfa0;
+    --cream: #faf8f2;
+    --white: #ffffff;
+    --gray-100: #f5f5f0;
+    --gray-300: #d0cfc8;
+    --gray-500: #8a8880;
+    --gray-700: #4a4845;
+    --green: #2d6a4f;
+    --red-soft: #c0392b;
+    --shadow: 0 4px 24px rgba(26,39,68,0.10);
+    --shadow-lg: 0 8px 40px rgba(26,39,68,0.16);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, var(--navy) 0%, #243460 60%, #1e3a5f 100%);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .header-inner {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 32px 40px;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.20);
+    border: 1px solid rgba(201,168,76,0.40);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .header-badge::before { content: '◆'; font-size: 8px; }
+  h1.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 700;
+    line-height: 1.35;
+    color: white;
+    margin-bottom: 12px;
+    max-width: 680px;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-top: 20px;
+  }
+  .header-meta span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-meta span::before { content: '•'; color: var(--gold); }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    background: var(--navy);
+    padding: 0 32px 16px;
+  }
+  .progress-inner { max-width: 780px; margin: 0 auto; }
+  .progress-label {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+  }
+  .progress-bar {
+    background: rgba(255,255,255,0.12);
+    border-radius: 100px;
+    height: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), #e8c460);
+    border-radius: 100px;
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* ── SECTION CARDS ── */
+  .section-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(26,39,68,0.06);
+    animation: fadeUp 0.5s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-header {
+    padding: 22px 28px 18px;
+    border-bottom: 2px solid var(--gold);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .section-icon {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--navy), #2d4080);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.5;
+  }
+  .section-body { padding: 24px 28px; }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: linear-gradient(135deg, #e8f4fd 0%, #f0f7ff 100%);
+    border-left: 4px solid #2980b9;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--gray-700);
+  }
+  .info-box p + p { margin-top: 8px; }
+  .info-box strong { color: var(--navy); }
+
+  .consent-box {
+    background: #f0faf5;
+    border: 2px solid #27ae60;
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    font-size: 14px;
+    color: var(--gray-700);
+    line-height: 1.7;
+  }
+  .consent-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .consent-check input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--green);
+    margin-top: 2px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .consent-check label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    line-height: 1.5;
+  }
+
+  /* ── FORM FIELDS ── */
+  .form-group {
+    margin-bottom: 22px;
+  }
+  .form-group:last-child { margin-bottom: 0; }
+  .form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .form-label .req { color: var(--red-soft); margin-left: 3px; }
+  .form-control {
+    width: 100%;
+    padding: 11px 16px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .form-control:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+  }
+  select.form-control { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238a8880' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  .radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .radio-option, .checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    font-size: 14px;
+    color: var(--gray-700);
+  }
+  .radio-option:hover, .checkbox-option:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+  .radio-option input, .checkbox-option input {
+    accent-color: var(--navy);
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ── LIKERT TABLE ── */
+  .variable-group {
+    margin-bottom: 36px;
+  }
+  .variable-group:last-child { margin-bottom: 0; }
+  .variable-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--navy);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .variable-desc {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-bottom: 16px;
+    margin-top: -8px;
+    font-style: italic;
+  }
+
+  .likert-instruction {
+    background: #fffbf0;
+    border: 1px solid #f0d080;
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #7a6010;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .likert-instruction::before { content: '💡'; flex-shrink: 0; }
+
+  .likert-scale-legend {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .legend-item {
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-500);
+    line-height: 1.4;
+  }
+  .legend-num {
+    display: block;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 5px;
+    border: 2px solid;
+  }
+  .legend-num.n1 { border-color: #e74c3c; color: #e74c3c; background: #fdf0ee; }
+  .legend-num.n2 { border-color: #e67e22; color: #e67e22; background: #fef5ec; }
+  .legend-num.n3 { border-color: #95a5a6; color: #95a5a6; background: #f4f6f6; }
+  .legend-num.n4 { border-color: #27ae60; color: #27ae60; background: #eafaf1; }
+  .legend-num.n5 { border-color: #2980b9; color: #2980b9; background: #eaf4fb; }
+
+  .likert-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+    margin-bottom: 14px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .likert-item:hover {
+    border-color: var(--gold);
+    box-shadow: 0 2px 10px rgba(201,168,76,0.12);
+  }
+  .likert-item-code {
+    background: var(--navy);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 14px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 54px;
+    writing-mode: horizontal-tb;
+    text-align: center;
+  }
+  .likert-item-right {
+    padding: 14px 16px;
+  }
+  .likert-item-text {
+    font-size: 14px;
+    color: var(--navy);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .likert-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .likert-btn {
+    flex: 1;
+    min-width: 42px;
+    padding: 8px 4px;
+    border: 1.5px solid var(--gray-300);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-700);
+    transition: all 0.18s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .likert-btn span.num { font-size: 16px; font-weight: 700; }
+  .likert-btn span.lbl { font-size: 9px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.2; }
+  .likert-btn:hover { border-color: var(--navy); background: var(--gray-100); }
+  .likert-btn.sel-1 { border-color: #e74c3c; background: #fdf0ee; color: #e74c3c; }
+  .likert-btn.sel-2 { border-color: #e67e22; background: #fef5ec; color: #e67e22; }
+  .likert-btn.sel-3 { border-color: #95a5a6; background: #f4f6f6; color: #555; }
+  .likert-btn.sel-4 { border-color: #27ae60; background: #eafaf1; color: #27ae60; }
+  .likert-btn.sel-5 { border-color: #2980b9; background: #eaf4fb; color: #2980b9; }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gray-300), transparent);
+    margin: 24px 0;
+  }
+
+  /* ── SUBMIT AREA ── */
+  .submit-area {
+    text-align: center;
+    padding: 32px;
+  }
+  .btn-submit {
+    background: linear-gradient(135deg, var(--navy) 0%, #2d4080 100%);
+    color: white;
+    border: none;
+    padding: 16px 56px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(26,39,68,0.3);
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(26,39,68,0.35);
+  }
+  .btn-submit:active { transform: translateY(0); }
+  .submit-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--gray-500);
+  }
+
+  /* ── THANK YOU ── */
+  .thankyou { display: none; text-align: center; padding: 60px 32px; }
+  .thankyou .icon { font-size: 64px; margin-bottom: 20px; }
+  .thankyou h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .thankyou p { font-size: 15px; color: var(--gray-500); line-height: 1.7; max-width: 400px; margin: 0 auto; }
+
+  /* ── STICKY BOTTOM NAV ── */
+  .sticky-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: white;
+    border-top: 1px solid var(--gray-300);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    gap: 12px;
+  }
+  .sticky-nav .nav-info { font-size: 13px; color: var(--gray-500); }
+  .sticky-nav .nav-info strong { color: var(--navy); }
+  .nav-btns { display: flex; gap: 10px; }
+  .btn-nav {
+    padding: 9px 20px;
+    border-radius: 100px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid var(--navy);
+    transition: all 0.2s;
+  }
+  .btn-prev { background: white; color: var(--navy); }
+  .btn-prev:hover { background: var(--gray-100); }
+  .btn-next { background: var(--navy); color: white; }
+  .btn-next:hover { background: #243460; }
+
+  /* ── PAGE SYSTEM ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .section-body { padding: 18px 18px; }
+    .section-header { padding: 18px 18px 14px; }
+    .likert-item-code { font-size: 10px; min-width: 46px; padding: 12px 8px; }
+    .likert-btn span.lbl { display: none; }
+    .likert-btn { min-width: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">Kuesioner Penelitian 2026</div>
+    <h1 class="main-title">Pengaruh Kualitas Hubungan Romantis dan Motivasi Belajar terhadap Kinerja Akademik Mahasiswa</h1>
+    <div class="header-meta">
+      <span>FEB Universitas Palangka Raya</span>
+      <span>April – Mei 2026</span>
+      <span>Kelompok 9 – Perilaku Keorganisasian</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-label">
+      <span id="prog-label">Bagian 1 dari 4</span>
+      <span id="prog-pct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+  </div>
+</div>
+
+<div class="container">
+<form id="mainForm" novalidate>
+
+<!-- ════════════════════════════════════════
+     HALAMAN 1 – PEMBUKA & PERSETUJUAN
+════════════════════════════════════════ -->
+<div class="page active" id="page-1">
+
+  <div class="section-card" style="animation-delay:0.05s">
+    <div class="section-header">
+      <div class="section-icon">📋</div>
+      <div>
+        <div class="section-title">Pengantar &amp; Tujuan Penelitian</div>
+        <div class="section-subtitle">Bacalah informasi berikut sebelum mengisi kuesioner</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="info-box">
+        <p>Yth. Responden yang terhormat,</p>
+        <p>Kami adalah mahasiswa <strong>Jurusan Manajemen, Fakultas Ekonomi dan Bisnis, Universitas Palangka Raya</strong> yang sedang melaksanakan penelitian dalam rangka memenuhi tugas mata kuliah <strong>Perilaku Keorganisasian</strong>.</p>
+        <p>Penelitian ini bertujuan untuk mengetahui <strong>pengaruh kualitas hubungan romantis dan motivasi belajar terhadap kinerja akademik mahasiswa</strong> di lingkungan FEB UPR. Hasil penelitian ini diharapkan dapat memberikan kontribusi bagi pengembangan ilmu pengetahuan dan kebijakan akademik di perguruan tinggi.</p>
+        <p>Kami memohon kesediaan Saudara/i untuk mengisi kuesioner ini dengan <strong>jujur, lengkap, dan sesuai kondisi yang sebenarnya</strong>. Tidak ada jawaban yang benar atau salah dalam kuesioner ini.</p>
+      </div>
+
+      <div class="consent-box">
+        <p><strong>🔒 Pernyataan Kerahasiaan Data</strong></p>
+        <p style="margin-top:10px;font-size:14px;line-height:1.7;">Seluruh data dan informasi yang Saudara/i berikan akan dijaga <strong>kerahasiaannya</strong> dan hanya digunakan untuk kepentingan penelitian ini semata. Identitas pribadi Saudara/i tidak akan dipublikasikan dalam bentuk apapun. Partisipasi Saudara/i dalam penelitian ini bersifat <strong>sukarela</strong> dan tanpa paksaan dari pihak manapun.</p>
+        <div class="consent-check">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">Saya telah membaca informasi di atas dan <strong>bersedia berpartisipasi</strong> dalam penelitian ini secara sukarela.</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-1 -->
+
+
+<!-- ════════════════════════════════════════
+     HALAMAN 2 – DATA RESPONDEN
+════════════════════════════════════════ -->
+<div class="page" id="page-2">
+
+  <div class="section-card" style="animation-delay:0.05s">
+    <div class="section-header">
+      <div class="section-icon">👤</div>
+      <div>
+        <div class="section-title">Bagian A – Identitas Responden</div>
+        <div class="section-subtitle">Isilah data diri Saudara/i sesuai kondisi yang sebenarnya.</div>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <div class="form-group">
+        <label class="form-label" for="jenkel">1. Jenis Kelamin <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="jenkel" value="Laki-laki" required> Laki-laki</label>
+          <label class="radio-option"><input type="radio" name="jenkel" value="Perempuan"> Perempuan</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="usia">2. Usia <span class="req">*</span></label>
+        <select class="form-control" id="usia" name="usia" required>
+          <option value="" disabled selected>— Pilih usia Anda —</option>
+          <option>17 tahun</option>
+          <option>18 tahun</option>
+          <option>19 tahun</option>
+          <option>20 tahun</option>
+          <option>21 tahun</option>
+          <option>22 tahun</option>
+          <option>23 tahun</option>
+          <option>24 tahun</option>
+          <option>≥ 25 tahun</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="prodi">3. Program Studi <span class="req">*</span></label>
+        <select class="form-control" id="prodi" name="prodi" required>
+          <option value="" disabled selected>— Pilih program studi —</option>
+          <option>Manajemen</option>
+          <option>Akuntansi</option>
+          <option>Ekonomi Pembangunan</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="semester">4. Semester <span class="req">*</span></label>
+        <select class="form-control" id="semester" name="semester" required>
+          <option value="" disabled selected>— Pilih semester —</option>
+          <option>Semester 1</option>
+          <option>Semester 2</option>
+          <option>Semester 3</option>
+          <option>Semester 4</option>
+          <option>Semester 5</option>
+          <option>Semester 6</option>
+          <option>Semester 7</option>
+          <option>Semester 8</option>
+          <option>Semester ≥ 9</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ipk">5. IPK Terakhir <span class="req">*</span></label>
+        <select class="form-control" id="ipk" name="ipk" required>
+          <option value="" disabled selected>— Pilih rentang IPK —</option>
+          <option>2,00 – 2,49</option>
+          <option>2,50 – 2,99</option>
+          <option>3,00 – 3,49</option>
+          <option>3,50 – 4,00</option>
+        </select>
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="form-group">
+        <label class="form-label">6. Status Hubungan Romantis Saat Ini <span class="req">*</span></label>
+        <div class="info-box" style="margin-bottom:14px;font-size:13px;">ℹ️ Kuesioner ini diperuntukkan bagi mahasiswa yang sedang atau pernah menjalani hubungan romantis (pacaran). Jika Anda belum pernah berpacaran, Anda tidak perlu melanjutkan pengisian.</div>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="status" value="Sedang berpacaran" required> Sedang berpacaran</label>
+          <label class="radio-option"><input type="radio" name="status" value="Pernah berpacaran"> Pernah berpacaran (sudah tidak)</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">7. Durasi Hubungan Romantis (terlama / saat ini) <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="durasi" value="3–6 bulan"> 3 – 6 bulan</label>
+          <label class="radio-option"><input type="radio" name="durasi" value="7–12 bulan"> 7 – 12 bulan</label>
+          <label class="radio-option"><input type="radio" name="durasi" value="1–2 tahun"> 1 – 2 tahun</label>
+          <label class="radio-option"><input type="radio" name="durasi" value="> 2 tahun"> Lebih dari 2 tahun</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /page-2 -->
+
+
+<!-- ════════════════════════════════════════
+     HALAMAN 3 – VARIABEL X1 & X2
+════════════════════════════════════════ -->
+<div class="page" id="page-3">
+
+  <div class="section-card" style="animation-delay:0.05s">
+    <div class="section-header">
+      <div class="section-icon">❤️</div>
+      <div>
+        <div class="section-title">Bagian B – Kualitas Hubungan Romantis (X1)</div>
+        <div class="section-subtitle">Pernyataan mengenai kualitas hubungan romantis yang Anda jalani saat ini atau terakhir kali.</div>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <div class="likert-instruction">
+        Berikan tanda pada pilihan yang paling sesuai dengan kondisi Anda. Pilihan: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong>
+      </div>
+
+      <!-- INDIKATOR 1: Kepuasan -->
+      <div class="variable-group">
+        <div class="variable-label">Indikator 1 – Kepuasan terhadap Hubungan</div>
+        <div id="items-x1-1"></div>
+      </div>
+
+      <!-- INDIKATOR 2: Kepercayaan -->
+      <div class="variable-group">
+        <div class="variable-label">Indikator 2 – Kepercayaan terhadap Pasangan</div>
+        <div id="items-x1-2"></div>
+      </div>
+
+      <!-- INDIKATOR 3: Komitmen -->
+      <div class="variable-group">
+        <div class="variable-label">Indikator 3 – Komitmen dalam Hubungan</div>
+        <div id="items-x1-3"></div>
+      </div>
+
+      <!-- INDIKATOR 4: Komunikasi -->
+      <div class="variable-group">
+        <div class="variable-label">Indikator 4 – Kualitas Komunikasi</div>
+        <div id="items-x1-4"></div>
+      </div>
+
+      <!-- INDIKATOR 5: Dukungan Emosional -->
+      <div class="variable-group">
+        <div class="variable-label">Indikator 5 – Dukungan Emosional dari Pasangan</div>
+        <div id="items-x1-5"></div>
+      </div>
+
+      <!-- INDIKATOR 6: Minimnya Konflik -->
+      <div class="variable-group">
+        <div class="variable-label">Indikator 6 – Minimnya Konflik Destruktif</div>
+        <div id="items-x1-6"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-card" style="animation-delay:0.10s;margin-top:28px;">
+    <div class="section-header">
+      <div class="section-icon">📚</div>
+      <div>
+        <div class="section-title">Bagian C – Motivasi Belajar (X2)</div>
+        <div class="section-subtitle">Pernyataan mengenai dorongan belajar yang Anda rasakan selama kuliah.</div>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <div class="likert-instruction">
+        Pilih angka yang paling menggambarkan kondisi Anda: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong>
+      </div>
+
+      <div class="variable-group">
+        <div class="variable-label">Motivasi Intrinsik</div>
+        <div class="variable-desc">Dorongan belajar yang berasal dari dalam diri sendiri</div>
+        <div id="items-x2-intr"></div>
+      </div>
+
+      <div class="variable-group">
+        <div class="variable-label">Motivasi Ekstrinsik</div>
+        <div class="variable-desc">Dorongan belajar yang berasal dari faktor luar</div>
+        <div id="items-x2-ekst"></div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /page-3 -->
+
+
+<!-- ════════════════════════════════════════
+     HALAMAN 4 – VARIABEL Y
+════════════════════════════════════════ -->
+<div class="page" id="page-4">
+
+  <div class="section-card" style="animation-delay:0.05s">
+    <div class="section-header">
+      <div class="section-icon">🎓</div>
+      <div>
+        <div class="section-title">Bagian D – Kinerja Akademik Mahasiswa (Y)</div>
+        <div class="section-subtitle">Pernyataan mengenai pencapaian dan perilaku akademik Anda selama satu semester terakhir.</div>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <div class="likert-instruction">
+        Pilih angka yang paling menggambarkan kondisi Anda: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong>
+      </div>
+
+      <div class="variable-group">
+        <div class="variable-label">Indikator 1 – Pencapaian Nilai / IPK</div>
+        <div id="items-y-1"></div>
+      </div>
+
+      <div class="variable-group">
+        <div class="variable-label">Indikator 2 – Kehadiran dalam Perkuliahan</div>
+        <div id="items-y-2"></div>
+      </div>
+
+      <div class="variable-group">
+        <div class="variable-label">Indikator 3 – Ketepatan Pengumpulan Tugas</div>
+        <div id="items-y-3"></div>
+      </div>
+
+      <div class="variable-group">
+        <div class="variable-label">Indikator 4 – Partisipasi Aktif dalam Akademik</div>
+        <div id="items-y-4"></div>
+      </div>
+
+      <div class="variable-group">
+        <div class="variable-label">Indikator 5 – Penguasaan Materi Perkuliahan</div>
+        <div id="items-y-5"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-card" style="animation-delay:0.10s;">
+    <div class="submit-area" id="submit-area">
+      <p style="font-size:14px;color:var(--gray-500);margin-bottom:20px;line-height:1.6;">Pastikan semua pernyataan telah diisi sebelum mengirimkan kuesioner.<br>Terima kasih atas partisipasi dan kejujuran Anda!</p>
+      <button type="submit" class="btn-submit">
+        <span>✉️</span> Kirim Kuesioner
+      </button>
+      <div class="submit-note">Data Anda dijaga kerahasiaannya dan hanya digunakan untuk kepentingan penelitian.</div>
+    </div>
+    <div class="thankyou" id="thankyou">
+      <div class="icon">🎉</div>
+      <h2>Terima Kasih!</h2>
+      <p>Respons Anda telah berhasil dikirim. Partisipasi Anda sangat berarti bagi kelancaran penelitian kami. Semoga sukses selalu dalam studi Anda!</p>
+    </div>
+  </div>
+
+</div><!-- /page-4 -->
+
+</form>
+</div><!-- /container -->
+
+<!-- STICKY NAV -->
+<div class="sticky-nav" id="sticky-nav">
+  <div class="nav-info"><strong id="nav-section">Bagian Pengantar</strong></div>
+  <div class="nav-btns">
+    <button type="button" class="btn-nav btn-prev" id="btn-prev" onclick="changePage(-1)" style="display:none">← Sebelumnya</button>
+    <button type="button" class="btn-nav btn-next" id="btn-next" onclick="changePage(1)">Lanjut →</button>
+  </div>
+</div>
+
+
+<script>
+// ── ITEM DATA ──────────────────────────────────────────────────
+const items = {
+  "x1-1": [
+    { code:"X1.1", text:"Secara keseluruhan, saya merasa puas dengan hubungan romantis yang saya jalani.", fav:true },
+    { code:"X1.2", text:"Hubungan romantis saya memberikan kebahagiaan dalam kehidupan sehari-hari.", fav:true },
+    { code:"X1.3", text:"Saya merasa hubungan romantis saya berjalan sesuai harapan.", fav:true },
+  ],
+  "x1-2": [
+    { code:"X1.4", text:"Saya percaya bahwa pasangan saya selalu jujur kepada saya.", fav:true },
+    { code:"X1.5", text:"Saya merasa aman dan nyaman membagi cerita pribadi dengan pasangan saya.", fav:true },
+    { code:"X1.6", text:"Saya dapat mengandalkan pasangan saya ketika menghadapi kesulitan.", fav:true },
+  ],
+  "x1-3": [
+    { code:"X1.7", text:"Saya dan pasangan sama-sama berkomitmen untuk menjaga hubungan kami.", fav:true },
+    { code:"X1.8", text:"Saya memiliki niat yang serius dalam menjalani hubungan romantis ini.", fav:true },
+    { code:"X1.9", text:"Kami berdua berusaha menyelesaikan masalah bersama demi kelangsungan hubungan.", fav:true },
+  ],
+  "x1-4": [
+    { code:"X1.10", text:"Saya dan pasangan dapat berkomunikasi secara terbuka mengenai berbagai hal.", fav:true },
+    { code:"X1.11", text:"Ketika terjadi perbedaan pendapat, kami dapat mendiskusikannya dengan baik.", fav:true },
+    { code:"X1.12", text:"Pasangan saya mendengarkan pendapat dan perasaan saya dengan sungguh-sungguh.", fav:true },
+  ],
+  "x1-5": [
+    { code:"X1.13", text:"Pasangan saya memberikan semangat ketika saya menghadapi tekanan akademik.", fav:true },
+    { code:"X1.14", text:"Saya merasa didukung oleh pasangan dalam mengejar tujuan akademik saya.", fav:true },
+    { code:"X1.15", text:"Pasangan saya memberikan perhatian ketika saya sedang dalam kondisi stres.", fav:true },
+  ],
+  "x1-6": [
+    { code:"X1.16", text:"Konflik dalam hubungan romantis saya jarang terjadi dan dapat diselesaikan dengan baik.", fav:true },
+    { code:"X1.17", text:"Pertengkaran dengan pasangan tidak mengganggu konsentrasi belajar saya secara berkepanjangan.", fav:true },
+    { code:"X1.18", text:"Masalah dalam hubungan romantis saya tidak berdampak negatif pada aktivitas akademik saya.", fav:true },
+  ],
+  "x2-intr": [
+    { code:"X2.1", text:"Saya belajar karena saya memang tertarik dan ingin tahu tentang materi perkuliahan.", fav:true },
+    { code:"X2.2", text:"Saya merasakan kepuasan tersendiri ketika berhasil memahami materi kuliah yang sulit.", fav:true },
+    { code:"X2.3", text:"Saya belajar secara mandiri di luar jam kuliah karena ingin memperdalam pemahaman.", fav:true },
+    { code:"X2.4", text:"Saya tetap semangat belajar meskipun tidak ada ujian atau tugas yang mendekat.", fav:true },
+    { code:"X2.5", text:"Saya menikmati proses belajar dan menganggapnya sebagai pengalaman yang berharga.", fav:true },
+    { code:"X2.6", text:"Saya merasa belajar adalah hal yang penting bagi pengembangan diri saya.", fav:true },
+    { code:"X2.7", text:"Saya berusaha memahami materi secara mendalam, bukan sekadar untuk lulus ujian.", fav:true },
+    { code:"X2.8", text:"Rasa ingin tahu saya mendorong saya untuk mencari sumber belajar di luar materi kuliah.", fav:true },
+  ],
+  "x2-ekst": [
+    { code:"X2.9",  text:"Saya belajar sungguh-sungguh agar mendapatkan nilai yang tinggi.", fav:true },
+    { code:"X2.10", text:"Keinginan membanggakan orang tua mendorong saya untuk berprestasi secara akademik.", fav:true },
+    { code:"X2.11", text:"Pujian dan pengakuan dari dosen atau teman memotivasi saya untuk belajar lebih giat.", fav:true },
+    { code:"X2.12", text:"Saya belajar dengan giat agar dapat meraih pekerjaan yang baik setelah lulus.", fav:true },
+    { code:"X2.13", text:"Beasiswa atau insentif akademik mendorong saya untuk mempertahankan prestasi belajar.", fav:true },
+    { code:"X2.14", text:"Saya merasa takut mengecewakan keluarga jika nilai akademik saya buruk.", fav:true },
+    { code:"X2.15", text:"Persaingan yang sehat dengan teman mendorong saya untuk lebih rajin belajar.", fav:true },
+    { code:"X2.16", text:"Harapan lingkungan sekitar atas prestasi saya menjadi dorongan untuk belajar lebih keras.", fav:true },
+  ],
+  "y-1": [
+    { code:"Y1.1", text:"IPK saya saat ini mencerminkan kemampuan dan usaha belajar saya selama di bangku kuliah.", fav:true },
+    { code:"Y1.2", text:"Nilai mata kuliah yang saya peroleh umumnya sesuai dengan target yang saya tetapkan.", fav:true },
+    { code:"Y1.3", text:"Saya berusaha mempertahankan atau meningkatkan IPK setiap semesternya.", fav:true },
+  ],
+  "y-2": [
+    { code:"Y1.4", text:"Saya selalu berusaha hadir dalam setiap perkuliahan kecuali ada halangan yang mendesak.", fav:true },
+    { code:"Y1.5", text:"Saya jarang meninggalkan kelas sebelum perkuliahan selesai tanpa alasan yang jelas.", fav:true },
+    { code:"Y1.6", text:"Kehadiran saya dalam perkuliahan tidak pernah sampai melebihi batas ketidakhadiran yang diperbolehkan.", fav:true },
+  ],
+  "y-3": [
+    { code:"Y1.7", text:"Saya selalu mengumpulkan tugas sebelum atau tepat pada batas waktu yang ditentukan.", fav:true },
+    { code:"Y1.8", text:"Saya merencanakan waktu pengerjaan tugas agar tidak tergesa-gesa di waktu terakhir.", fav:true },
+    { code:"Y1.9", text:"Keterlambatan pengumpulan tugas jarang terjadi dalam kegiatan akademik saya.", fav:true },
+  ],
+  "y-4": [
+    { code:"Y1.10", text:"Saya aktif bertanya atau menyampaikan pendapat selama proses perkuliahan berlangsung.", fav:true },
+    { code:"Y1.11", text:"Saya ikut berpartisipasi dengan serius ketika ada kegiatan diskusi atau presentasi kelompok.", fav:true },
+    { code:"Y1.12", text:"Saya terlibat aktif dalam kegiatan akademik di luar perkuliahan seperti seminar atau forum ilmiah.", fav:true },
+  ],
+  "y-5": [
+    { code:"Y1.13", text:"Saya dapat memahami dan menjelaskan kembali materi yang telah disampaikan dosen.", fav:true },
+    { code:"Y1.14", text:"Saya mampu menerapkan konsep-konsep yang dipelajari untuk menyelesaikan soal atau kasus.", fav:true },
+    { code:"Y1.15", text:"Secara keseluruhan, saya merasa cukup menguasai materi perkuliahan yang telah ditempuh.", fav:true },
+  ],
+};
+
+const LABELS = ["STS","TS","N","S","SS"];
+const COLORS = ["#e74c3c","#e67e22","#95a5a6","#27ae60","#2980b9"];
+
+function buildItems(containerId, groupKey) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const data = items[groupKey];
+  data.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'likert-item';
+    div.innerHTML = `
+      <div class="likert-item-code">${item.code}</div>
+      <div class="likert-item-right">
+        <div class="likert-item-text">${item.text}</div>
+        <div class="likert-options">
+          ${[1,2,3,4,5].map(n => `
+            <button type="button" class="likert-btn" data-code="${item.code}" data-val="${n}" onclick="selectLikert(this,'${item.code}',${n})">
+              <span class="num">${n}</span>
+              <span class="lbl">${LABELS[n-1]}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+function selectLikert(btn, code, val) {
+  const siblings = document.querySelectorAll(`.likert-btn[data-code="${code}"]`);
+  siblings.forEach(b => { b.className = 'likert-btn'; });
+  btn.classList.add(`sel-${val}`);
+  window._responses = window._responses || {};
+  window._responses[code] = val;
+  updateProgress();
+}
+
+// Build all items
+Object.keys(items).forEach(key => {
+  const id = "items-" + key;
+  buildItems(id, key);
+});
+
+// ── PAGE NAVIGATION ──────────────────────────────────────────
+let currentPage = 1;
+const totalPages = 4;
+const pageLabels = ["Bagian Pengantar","Identitas Responden","Variabel X1 & X2","Variabel Y & Submit"];
+
+function updateProgress() {
+  const totalItems = Object.values(items).flat().length;
+  const answered = window._responses ? Object.keys(window._responses).length : 0;
+  const pct = Math.round(((currentPage-1)/totalPages + (answered/totalItems)/totalPages)*100);
+  document.getElementById('prog-fill').style.width = Math.min(pct,100)+'%';
+  document.getElementById('prog-pct').textContent = Math.min(pct,100)+'%';
+  document.getElementById('prog-label').textContent = `Bagian ${currentPage} dari ${totalPages}`;
+  document.getElementById('nav-section').textContent = pageLabels[currentPage-1];
+}
+
+function changePage(dir) {
+  // Validate current page
+  if (dir > 0) {
+    if (currentPage === 1) {
+      const consent = document.getElementById('consent');
+      if (!consent.checked) { alert('Mohon centang persetujuan keikutsertaan terlebih dahulu.'); return; }
+    }
+    if (currentPage === 2) {
+      const jenkel = document.querySelector('input[name="jenkel"]:checked');
+      const usia   = document.getElementById('usia').value;
+      const prodi  = document.getElementById('prodi').value;
+      const sem    = document.getElementById('semester').value;
+      const ipk    = document.getElementById('ipk').value;
+      const status = document.querySelector('input[name="status"]:checked');
+      const durasi = document.querySelector('input[name="durasi"]:checked');
+      if (!jenkel||!usia||!prodi||!sem||!ipk||!status||!durasi) {
+        alert('Mohon lengkapi semua data diri sebelum melanjutkan.'); return;
+      }
+    }
+    if (currentPage === 3) {
+      const page3Keys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6","x2-intr","x2-ekst"];
+      const allCodes = page3Keys.flatMap(k => items[k].map(i => i.code));
+      const ans = window._responses || {};
+      const missing = allCodes.filter(c => !ans[c]);
+      if (missing.length > 0) {
+        alert(`Masih ada ${missing.length} pernyataan yang belum diisi di halaman ini.\n\nKode yang belum diisi: ${missing.slice(0,5).join(', ')}${missing.length>5?' ...':''}`);
+        return;
+      }
+    }
+  }
+
+  const pages = document.querySelectorAll('.page');
+  pages[currentPage-1].classList.remove('active');
+  currentPage = Math.max(1, Math.min(totalPages, currentPage + dir));
+  pages[currentPage-1].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  document.getElementById('btn-prev').style.display = currentPage > 1 ? 'block' : 'none';
+  document.getElementById('btn-next').style.display = currentPage < totalPages ? 'block' : 'none';
+
+  if (currentPage === totalPages) {
+    document.getElementById('sticky-nav').style.display = 'none';
+  } else {
+    document.getElementById('sticky-nav').style.display = 'flex';
+  }
+  updateProgress();
+}
+
+// ── FORM SUBMIT ──────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+// KONFIGURASI — PASTE URL GOOGLE APPS SCRIPT KAMU DI SINI
+// ═══════════════════════════════════════════════════════════
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxk3KFEyuM9Ca2_4uCqQXU1Hjb2KOA-QBAIKuwRlDBmZ0rU-Q-Ma3uv2l5NcnTWMaM3/exec";
+
+document.getElementById('mainForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const page4Keys = ["y-1","y-2","y-3","y-4","y-5"];
+  const allCodesY = page4Keys.flatMap(k => items[k].map(i => i.code));
+  const ans = window._responses || {};
+  const missing = allCodesY.filter(c => !ans[c]);
+  if (missing.length > 0) {
+    const msg = 'Masih ada ' + missing.length + ' pernyataan Bagian D yang belum diisi.\n\nKode belum diisi: ' + missing.slice(0,5).join(', ') + (missing.length>5?' ...':'');
+    alert(msg);
+    return;
+  }
+
+  const jk = document.querySelector('input[name="jenkel"]:checked');
+  const st = document.querySelector('input[name="status"]:checked');
+  const du = document.querySelector('input[name="durasi"]:checked');
+
+  const identity = {
+    timestamp:       new Date().toLocaleString('id-ID', { timeZone: 'Asia/Makassar' }),
+    jenis_kelamin:   jk ? jk.value : '',
+    usia:            document.getElementById('usia').value,
+    prodi:           document.getElementById('prodi').value,
+    semester:        document.getElementById('semester').value,
+    ipk:             document.getElementById('ipk').value,
+    status_hubungan: st ? st.value : '',
+    durasi_hubungan: du ? du.value : '',
+  };
+
+  const payload = Object.assign({}, identity, ans);
+  const btnSubmit = document.querySelector('.btn-submit');
+  btnSubmit.disabled = true;
+  btnSubmit.innerHTML = '<span>⏳</span> Mengirim data...';
+
+  if (GOOGLE_SCRIPT_URL === "PASTE_URL_APPS_SCRIPT_DI_SINI") {
+    setTimeout(function() {
+      document.getElementById('submit-area').style.display = 'none';
+      document.getElementById('thankyou').style.display = 'block';
+      document.getElementById('prog-fill').style.width = '100%';
+      document.getElementById('prog-pct').textContent = '100%';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }, 900);
+    return;
+  }
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    document.getElementById('submit-area').style.display = 'none';
+    document.getElementById('thankyou').style.display = 'block';
+    document.getElementById('prog-fill').style.width = '100%';
+    document.getElementById('prog-pct').textContent = '100%';
+    window.scrollTo({top:0,behavior:'smooth'});
+  } catch(err) {
+    btnSubmit.disabled = false;
+    btnSubmit.innerHTML = '<span>✉️</span> Kirim Kuesioner';
+    alert('Gagal mengirim. Pastikan koneksi internet aktif lalu coba lagi.');
+    console.error(err);
+  }
+});
+
+updateProgress();
+</script>
+</body>
+</html>
