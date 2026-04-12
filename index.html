@@ -188,8 +188,8 @@
     min-height: calc(var(--vh, 1vh) * 100);
     background: #ffffff;
     position: relative;
-    overflow-x: clip;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     display: flex;
     flex-direction: column;
   }
@@ -229,7 +229,7 @@
   /* Top nav strip */
   .hero-nav {
     position: relative;
-    z-index: 10;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1238,6 +1238,201 @@
       margin-top: 2px;
     }
   }
+
+  /* ── MODAL STYLES ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 5, 15, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: white;
+    border-radius: 18px;
+    max-width: 520px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(181,41,74,0.25);
+    animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+    position: relative;
+  }
+  @keyframes modalIn {
+    from { opacity:0; transform:scale(0.88) translateY(20px); }
+    to   { opacity:1; transform:scale(1) translateY(0); }
+  }
+  .modal-header {
+    padding: 24px 26px 18px;
+    border-bottom: 2px solid #fce8ed;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, #fff0f3, #fff8fa);
+    border-radius: 18px 18px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  .modal-header-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, #b5294a, #d94f6e);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .modal-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #b5294a;
+    margin-bottom: 2px;
+  }
+  .modal-header-sub {
+    font-size: 12px;
+    color: #9a878e;
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 18px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #fce8ed;
+    color: #b5294a;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: #f5c2cc; }
+  .modal-body { padding: 22px 26px 28px; }
+  .modal-body p {
+    font-size: 14px;
+    color: #4a3840;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .modal-body p:last-child { margin-bottom: 0; }
+  .modal-body strong { color: #b5294a; }
+  .modal-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #b5294a;
+    background: #fce8ed;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    margin-top: 6px;
+  }
+
+  /* Member cards */
+  .member-list { display: flex; flex-direction: column; gap: 10px; }
+  .member-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border: 1.5px solid #f0e0e5;
+    border-radius: 10px;
+    background: #fff8fa;
+    transition: border-color 0.2s;
+  }
+  .member-card:hover { border-color: #d94f6e; }
+  .member-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b5294a, #d94f6e);
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .member-info { flex: 1; }
+  .member-name { font-size: 14px; font-weight: 600; color: #2d1a22; margin-bottom: 2px; }
+  .member-nim  { font-size: 12px; color: #9a878e; }
+
+  /* Guide list */
+  .guide-list { display: flex; flex-direction: column; gap: 10px; }
+  .guide-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    background: #fff8fa;
+    border-radius: 10px;
+    border-left: 3px solid #b5294a;
+  }
+  .guide-num {
+    width: 24px; height: 24px;
+    background: #b5294a;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .guide-text { font-size: 13.5px; color: #4a3840; line-height: 1.6; }
+  .guide-text strong { color: #b5294a; }
+
+  /* Syarat box */
+  .syarat-box {
+    background: #fff3f5;
+    border: 1.5px solid #f5c2cc;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+  .syarat-box p { font-size: 13.5px; margin-bottom: 8px; }
+  .syarat-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    color: #4a3840;
+    margin-bottom: 7px;
+    line-height: 1.55;
+  }
+  .syarat-item:last-child { margin-bottom: 0; }
+  .syarat-dot { color: #b5294a; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* Pill buttons */
+  .hero-pill-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: #4a3840;
+    background: white;
+    border: 1.5px solid #f0e0e5;
+    border-radius: 100px;
+    padding: 7px 16px;
+    box-shadow: 0 2px 8px rgba(181,41,74,0.06);
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: all 0.2s;
+  }
+  .hero-pill-btn:hover {
+    border-color: #b5294a;
+    background: #fff0f3;
+    color: #b5294a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(181,41,74,0.14);
+  }
+  .hero-pill-btn-icon { font-size: 14px; }
+
 </style>
 </head>
 <body>
@@ -1368,15 +1563,16 @@
       </h1>
 
       <p class="hero-desc">
-        Kuisoner ini diperuntukkan bagi mahasiswa/i aktif yang <strong>sedang atau pernah berpacaran</strong> selama
+        Kuesioner ini merupakan bagian dari penelitian mahasiswa Kelas A Jurusan Manajemen FEB UPR.
+        Diperuntukkan bagi mahasiswa/i aktif yang <strong>sedang atau pernah berpacaran</strong> selama
         masa studi dengan durasi minimal 3 bulan.
       </p>
 
       <!-- Info pills -->
       <div class="hero-info-pills">
-        <div class="hero-pill"><span class="hero-pill-icon">📍</span> FEB · Universitas Palangka Raya</div>
-        <div class="hero-pill"><span class="hero-pill-icon">⏱️</span> ±10 menit pengisian</div>
-        <div class="hero-pill"><span class="hero-pill-icon">🔒</span> Data dijaga kerahasiaannya</div>
+        <button class="hero-pill-btn" onclick="openModal('modal-penelitian', event)"><span class="hero-pill-btn-icon">📖</span> Tentang Penelitian</button>
+        <button class="hero-pill-btn" onclick="openModal('modal-anggota', event)"><span class="hero-pill-btn-icon">👥</span> Tim Peneliti</button>
+        <button class="hero-pill-btn" onclick="openModal('modal-panduan', event)"><span class="hero-pill-btn-icon">📋</span> Panduan &amp; Syarat</button>
       </div>
 
       <!-- CTA Button -->
@@ -1844,6 +2040,38 @@ document.getElementById('mainForm').addEventListener('submit', async function(e)
   }
 });
 
+
+// ── MODAL FUNCTIONS ────────────────────────────────────────
+function openModal(id, event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  var overlay = document.getElementById(id);
+  if (overlay) {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeModal(id) {
+  var overlay = document.getElementById(id);
+  if (overlay) {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+function closeModalOutside(event, id) {
+  if (event.target.id === id) closeModal(id);
+}
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    ['modal-penelitian','modal-anggota','modal-panduan'].forEach(function(id) {
+      closeModal(id);
+    });
+  }
+});
+
 updateProgress();
 </script>
 <script>
@@ -1950,5 +2178,139 @@ document.body.style.height = '100%';
   }
 })();
 </script>
+
+
+
+
+
+<!-- MODALS (placed at body level to avoid stacking context issues) -->
+      <!-- MODAL 1: Tentang Penelitian -->
+      <div class="modal-overlay" id="modal-penelitian" onclick="closeModalOutside(event, 'modal-penelitian')">
+        <div class="modal-box">
+          <div class="modal-header">
+            <div class="modal-header-icon">📖</div>
+            <div>
+              <div class="modal-header-title">Tentang Penelitian</div>
+              <div class="modal-header-sub">Pendahuluan &amp; Latar Belakang</div>
+            </div>
+            <button class="modal-close" onclick="closeModal('modal-penelitian')">✕</button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-section-title">Latar Belakang</div>
+            <p>Kinerja akademik mahasiswa merupakan salah satu indikator krusial dalam mengukur efektivitas proses pembelajaran di perguruan tinggi. Kinerja akademik tidak hanya mencerminkan kemampuan kognitif, tetapi juga dipengaruhi oleh berbagai faktor biopsikososial yang kompleks.</p>
+            <p>Dalam kehidupan mahasiswa, <strong>hubungan romantis</strong> menjadi salah satu aspek sosial yang signifikan. Kualitas hubungan romantis dapat memberikan dampak emosional dan psikologis yang memengaruhi alokasi waktu serta energi belajar. Di sisi lain, <strong>motivasi belajar</strong> — baik yang berasal dari dalam diri (intrinsik) maupun dari luar (ekstrinsik) — merupakan prediktor terkuat terhadap pencapaian akademik.</p>
+            <div class="modal-section-title" style="margin-top:18px;">Tujuan Penelitian</div>
+            <p>Penelitian ini bertujuan untuk mengetahui:</p>
+            <p>1. Pengaruh <strong>kualitas hubungan romantis</strong> terhadap kinerja akademik mahasiswa FEB UPR.</p>
+            <p>2. Pengaruh <strong>motivasi belajar</strong> terhadap kinerja akademik mahasiswa FEB UPR.</p>
+            <p>3. Pengaruh <strong>keduanya secara bersama-sama</strong> terhadap kinerja akademik mahasiswa FEB UPR.</p>
+            <div class="modal-section-title" style="margin-top:18px;">Landasan Teori</div>
+            <p>Penelitian ini menggunakan <strong>Social Exchange Theory (SET)</strong> untuk menjelaskan dinamika kualitas hubungan romantis, dan <strong>Self-Determination Theory (SDT)</strong> untuk menjelaskan struktur motivasi belajar mahasiswa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL 2: Tim Peneliti -->
+      <div class="modal-overlay" id="modal-anggota" onclick="closeModalOutside(event, 'modal-anggota')">
+        <div class="modal-box">
+          <div class="modal-header">
+            <div class="modal-header-icon">👥</div>
+            <div>
+              <div class="modal-header-title">Tim Peneliti</div>
+              <div class="modal-header-sub">Kelompok 9 · Kelas A Manajemen 2024 · FEB UPR 2026</div>
+            </div>
+            <button class="modal-close" onclick="closeModal('modal-anggota')">✕</button>
+          </div>
+          <div class="modal-body">
+            <div class="member-list">
+              <div class="member-card">
+                <div class="member-avatar">MN</div>
+                <div class="member-info">
+                  <div class="member-name">M. Nabil Hamman</div>
+                  <div class="member-nim">NIM: 2430103020049</div>
+                </div>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar">NP</div>
+                <div class="member-info">
+                  <div class="member-name">Nando Pratama</div>
+                  <div class="member-nim">NIM: 2430103020032</div>
+                </div>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar">YH</div>
+                <div class="member-info">
+                  <div class="member-name">Yasfha Hunafa</div>
+                  <div class="member-nim">NIM: 2430103020005</div>
+                </div>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar">YM</div>
+                <div class="member-info">
+                  <div class="member-name">Yoandry Matheas</div>
+                  <div class="member-nim">NIM: 2430103020045</div>
+                </div>
+              </div>
+              <div class="member-card">
+                <div class="member-avatar">YU</div>
+                <div class="member-info">
+                  <div class="member-name">Yumahendra</div>
+                  <div class="member-nim">NIM: 2430103020030</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL 3: Panduan & Syarat -->
+      <div class="modal-overlay" id="modal-panduan" onclick="closeModalOutside(event, 'modal-panduan')">
+        <div class="modal-box">
+          <div class="modal-header">
+            <div class="modal-header-icon">📋</div>
+            <div>
+              <div class="modal-header-title">Panduan &amp; Syarat Responden</div>
+              <div class="modal-header-sub">Baca sebelum mulai mengisi kuesioner</div>
+            </div>
+            <button class="modal-close" onclick="closeModal('modal-panduan')">✕</button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-section-title">Panduan Pengisian</div>
+            <div class="guide-list">
+              <div class="guide-item">
+                <div class="guide-num">1</div>
+                <div class="guide-text">Kuesioner terdiri dari <strong>4 halaman</strong> dengan total <strong>49 pernyataan</strong>. Estimasi waktu pengisian <strong>±10 menit</strong>.</div>
+              </div>
+              <div class="guide-item">
+                <div class="guide-num">2</div>
+                <div class="guide-text">Setiap pernyataan dijawab dengan skala <strong>1 hingga 5</strong>:<br>
+                  <strong>1</strong> = Sangat Tidak Setuju &nbsp;·&nbsp; <strong>2</strong> = Tidak Setuju &nbsp;·&nbsp; <strong>3</strong> = Netral &nbsp;·&nbsp; <strong>4</strong> = Setuju &nbsp;·&nbsp; <strong>5</strong> = Sangat Setuju</div>
+              </div>
+              <div class="guide-item">
+                <div class="guide-num">3</div>
+                <div class="guide-text">Jawab setiap pernyataan <strong>sesuai kondisi yang sebenarnya</strong>. Tidak ada jawaban benar atau salah.</div>
+              </div>
+              <div class="guide-item">
+                <div class="guide-num">4</div>
+                <div class="guide-text">Pastikan <strong>semua pernyataan terisi</strong> sebelum klik tombol Kirim. Sistem akan mengingatkan jika ada yang terlewat.</div>
+              </div>
+              <div class="guide-item">
+                <div class="guide-num">5</div>
+                <div class="guide-text">Kuesioner hanya dapat diisi <strong>satu kali per perangkat</strong>. Pastikan koneksi internet aktif saat mengirim.</div>
+              </div>
+            </div>
+
+            <div class="modal-section-title" style="margin-top:20px;">Syarat Responden</div>
+            <div class="syarat-box">
+              <p>Kuesioner ini diperuntukkan bagi responden yang memenuhi <strong>seluruh</strong> syarat berikut:</p>
+              <div class="syarat-item"><span class="syarat-dot">♥</span><span>Mahasiswa/i <strong>aktif</strong> Fakultas Ekonomi dan Bisnis Universitas Palangka Raya.</span></div>
+              <div class="syarat-item"><span class="syarat-dot">♥</span><span>Sedang atau <strong>pernah menjalani</strong> hubungan romantis (pacaran) selama masa studi di FEB UPR.</span></div>
+              <div class="syarat-item"><span class="syarat-dot">♥</span><span>Durasi hubungan romantis tersebut <strong>minimal 3 bulan</strong>.</span></div>
+              <div class="syarat-item"><span class="syarat-dot">♥</span><span>Bersedia mengisi kuesioner dengan <strong>jujur dan lengkap</strong>.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 </body>
 </html>
