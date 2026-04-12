@@ -4,522 +4,1254 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kuesioner Penelitian – FEB UPR 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #1a2744;
-    --gold: #c9a84c;
-    --gold-light: #f0dfa0;
-    --cream: #faf8f2;
-    --white: #ffffff;
-    --gray-100: #f5f5f0;
-    --gray-300: #d0cfc8;
-    --gray-500: #8a8880;
-    --gray-700: #4a4845;
-    --green: #2d6a4f;
-    --red-soft: #c0392b;
-    --shadow: 0 4px 24px rgba(26,39,68,0.10);
-    --shadow-lg: 0 8px 40px rgba(26,39,68,0.16);
-    --radius: 12px;
-    --radius-sm: 8px;
+    --rose:       #b5294a;
+    --rose-mid:   #d94f6e;
+    --rose-light: #fce8ed;
+    --rose-pale:  #fff5f7;
+    --blush:      #f7d6dd;
+    --petal:      #fef0f3;
+    --gold:       #c9894c;
+    --gold-light: #fdebd0;
+    --cream:      #fdf8f9;
+    --white:      #ffffff;
+    --gray-100:   #f5f0f2;
+    --gray-300:   #d8cdd1;
+    --gray-500:   #9a878e;
+    --gray-700:   #4a3840;
+    --green:      #1a7a50;
+    --red-soft:   #c0392b;
+    --shadow:     0 4px 24px rgba(181,41,74,0.08);
+    --radius:     12px;
+    --radius-sm:  8px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: #2d1a22; min-height: 100vh; }
 
-  body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: var(--cream);
-    color: var(--navy);
-    min-height: 100vh;
-  }
+  /* HEADER */
+  .site-header { background: linear-gradient(135deg, #7a0a28 0%, #b5294a 45%, #d94f6e 100%); color: white; position: relative; overflow: hidden; }
+  .site-header::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20 C40 20 20 8 20 22 C20 30 30 35 40 42 C50 35 60 30 60 22 C60 8 40 20 40 20Z' fill='white' fill-opacity='0.05'/%3E%3C/svg%3E") repeat; background-size: 80px; }
+  .site-header::after { content: '\2665'; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); font-size: 130px; color: rgba(255,255,255,0.06); pointer-events: none; }
+  .header-inner { position: relative; max-width: 780px; margin: 0 auto; padding: 44px 32px 38px; }
+  .header-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.30); color: #fde8ed; font-size: 11px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 18px; }
+  .header-badge::before { content: '\2665'; font-size: 10px; }
+  h1.main-title { font-family: 'Playfair Display', serif; font-size: clamp(18px, 3.5vw, 26px); font-weight: 700; line-height: 1.4; color: white; margin-bottom: 10px; max-width: 660px; }
+  .header-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; }
+  .header-meta span { font-size: 13px; color: rgba(255,255,255,0.70); display: flex; align-items: center; gap: 6px; }
+  .header-meta span::before { content: '\2665'; font-size: 9px; color: #fbb6c8; }
 
-  /* ── HEADER ── */
-  .site-header {
-    background: linear-gradient(135deg, var(--navy) 0%, #243460 60%, #1e3a5f 100%);
-    color: white;
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .site-header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .header-inner {
-    position: relative;
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 48px 32px 40px;
-  }
-  .header-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(201,168,76,0.20);
-    border: 1px solid rgba(201,168,76,0.40);
-    color: var(--gold-light);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-bottom: 20px;
-  }
-  .header-badge::before { content: '◆'; font-size: 8px; }
-  h1.main-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(20px, 4vw, 28px);
-    font-weight: 700;
-    line-height: 1.35;
-    color: white;
-    margin-bottom: 12px;
-    max-width: 680px;
-  }
-  .header-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-    margin-top: 20px;
-  }
-  .header-meta span {
-    font-size: 13px;
-    color: rgba(255,255,255,0.65);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .header-meta span::before { content: '•'; color: var(--gold); }
-
-  /* ── PROGRESS BAR ── */
-  .progress-wrap {
-    background: var(--navy);
-    padding: 0 32px 16px;
-  }
+  /* PROGRESS */
+  .progress-wrap { background: #7a0a28; padding: 0 32px 16px; }
   .progress-inner { max-width: 780px; margin: 0 auto; }
-  .progress-label {
-    display: flex; justify-content: space-between;
-    font-size: 12px; color: rgba(255,255,255,0.5);
-    margin-bottom: 8px;
-  }
-  .progress-bar {
-    background: rgba(255,255,255,0.12);
-    border-radius: 100px;
-    height: 4px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--gold), #e8c460);
-    border-radius: 100px;
-    width: 0%;
-    transition: width 0.5s ease;
-  }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .progress-bar { background: rgba(255,255,255,0.15); border-radius: 100px; height: 5px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #fbb6c8, #f7d6dd); border-radius: 100px; width: 0%; transition: width 0.5s ease; }
 
-  /* ── LAYOUT ── */
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 32px 24px 80px;
-  }
+  .container { max-width: 780px; margin: 0 auto; padding: 32px 24px 100px; }
 
-  /* ── SECTION CARDS ── */
-  .section-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin-bottom: 28px;
-    overflow: hidden;
-    border: 1px solid rgba(26,39,68,0.06);
-    animation: fadeUp 0.5s ease both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .section-header {
-    padding: 22px 28px 18px;
-    border-bottom: 2px solid var(--gold);
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .section-icon {
-    width: 40px; height: 40px;
-    background: linear-gradient(135deg, var(--navy), #2d4080);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 4px;
-  }
-  .section-subtitle {
-    font-size: 13px;
-    color: var(--gray-500);
-    line-height: 1.5;
-  }
-  .section-body { padding: 24px 28px; }
+  /* CARDS */
+  .section-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 28px; overflow: hidden; border: 1px solid rgba(181,41,74,0.08); animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  .section-header { padding: 20px 26px 16px; border-bottom: 2px solid var(--rose-light); display: flex; align-items: flex-start; gap: 14px; background: var(--petal); }
+  .section-icon { width:38px; height:38px; background: linear-gradient(135deg, var(--rose), var(--rose-mid)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; margin-top:2px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size:16px; font-weight:700; color:var(--rose); margin-bottom:3px; }
+  .section-subtitle { font-size:13px; color:var(--gray-500); line-height:1.5; }
+  .section-body { padding: 22px 26px; }
 
-  /* ── INFO BOX ── */
-  .info-box {
-    background: linear-gradient(135deg, #e8f4fd 0%, #f0f7ff 100%);
-    border-left: 4px solid #2980b9;
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    padding: 16px 20px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--gray-700);
-  }
-  .info-box p + p { margin-top: 8px; }
-  .info-box strong { color: var(--navy); }
+  .info-box { background: linear-gradient(135deg,#fef0f3,#fff5f7); border-left:4px solid var(--rose-mid); border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:14px 18px; margin-bottom:18px; font-size:14px; line-height:1.7; color:var(--gray-700); }
+  .info-box p + p { margin-top:8px; }
+  .info-box strong { color:var(--rose); }
 
-  .consent-box {
-    background: #f0faf5;
-    border: 2px solid #27ae60;
-    border-radius: var(--radius-sm);
-    padding: 18px 20px;
-    font-size: 14px;
-    color: var(--gray-700);
-    line-height: 1.7;
-  }
-  .consent-check {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-top: 16px;
-  }
-  .consent-check input[type="checkbox"] {
-    width: 18px; height: 18px;
-    accent-color: var(--green);
-    margin-top: 2px;
-    flex-shrink: 0;
-    cursor: pointer;
-  }
-  .consent-check label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--navy);
-    cursor: pointer;
-    line-height: 1.5;
-  }
+  .consent-box { background:#f0faf5; border:2px solid #27ae60; border-radius:var(--radius-sm); padding:16px 18px; font-size:14px; color:var(--gray-700); line-height:1.7; }
+  .consent-check { display:flex; align-items:flex-start; gap:12px; margin-top:14px; }
+  .consent-check input[type="checkbox"] { width:18px; height:18px; accent-color:var(--green); margin-top:2px; flex-shrink:0; cursor:pointer; }
+  .consent-check label { font-size:14px; font-weight:600; color:#1a3a2a; cursor:pointer; line-height:1.5; }
 
-  /* ── FORM FIELDS ── */
-  .form-group {
-    margin-bottom: 22px;
-  }
-  .form-group:last-child { margin-bottom: 0; }
-  .form-label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-  .form-label .req { color: var(--red-soft); margin-left: 3px; }
-  .form-control {
-    width: 100%;
-    padding: 11px 16px;
-    border: 1.5px solid var(--gray-300);
-    border-radius: var(--radius-sm);
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 14px;
-    color: var(--navy);
-    background: var(--white);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-  }
-  .form-control:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
-  }
-  select.form-control { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238a8880' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .form-group { margin-bottom:20px; }
+  .form-group:last-child { margin-bottom:0; }
+  .form-label { display:block; font-size:14px; font-weight:600; color:#2d1a22; margin-bottom:9px; line-height:1.5; }
+  .form-label .req { color:var(--red-soft); margin-left:3px; }
+  .form-control { width:100%; padding:11px 16px; border:1.5px solid var(--gray-300); border-radius:var(--radius-sm); font-family:'Source Sans 3',sans-serif; font-size:14px; color:#2d1a22; background:var(--white); transition:border-color 0.2s,box-shadow 0.2s; outline:none; }
+  .form-control:focus { border-color:var(--rose-mid); box-shadow:0 0 0 3px rgba(181,41,74,0.10); }
+  select.form-control { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239a878e' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; }
 
-  .radio-group, .checkbox-group {
+  .radio-group { display:flex; flex-direction:column; gap:9px; }
+  .radio-option { display:flex; align-items:center; gap:12px; padding:10px 16px; border:1.5px solid var(--gray-300); border-radius:var(--radius-sm); cursor:pointer; transition:border-color 0.2s,background 0.2s; font-size:14px; color:var(--gray-700); }
+  .radio-option:hover { border-color:var(--rose-mid); background:var(--rose-pale); }
+  .radio-option input { accent-color:var(--rose); width:16px; height:16px; flex-shrink:0; }
+
+  .section-divider { border:none; height:1px; background:linear-gradient(90deg,transparent,var(--blush),transparent); margin:22px 0; }
+
+  /* VARIABLE GROUPS */
+  .variable-group { margin-bottom:32px; }
+  .variable-group:last-child { margin-bottom:0; }
+  .variable-label { font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; display:inline-block; padding:5px 14px; border-radius:5px; margin-bottom:14px; }
+
+  /* B labels – rose shades */
+  .lbl-b1 { background:#f8d7de; color:#7a0a28; }
+  .lbl-b2 { background:#f5c2cc; color:#7a0a28; }
+  .lbl-b3 { background:#f0a8b8; color:#7a0a28; }
+  .lbl-b4 { background:#e98fa5; color:#5a0820; }
+  .lbl-b5 { background:#e07090; color:#5a0820; }
+  .lbl-b6 { background:#d44d74; color:#ffffff; }
+  /* C labels – purple shades */
+  .lbl-ci { background:#e8dcf7; color:#3d1d70; }
+  .lbl-ce { background:#c9aeee; color:#3d1d70; }
+  /* D labels – teal shades */
+  .lbl-d1 { background:#c8f0eb; color:#0d4a42; }
+  .lbl-d2 { background:#a0e4dc; color:#0d4a42; }
+  .lbl-d3 { background:#74d4ca; color:#0d4a42; }
+  .lbl-d4 { background:#48c4b8; color:#083530; }
+  .lbl-d5 { background:#1a9e90; color:#ffffff; }
+
+  .variable-desc { font-size:13px; color:var(--gray-500); margin-bottom:14px; margin-top:-6px; font-style:italic; }
+  .likert-instruction { background:#fff8f9; border:1px solid #f5c2cc; border-radius:var(--radius-sm); padding:11px 15px; font-size:13px; color:#7a3040; margin-bottom:18px; display:flex; gap:10px; align-items:flex-start; }
+  .likert-instruction::before { content:'\1F4A1'; flex-shrink:0; }
+
+  /* LIKERT ITEMS */
+  .likert-item { display:grid; grid-template-columns:auto 1fr; margin-bottom:12px; border:1.5px solid var(--gray-300); border-radius:var(--radius-sm); overflow:hidden; transition:border-color 0.2s,box-shadow 0.2s; }
+  .likert-item:hover { box-shadow:0 2px 10px rgba(181,41,74,0.10); }
+  .likert-item-code { font-size:11px; font-weight:700; letter-spacing:0.5px; padding:14px 10px; display:flex; align-items:center; justify-content:center; min-width:52px; text-align:center; }
+  .code-b { background:var(--rose); color:#fde8ed; }
+  .code-c { background:#6b35a8; color:#ede0ff; }
+  .code-d { background:#1a7a6e; color:#d6f5f1; }
+  .likert-item-right { padding:13px 15px; }
+  .likert-item-text { font-size:14px; color:#2d1a22; line-height:1.55; margin-bottom:12px; }
+  .likert-options { display:flex; gap:6px; flex-wrap:wrap; }
+  .likert-btn { flex:1; min-width:40px; padding:7px 3px; border:1.5px solid var(--gray-300); border-radius:6px; background:white; cursor:pointer; font-family:'Source Sans 3',sans-serif; font-size:12px; font-weight:600; color:var(--gray-700); transition:all 0.16s; text-align:center; display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .likert-btn span.num { font-size:15px; font-weight:700; }
+  .likert-btn span.lbl { font-size:8px; font-weight:500; letter-spacing:0.3px; line-height:1.2; }
+  .likert-btn:hover { border-color:#999; background:var(--gray-100); }
+
+  /* B theme selected */
+  .theme-b .likert-btn.sel-1 { border-color:#f5c2cc; background:#fef0f3; color:#b5294a; }
+  .theme-b .likert-btn.sel-2 { border-color:#f0a0b5; background:#fde4ec; color:#992040; }
+  .theme-b .likert-btn.sel-3 { border-color:#e07090; background:#fbd3e2; color:#7a1535; }
+  .theme-b .likert-btn.sel-4 { border-color:#cc4570; background:#f7b8d0; color:#5a0820; }
+  .theme-b .likert-btn.sel-5 { border-color:#b5294a; background:#b5294a; color:#ffffff; }
+
+  /* C theme selected */
+  .theme-c .likert-btn.sel-1 { border-color:#d8c4f5; background:#f5f0ff; color:#6b35a8; }
+  .theme-c .likert-btn.sel-2 { border-color:#c4a4ef; background:#ede0ff; color:#5a28a0; }
+  .theme-c .likert-btn.sel-3 { border-color:#a880e0; background:#e2d0ff; color:#491d90; }
+  .theme-c .likert-btn.sel-4 { border-color:#8855c8; background:#d4bcf8; color:#381475; }
+  .theme-c .likert-btn.sel-5 { border-color:#6b35a8; background:#6b35a8; color:#ffffff; }
+
+  /* D theme selected */
+  .theme-d .likert-btn.sel-1 { border-color:#a8e4de; background:#edfaf7; color:#1a7a6e; }
+  .theme-d .likert-btn.sel-2 { border-color:#80d4cc; background:#d8f5f2; color:#156a5e; }
+  .theme-d .likert-btn.sel-3 { border-color:#50c0b5; background:#c0ece8; color:#0e5850; }
+  .theme-d .likert-btn.sel-4 { border-color:#28a89a; background:#a0e0da; color:#084840; }
+  .theme-d .likert-btn.sel-5 { border-color:#1a7a6e; background:#1a7a6e; color:#ffffff; }
+
+  /* SUBMIT */
+  .submit-area { text-align:center; padding:28px; }
+  .back-btn-wrap { text-align:center; margin-bottom:16px; }
+  .btn-back { background:white; color:var(--rose); border:2px solid var(--rose); padding:10px 28px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; border-radius:100px; cursor:pointer; transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+  .btn-back:hover { background:var(--rose-pale); }
+  .btn-submit { background:linear-gradient(135deg,#7a0a28,#b5294a); color:white; border:none; padding:15px 52px; font-family:'Source Sans 3',sans-serif; font-size:15px; font-weight:600; border-radius:100px; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; box-shadow:0 6px 24px rgba(181,41,74,0.35); letter-spacing:0.5px; display:inline-flex; align-items:center; gap:10px; }
+  .btn-submit:hover { transform:translateY(-2px); box-shadow:0 10px 32px rgba(181,41,74,0.40); }
+  .btn-submit:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
+  .submit-note { margin-top:12px; font-size:12px; color:var(--gray-500); }
+
+  .thankyou { display:none; text-align:center; padding:50px 28px; }
+  .thankyou .icon { font-size:60px; margin-bottom:18px; }
+  .thankyou h2 { font-family:'Playfair Display',serif; font-size:26px; color:var(--rose); margin-bottom:10px; }
+  .thankyou p { font-size:15px; color:var(--gray-500); line-height:1.7; max-width:400px; margin:0 auto; }
+
+  .already-done { text-align:center; padding:60px 32px; max-width:500px; margin:60px auto; }
+  .already-done .icon { font-size:64px; margin-bottom:20px; }
+  .already-done h2 { font-family:'Playfair Display',serif; font-size:24px; color:var(--rose); margin-bottom:12px; }
+  .already-done p { font-size:15px; color:var(--gray-500); line-height:1.7; }
+
+  /* STICKY NAV */
+  .sticky-nav { position:fixed; bottom:0; left:0; right:0; background:white; border-top:2px solid var(--rose-light); padding:11px 22px; display:flex; justify-content:space-between; align-items:center; z-index:100; box-shadow:0 -4px 20px rgba(181,41,74,0.08); gap:12px; }
+  .sticky-nav .nav-info { font-size:13px; color:var(--gray-500); }
+  .sticky-nav .nav-info strong { color:var(--rose); }
+  .nav-btns { display:flex; gap:10px; }
+  .btn-nav { padding:9px 20px; border-radius:100px; font-family:'Source Sans 3',sans-serif; font-size:13px; font-weight:600; cursor:pointer; border:2px solid var(--rose); transition:all 0.2s; }
+  .btn-prev { background:white; color:var(--rose); }
+  .btn-prev:hover { background:var(--rose-pale); }
+  .btn-next { background:var(--rose); color:white; }
+  .btn-next:hover { background:var(--rose-mid); }
+
+  .page { display:none; }
+  .page.active { display:block; }
+
+  /* ═══════════════════════════════════════
+     HERO LANDING – PAGE 1
+  ═══════════════════════════════════════ */
+  .hero-page {
+    min-height: calc(var(--vh, 1vh) * 100);
+    background: #ffffff;
+    position: relative;
+    overflow-x: clip;
+    overflow-y: hidden;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-  .radio-option, .checkbox-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 16px;
-    border: 1.5px solid var(--gray-300);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-    font-size: 14px;
-    color: var(--gray-700);
-  }
-  .radio-option:hover, .checkbox-option:hover {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.05);
-  }
-  .radio-option input, .checkbox-option input {
-    accent-color: var(--navy);
-    width: 16px; height: 16px;
-    flex-shrink: 0;
   }
 
-  /* ── LIKERT TABLE ── */
-  .variable-group {
-    margin-bottom: 36px;
-  }
-  .variable-group:last-child { margin-bottom: 0; }
-  .variable-label {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--gold);
-    background: var(--navy);
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-  }
-  .variable-desc {
-    font-size: 13px;
-    color: var(--gray-500);
-    margin-bottom: 16px;
-    margin-top: -8px;
-    font-style: italic;
+  /* Hide global header & progress on page 1 (hero has its own) */
+  body.on-page-1 .site-header,
+  body.on-page-1 .progress-wrap { display: none; }
+  body.on-page-1 .container {
+    padding: 0 !important;
+    max-width: 100% !important;
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 
-  .likert-instruction {
-    background: #fffbf0;
-    border: 1px solid #f0d080;
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-size: 13px;
-    color: #7a6010;
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .likert-instruction::before { content: '💡'; flex-shrink: 0; }
-
-  .likert-scale-legend {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-    margin-bottom: 20px;
-  }
-  .legend-item {
-    text-align: center;
-    font-size: 11px;
-    color: var(--gray-500);
-    line-height: 1.4;
-  }
-  .legend-num {
-    display: block;
-    width: 32px; height: 32px;
+  /* Decorative blobs */
+  .hero-blob {
+    position: absolute;
     border-radius: 50%;
-    font-size: 14px;
-    font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 5px;
-    border: 2px solid;
+    pointer-events: none;
+    z-index: 0;
   }
-  .legend-num.n1 { border-color: #e74c3c; color: #e74c3c; background: #fdf0ee; }
-  .legend-num.n2 { border-color: #e67e22; color: #e67e22; background: #fef5ec; }
-  .legend-num.n3 { border-color: #95a5a6; color: #95a5a6; background: #f4f6f6; }
-  .legend-num.n4 { border-color: #27ae60; color: #27ae60; background: #eafaf1; }
-  .legend-num.n5 { border-color: #2980b9; color: #2980b9; background: #eaf4fb; }
-
-  .likert-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0;
-    margin-bottom: 14px;
-    border: 1.5px solid var(--gray-300);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
+  .hero-blob-1 {
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, #fce8ed 0%, transparent 70%);
+    top: -160px; right: -140px;
   }
-  .likert-item:hover {
-    border-color: var(--gold);
-    box-shadow: 0 2px 10px rgba(201,168,76,0.12);
+  .hero-blob-2 {
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, #fce8ed 0%, transparent 70%);
+    bottom: 60px; left: -100px;
   }
-  .likert-item-code {
-    background: var(--navy);
-    color: var(--gold-light);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    padding: 14px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 54px;
-    writing-mode: horizontal-tb;
-    text-align: center;
-  }
-  .likert-item-right {
-    padding: 14px 16px;
-  }
-  .likert-item-text {
-    font-size: 14px;
-    color: var(--navy);
-    line-height: 1.55;
-    margin-bottom: 14px;
-  }
-  .likert-options {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .likert-btn {
-    flex: 1;
-    min-width: 42px;
-    padding: 8px 4px;
-    border: 1.5px solid var(--gray-300);
-    border-radius: 6px;
-    background: white;
-    cursor: pointer;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--gray-700);
-    transition: all 0.18s;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-  }
-  .likert-btn span.num { font-size: 16px; font-weight: 700; }
-  .likert-btn span.lbl { font-size: 9px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.2; }
-  .likert-btn:hover { border-color: var(--navy); background: var(--gray-100); }
-  .likert-btn.sel-1 { border-color: #e74c3c; background: #fdf0ee; color: #e74c3c; }
-  .likert-btn.sel-2 { border-color: #e67e22; background: #fef5ec; color: #e67e22; }
-  .likert-btn.sel-3 { border-color: #95a5a6; background: #f4f6f6; color: #555; }
-  .likert-btn.sel-4 { border-color: #27ae60; background: #eafaf1; color: #27ae60; }
-  .likert-btn.sel-5 { border-color: #2980b9; background: #eaf4fb; color: #2980b9; }
-
-  /* ── DIVIDER ── */
-  .section-divider {
-    border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gray-300), transparent);
-    margin: 24px 0;
+  .hero-blob-3 {
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, #fdebd0 0%, transparent 70%);
+    top: 40%; left: 30%;
   }
 
-  /* ── SUBMIT AREA ── */
-  .submit-area {
-    text-align: center;
-    padding: 32px;
-  }
-  .btn-submit {
-    background: linear-gradient(135deg, var(--navy) 0%, #2d4080 100%);
-    color: white;
-    border: none;
-    padding: 16px 56px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 6px 24px rgba(26,39,68,0.3);
-    letter-spacing: 0.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 32px rgba(26,39,68,0.35);
-  }
-  .btn-submit:active { transform: translateY(0); }
-  .submit-note {
-    margin-top: 14px;
-    font-size: 12px;
-    color: var(--gray-500);
-  }
-
-  /* ── THANK YOU ── */
-  .thankyou { display: none; text-align: center; padding: 60px 32px; }
-  .thankyou .icon { font-size: 64px; margin-bottom: 20px; }
-  .thankyou h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    color: var(--navy);
-    margin-bottom: 12px;
-  }
-  .thankyou p { font-size: 15px; color: var(--gray-500); line-height: 1.7; max-width: 400px; margin: 0 auto; }
-
-  /* ── STICKY BOTTOM NAV ── */
-  .sticky-nav {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: white;
-    border-top: 1px solid var(--gray-300);
-    padding: 12px 24px;
+  /* Top nav strip */
+  .hero-nav {
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-    gap: 12px;
+    padding: 20px 48px;
+    border-bottom: 1px solid rgba(181,41,74,0.08);
   }
-  .sticky-nav .nav-info { font-size: 13px; color: var(--gray-500); }
-  .sticky-nav .nav-info strong { color: var(--navy); }
-  .nav-btns { display: flex; gap: 10px; }
-  .btn-nav {
-    padding: 9px 20px;
-    border-radius: 100px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 13px;
+  .hero-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-nav-logo {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, #7a0a28, #b5294a);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 3px 10px rgba(181,41,74,0.25);
+  }
+  .hero-nav-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #2d1a22;
+    letter-spacing: -0.2px;
+  }
+  .hero-nav-sub {
+    font-size: 11px;
+    color: var(--gray-500);
+    letter-spacing: 0.5px;
+  }
+  .hero-nav-badge {
+    font-size: 11px;
     font-weight: 600;
-    cursor: pointer;
-    border: 2px solid var(--navy);
-    transition: all 0.2s;
+    color: var(--rose);
+    background: var(--rose-light);
+    border: 1px solid #f5c2cc;
+    padding: 5px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.4px;
   }
-  .btn-prev { background: white; color: var(--navy); }
-  .btn-prev:hover { background: var(--gray-100); }
-  .btn-next { background: var(--navy); color: white; }
-  .btn-next:hover { background: #243460; }
 
-  /* ── PAGE SYSTEM ── */
-  .page { display: none; }
-  .page.active { display: block; }
+  /* Main hero content — centered */
+  .hero-body {
+    position: relative;
+    z-index: 5;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 56px 280px 48px;
+    width: 100%;
+  }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .section-body { padding: 18px 18px; }
-    .section-header { padding: 18px 18px 14px; }
-    .likert-item-code { font-size: 10px; min-width: 46px; padding: 12px 8px; }
-    .likert-btn span.lbl { display: none; }
-    .likert-btn { min-width: 36px; }
+  /* Floating cards — fixed positions in the side gutters */
+  .hero-cards-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  /* Center text block above cards */
+  .hero-center {
+    position: relative;
+    z-index: 10;
+    max-width: 640px;
+    width: 100%;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--rose-light);
+    color: var(--rose);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    border: 1px solid #f5c2cc;
+  }
+  .hero-tag::before { content: '♥'; font-size: 10px; }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.2vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1a0a10;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #6b5058;
+    margin-bottom: 28px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+  .btn-hero-cta {
+    background: linear-gradient(135deg, #7a0a28, #b5294a);
+    color: white;
+    border: none;
+    padding: 16px 44px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 28px rgba(181,41,74,0.38);
+    letter-spacing: 0.2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(181,41,74,0.45);
+  }
+  .btn-hero-cta:active { transform: translateY(0); }
+  .hero-cta-note {
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.5;
+    text-align: left;
+  }
+  .hero-cta-note strong { color: #2d1a22; }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #f0e4e8;
+    justify-content: center;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--rose);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-lbl { font-size: 12px; color: var(--gray-500); line-height: 1.4; }
+
+  /* ── FLOATING CARDS — absolute, behind text ── */
+  .float-card {
+    position: absolute;
+    background: rgba(255,255,255,0.80);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 14px;
+    box-shadow: 0 6px 30px rgba(181,41,74,0.10), 0 1px 4px rgba(0,0,0,0.05);
+    border: 1px solid rgba(181,41,74,0.10);
+    padding: 14px 16px;
+  }
+
+  @keyframes floatUp {
+    from { opacity:0; transform:translateY(20px) rotate(var(--rot,0deg)); }
+    to   { opacity:1; transform:translateY(0)    rotate(var(--rot,0deg)); }
+  }
+  @keyframes bob1 {
+    0%,100% { transform: translateY(0)   rotate(var(--rot,0deg)); }
+    50%     { transform: translateY(-8px) rotate(var(--rot,0deg)); }
+  }
+  @keyframes bob2 {
+    0%,100% { transform: translateY(0)   rotate(var(--rot,0deg)); }
+    50%     { transform: translateY(-6px) rotate(var(--rot,0deg)); }
+  }
+  @keyframes bob3 {
+    0%,100% { transform: translateY(0)    rotate(var(--rot,0deg)); }
+    50%     { transform: translateY(-10px) rotate(var(--rot,0deg)); }
+  }
+  /* Bob animations for peek cards (preserve translateY(-50%) centering) */
+  @keyframes bob-peek-left {
+    0%,100% { transform: translateY(-60%) rotate(-3deg) translateY(0); }
+    50%     { transform: translateY(-60%) rotate(-3deg) translateY(-8px); }
+  }
+  @keyframes bob-peek-right {
+    0%,100% { transform: translateY(-60%) rotate(2deg) translateY(0); }
+    50%     { transform: translateY(-60%) rotate(2deg) translateY(-6px); }
+  }
+
+  /* Cards sit in left/right gutters (each ~260px wide) */
+  .fc-1 { --rot:-3deg;   top:40px;  left:16px;  width:230px; animation: floatUp .7s ease .10s both, bob1 5s   ease-in-out 1s   infinite; }
+  .fc-2 { --rot:2deg;    top:32px;  right:14px; width:218px; animation: floatUp .7s ease .25s both, bob2 6s   ease-in-out 1.2s infinite; }
+  .fc-3 { --rot:-1.5deg; top:310px; left:12px;  width:210px; animation: floatUp .7s ease .40s both, bob3 4.5s ease-in-out .8s  infinite; }
+  .fc-4 { --rot:3deg;    top:290px; right:10px; width:238px; animation: floatUp .7s ease .55s both, bob1 5.5s ease-in-out 1.5s infinite; }
+  .fc-5 { --rot:-2deg;   top:570px; left:18px;  width:200px; animation: floatUp .7s ease .35s both, bob2 7s   ease-in-out 1s   infinite; }
+  .fc-6 { --rot:2.5deg;  top:540px; right:12px; width:200px; animation: floatUp .7s ease .45s both, bob3 6s   ease-in-out 1.3s infinite; }
+
+  /* Card internals */
+  .fc-header {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .fc-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .fc-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a0a10;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .fc-sub {
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.5;
+  }
+  .fc-input-mock {
+    background: #f8f2f4;
+    border: 1.5px solid #e8d4da;
+    border-radius: 7px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #b5294a;
+    font-weight: 600;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .fc-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .fc-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+  .fc-tag-rose  { background:#fce8ed; color:#7a0a28; }
+  .fc-tag-purp  { background:#ede0ff; color:#5a28a0; }
+  .fc-tag-teal  { background:#d8f5f2; color:#0d4a42; }
+  .fc-tag-gold  { background:#fdebd0; color:#7a4a10; }
+
+  .fc-scale {
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+  }
+  .fc-scale-dot {
+    flex: 1;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .fc-stat-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .fc-stat-item {
+    flex: 1;
+    text-align: center;
+    background: var(--rose-light);
+    border-radius: 8px;
+    padding: 8px 4px;
+  }
+  .fc-stat-item .num { font-size: 16px; font-weight: 800; color: var(--rose); font-family: 'Playfair Display', serif; }
+  .fc-stat-item .lbl { font-size: 10px; color: var(--gray-500); margin-top: 2px; }
+
+  /* Consent area at bottom */
+  .hero-consent {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    padding: 0 48px 56px;
+  }
+  .hero-consent-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .hero-consent-card {
+    background: linear-gradient(135deg, #fff5f7 0%, #fef0f3 100%);
+    border: 2px solid #f5c2cc;
+    border-radius: 16px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .hero-consent-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .hero-consent-text { flex: 1; }
+  .hero-consent-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--rose);
+    margin-bottom: 6px;
+  }
+  .hero-consent-text p {
+    font-size: 13px;
+    color: #6b5058;
+    line-height: 1.65;
+  }
+  .hero-consent-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .hero-consent-check input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--rose);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .hero-consent-check label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a0a10;
+    cursor: pointer;
+    line-height: 1.5;
+  }
+
+  /* Info pills row – centered */
+  .hero-info-pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    justify-content: center;
+  }
+  .hero-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: #4a3840;
+    background: white;
+    border: 1.5px solid #f0e0e5;
+    border-radius: 100px;
+    padding: 7px 16px;
+    box-shadow: 0 2px 8px rgba(181,41,74,0.06);
+  }
+  .hero-pill-icon { font-size: 14px; }
+
+  /* Mobile hero tuning + draggable cards */
+  body.on-page-1 .hero-cards-bg {
+    pointer-events: auto;
+  }
+  body.on-page-1 .float-card {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: grab;
+  }
+  body.on-page-1 .float-card.dragging {
+    cursor: grabbing;
+    z-index: 40;
+  }
+  body.on-page-1 .float-card * {
+    pointer-events: none;
+  }
+
+  @media(max-width:1100px){
+    .hero-body { padding-left: 240px; padding-right: 240px; }
+  }
+  @media(max-width:900px){
+    .hero-nav { padding: 16px 28px; }
+    .hero-body { padding: 40px 24px 32px; }
+    .hero-consent { padding: 0 28px 32px; }
+
+    /* Peek effect: show half of cards at left/right edges, hide bottom cards */
+    .fc-3, .fc-5 { display: none; } /* left bottom cards hidden */
+    .fc-4, .fc-6 { display: none; } /* right bottom cards hidden */
+
+    /* Left card — peek from left edge, only right half visible */
+    .fc-1 {
+      left: -110px;
+      top: 50%;
+      transform: translateY(-60%) rotate(-3deg);
+      width: 220px;
+      animation: bob-peek-left 5s ease-in-out 1s infinite !important;
+    }
+    /* Right card — peek from right edge, only left half visible */
+    .fc-2 {
+      right: -108px;
+      left: auto;
+      top: 50%;
+      transform: translateY(-60%) rotate(2deg);
+      width: 218px;
+      animation: bob-peek-right 6s ease-in-out 1.2s infinite !important;
+    }
+  }
+  @media(max-width:600px){
+    .section-body{padding:16px;}
+    .section-header{padding:16px 16px 12px;}
+    .likert-item-code{font-size:9px;min-width:44px;padding:10px 6px;}
+    .likert-btn span.lbl{display:none;}
+    .likert-btn{min-width:34px;}
+    .hero-nav { padding: 14px 20px; }
+    .hero-body { padding: 32px 20px 24px; }
+    .hero-consent { padding: 0 20px 28px; }
+    .hero-title { font-size: 22px; }
+    .hero-stats { gap: 16px; }
+    .hero-consent-card { flex-direction: column; gap: 12px; }
+    .hero-cta-wrap { flex-direction: column; align-items: center; }
+
+    /* Tighter peek on small phones */
+    .fc-1 { left: -120px; width: 200px; }
+    .fc-2 { right: -118px; width: 200px; }
+  }
+
+  /* Extra mobile fix: keep page 1 fully open on handheld screens */
+  @media (max-width: 768px), (pointer: coarse) {
+    body.on-page-1 .hero-page {
+      min-height: calc(var(--vh, 1vh) * 100);
+      height: auto;
+      overflow-x: clip;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    body.on-page-1 .hero-body {
+      padding-top: 24px;
+      padding-bottom: 20px;
+    }
+    body.on-page-1 .hero-center {
+      max-width: 100%;
+    }
+    body.on-page-1 .hero-title {
+      font-size: clamp(21px, 6vw, 24px);
+      line-height: 1.26;
+    }
+    body.on-page-1 .hero-desc {
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    body.on-page-1 .hero-info-pills {
+      gap: 8px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    body.on-page-1 .hero-pill {
+      font-size: 12px;
+      padding: 7px 13px;
+    }
+    body.on-page-1 .hero-stats {
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    body.on-page-1 .hero-consent-card {
+      padding: 18px;
+    }
+    body.on-page-1 .hero-consent-text h3 {
+      font-size: 14px;
+    }
+    body.on-page-1 .hero-consent-text p,
+    body.on-page-1 .hero-consent-check label {
+      font-size: 12px;
+    }
+    body.on-page-1 .fc-3,
+    body.on-page-1 .fc-4,
+    body.on-page-1 .fc-5,
+    body.on-page-1 .fc-6 {
+      display: none;
+    }
+    body.on-page-1 .fc-1 {
+      left: -112px;
+      top: 54%;
+      width: 205px;
+    }
+    body.on-page-1 .fc-2 {
+      right: -110px;
+      top: 18%;
+      width: 198px;
+    }
+  }
+
+
+  /* Final mobile polish: closer to v3, cleaner and more fullscreen */
+  @media (max-width: 768px), (pointer: coarse) {
+    body.on-page-1 .container {
+      min-height: calc(var(--vh, 1vh) * 100);
+      display: flex;
+      align-items: stretch;
+    }
+
+    body.on-page-1 .hero-page {
+      min-height: calc(var(--vh, 1vh) * 100);
+      height: auto;
+    }
+
+    body.on-page-1 .hero-nav {
+      padding: 12px 16px;
+      gap: 10px;
+    }
+
+    body.on-page-1 .hero-nav-brand {
+      gap: 8px;
+      min-width: 0;
+    }
+
+    body.on-page-1 .hero-nav-logo {
+      width: 30px;
+      height: 30px;
+      font-size: 13px;
+      border-radius: 8px;
+    }
+
+    body.on-page-1 .hero-nav-name {
+      font-size: 13px;
+      line-height: 1.15;
+    }
+
+    body.on-page-1 .hero-nav-sub {
+      display: none;
+    }
+
+    body.on-page-1 .hero-nav-badge {
+      font-size: 10px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+
+    body.on-page-1 .hero-body {
+      padding: 18px 14px 12px;
+      justify-content: flex-start;
+    }
+
+    body.on-page-1 .hero-center {
+      max-width: 100%;
+    }
+
+    body.on-page-1 .hero-tag {
+      font-size: 10px;
+      padding: 5px 11px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    body.on-page-1 .hero-title {
+      font-size: clamp(20px, 6vw, 24px);
+      line-height: 1.28;
+      margin-bottom: 10px;
+    }
+
+    body.on-page-1 .hero-desc {
+      font-size: 13px;
+      line-height: 1.58;
+      margin-bottom: 14px;
+    }
+
+    body.on-page-1 .hero-info-pills {
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    body.on-page-1 .hero-pill {
+      font-size: 11px;
+      padding: 6px 10px;
+      gap: 6px;
+    }
+
+    body.on-page-1 .hero-cta-wrap {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    body.on-page-1 .btn-hero-cta {
+      width: 100%;
+      justify-content: center;
+      padding: 13px 16px;
+      font-size: 15px;
+    }
+
+    body.on-page-1 .hero-cta-note {
+      text-align: center;
+      font-size: 11px;
+    }
+
+    body.on-page-1 .hero-stats {
+      gap: 10px;
+      padding-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    body.on-page-1 .hero-stat-num {
+      font-size: 18px;
+    }
+
+    body.on-page-1 .hero-stat-lbl {
+      font-size: 10px;
+    }
+
+    body.on-page-1 .hero-consent {
+      padding: 0 14px 14px;
+    }
+
+    body.on-page-1 .hero-consent-card {
+      padding: 14px;
+      gap: 12px;
+      border-radius: 14px;
+    }
+
+    body.on-page-1 .hero-consent-icon {
+      font-size: 22px;
+      margin-top: 0;
+    }
+
+    body.on-page-1 .hero-consent-text h3 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    body.on-page-1 .hero-consent-text p {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    body.on-page-1 .hero-consent-check {
+      margin-top: 10px;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    body.on-page-1 .hero-consent-check label {
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    body.on-page-1 .hero-consent-check input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+    }
+
+    body.on-page-1 .hero-blob-1,
+    body.on-page-1 .hero-blob-2 {
+      opacity: 0.38;
+    }
+
+    body.on-page-1 .hero-blob-3 {
+      display: none;
+    }
+
+    body.on-page-1 .hero-cards-bg {
+      pointer-events: auto;
+    }
+
+    body.on-page-1 .float-card {
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: grab;
+      opacity: 0.92;
+    }
+
+    body.on-page-1 .float-card.dragging {
+      cursor: grabbing;
+      z-index: 40;
+      opacity: 1;
+    }
+
+    body.on-page-1 .float-card * {
+      pointer-events: none;
+    }
+
+    body.on-page-1 .fc-3,
+    body.on-page-1 .fc-4,
+    body.on-page-1 .fc-5,
+    body.on-page-1 .fc-6 {
+      display: none !important;
+    }
+
+    body.on-page-1 .fc-1 {
+      left: -92px;
+      top: 82px;
+      width: 186px;
+      animation: bob-peek-left 5.5s ease-in-out 1s infinite !important;
+    }
+
+    body.on-page-1 .fc-2 {
+      right: -90px;
+      top: 126px;
+      width: 176px;
+      animation: bob-peek-right 6s ease-in-out 1.2s infinite !important;
+    }
+  }
+
+
+  /* Final mobile polish: v3-style mobile landing for page 1 */
+  @media (max-width: 768px), (pointer: coarse) {
+    body.on-page-1 .site-header,
+    body.on-page-1 .progress-wrap {
+      display: block !important;
+    }
+
+    body.on-page-1 .container {
+      padding: 0 !important;
+      max-width: 100% !important;
+      min-height: auto !important;
+    }
+
+    body.on-page-1 .hero-page {
+      min-height: auto;
+      background: #ffffff;
+      overflow: visible;
+    }
+
+    body.on-page-1 .hero-blob {
+      display: none;
+    }
+
+    body.on-page-1 .hero-nav {
+      margin: 12px 14px 12px;
+      padding: 12px 14px;
+      background: #ffffff;
+      border: 1px solid rgba(181, 41, 74, 0.10);
+      border-radius: 18px;
+      box-shadow: 0 8px 22px rgba(181, 41, 74, 0.08);
+      align-items: center;
+    }
+
+    body.on-page-1 .hero-nav-brand {
+      gap: 8px;
+      min-width: 0;
+    }
+
+    body.on-page-1 .hero-nav-logo {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    body.on-page-1 .hero-nav-name {
+      font-size: 13px;
+      line-height: 1.15;
+    }
+
+    body.on-page-1 .hero-nav-sub {
+      font-size: 10px;
+      line-height: 1.2;
+    }
+
+    body.on-page-1 .hero-nav-badge {
+      font-size: 10px;
+      padding: 4px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    body.on-page-1 .hero-body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 4px 14px 0;
+      width: 100%;
+      text-align: left;
+    }
+
+    body.on-page-1 .hero-center {
+      order: 2;
+      z-index: 10;
+      max-width: 100%;
+      width: 100%;
+      text-align: left;
+      padding: 0;
+    }
+
+    body.on-page-1 .hero-tag {
+      display: inline-flex;
+      font-size: 10px;
+      padding: 5px 11px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    body.on-page-1 .hero-title {
+      font-size: clamp(20px, 6vw, 24px);
+      line-height: 1.26;
+      margin-bottom: 12px;
+    }
+
+    body.on-page-1 .hero-desc {
+      font-size: 13px;
+      line-height: 1.58;
+      margin-bottom: 14px;
+      max-width: none;
+    }
+
+    body.on-page-1 .hero-info-pills {
+      gap: 6px;
+      margin-bottom: 14px;
+      justify-content: flex-start;
+    }
+
+    body.on-page-1 .hero-pill {
+      font-size: 11px;
+      padding: 6px 10px;
+      gap: 6px;
+    }
+
+    body.on-page-1 .hero-cta-wrap {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    body.on-page-1 .btn-hero-cta {
+      width: 100%;
+      justify-content: center;
+      padding: 13px 16px;
+      font-size: 15px;
+    }
+
+    body.on-page-1 .hero-cta-note {
+      text-align: left;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    body.on-page-1 .hero-stats {
+      gap: 10px;
+      padding-top: 12px;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    body.on-page-1 .hero-stat {
+      flex: 1;
+      min-width: 0;
+    }
+
+    body.on-page-1 .hero-stat-num {
+      font-size: 18px;
+    }
+
+    body.on-page-1 .hero-stat-lbl {
+      font-size: 9px;
+      line-height: 1.3;
+    }
+
+    body.on-page-1 .hero-cards-bg {
+      order: 3;
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: 360px;
+      margin: 30px 0 4px;
+      pointer-events: auto;
+      overflow: visible;
+    }
+
+    body.on-page-1 .float-card {
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: grab;
+      opacity: 0.98;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    body.on-page-1 .float-card.dragging {
+      cursor: grabbing;
+      z-index: 40;
+      opacity: 1;
+    }
+
+    body.on-page-1 .float-card * {
+      pointer-events: none;
+    }
+
+    body.on-page-1 .fc-3,
+    body.on-page-1 .fc-4 {
+      display: block !important;
+    }
+
+    body.on-page-1 .fc-5,
+    body.on-page-1 .fc-6 {
+      display: none !important;
+    }
+
+    body.on-page-1 .fc-1 {
+      top: 70px;
+      left: 0;
+      width: 168px;
+      animation: bob1 5s ease-in-out 1s infinite !important;
+    }
+
+    body.on-page-1 .fc-2 {
+      top: 110px;
+      right: 0;
+      width: 166px;
+      animation: bob2 6s ease-in-out 1.2s infinite !important;
+    }
+
+    body.on-page-1 .fc-3 {
+      top: 156px;
+      left: 8px;
+      width: 170px;
+      animation: bob3 4.5s ease-in-out 0.8s infinite !important;
+    }
+
+    body.on-page-1 .fc-4 {
+      top: 190px;
+      right: 8px;
+      width: 170px;
+      animation: bob1 5.5s ease-in-out 1.5s infinite !important;
+    }
+
+    body.on-page-1 .fc-5 {
+      top: 0;
+      left: 0;
+      width: 148px;
+      animation: bob2 7s ease-in-out 1s infinite !important;
+    }
+
+    body.on-page-1 .hero-consent {
+      position: relative;
+      z-index: 20;
+      padding: 0 14px 14px;
+    }
+
+    body.on-page-1 .hero-consent-card {
+      padding: 14px;
+      gap: 12px;
+      border-radius: 16px;
+    }
+
+    body.on-page-1 .hero-consent-icon {
+      font-size: 22px;
+      margin-top: 0;
+    }
+
+    body.on-page-1 .hero-consent-text h3 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    body.on-page-1 .hero-consent-text p {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    body.on-page-1 .hero-consent-check {
+      margin-top: 10px;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    body.on-page-1 .hero-consent-check label {
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    body.on-page-1 .hero-consent-check input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="site-header">
   <div class="header-inner">
-    <div class="header-badge">Kuesioner Penelitian </div>
-    <h1 class="main-title">Pengaruh Kualitas Hubungan Romantis dan Motivasi Belajar terhadap Kinerja Akademik Mahasiswa di Fakultas Ekonomi Bisnis Universitas Palangka Raya</h1>
+    <div class="header-badge">Kuesioner Penelitian 2026</div>
+    <h1 class="main-title">Pengaruh Kualitas Hubungan Romantis dan Motivasi Belajar terhadap Kinerja Akademik Mahasiswa di Fakultas Ekonomi dan Bisnis Universitas Palangka Raya</h1>
     <div class="header-meta">
-      <span>Kampus UPR Tunjung Nyaho, Jl. Yos Sudarso, Palangkaraya, Kalimantan Tengah, 73111.</span>
+      <span>Kampus UPR Tunjung Nyaho, Jl. Yos Sudarso, Palangkaraya, Kalimantan Tengah, 73111</span>
     </div>
   </div>
 </div>
 
-<!-- PROGRESS -->
 <div class="progress-wrap">
   <div class="progress-inner">
     <div class="progress-label">
@@ -533,59 +1265,193 @@
 <div class="container">
 <form id="mainForm" novalidate>
 
-<!-- ════════════════════════════════════════
-     HALAMAN 1 – PEMBUKA & PERSETUJUAN
-════════════════════════════════════════ -->
+<!-- PAGE 1 – HERO LANDING -->
 <div class="page active" id="page-1">
+<div class="hero-page">
 
-  <div class="section-card" style="animation-delay:0.05s">
-    <div class="section-header">
-      <div class="section-icon">📋</div>
+  <!-- Decorative background blobs -->
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+
+  <!-- Top navigation strip -->
+  <nav class="hero-nav">
+    <div class="hero-nav-brand">
+      <div class="hero-nav-logo">♥</div>
       <div>
-        <div class="section-title">Pengantar &amp; Tujuan Penelitian</div>
-        <div class="section-subtitle">Bacalah informasi berikut sebelum mengisi kuesioner</div>
+        <div class="hero-nav-name">FEB UPR Research</div>
+        <div class="hero-nav-sub">Universitas Palangka Raya · 2026</div>
       </div>
     </div>
-    <div class="section-body">
-      <div class="info-box">
-        <p>Yth. Responden yang terhormat,</p>
-        <p>Kami adalah mahasiswa <strong>Jurusan Manajemen, Fakultas Ekonomi dan Bisnis, Universitas Palangka Raya</strong> yang sedang melaksanakan penelitian dalam rangka memenuhi tugas mata kuliah <strong>Perilaku Keorganisasian</strong>.</p>
-        <p>Penelitian ini bertujuan untuk mengetahui <strong>pengaruh kualitas hubungan romantis dan motivasi belajar terhadap kinerja akademik mahasiswa</strong> di lingkungan FEB UPR. Hasil penelitian ini diharapkan dapat memberikan kontribusi bagi pengembangan ilmu pengetahuan dan kebijakan akademik di perguruan tinggi.</p>
-        <p>Kuisoner ini ditujukan kepada Mahasiswa/i aktif Fakultas Ekonomi dan Bisnis Universitas Palangka Raya yang sedang atau pernah menjalani <strong>hubungan romantis (pacaran)</strong> dengan durasi minimal <strong>3 bulan selama masa studi</strong>.</p>
-        <p>Kami memohon kesediaan Saudara/i untuk mengisi kuesioner ini dengan <strong>jujur, lengkap, dan sesuai kondisi yang sebenarnya</strong>. Tidak ada jawaban yang benar ataupun salah dalam kuesioner ini.</p>
+    <div class="hero-nav-badge">Kuesioner Penelitian</div>
+  </nav>
+
+  <!-- Main hero body -->
+  <div class="hero-body">
+
+    <!-- Floating cards layer — behind center text -->
+    <div class="hero-cards-bg" aria-hidden="true">
+
+      <!-- Card 1: Identitas -->
+      <div class="float-card fc-1">
+        <div class="fc-header"><span class="fc-dot" style="background:#b5294a"></span>Identitas Responden</div>
+        <div class="fc-title">Nama Lengkap</div>
+        <div class="fc-input-mock">✏️ &nbsp;Masukkan nama Anda…</div>
+        <div class="fc-tag-row">
+          <span class="fc-tag fc-tag-rose">Jenis Kelamin</span>
+          <span class="fc-tag fc-tag-gold">Usia</span>
+          <span class="fc-tag fc-tag-purp">Jurusan</span>
+        </div>
       </div>
 
-      <div class="consent-box">
-        <p><strong>🔒 Pernyataan Kerahasiaan Data</strong></p>
-        <p style="margin-top:10px;font-size:14px;line-height:1.7;">Seluruh data dan informasi yang Saudara/i berikan akan dijaga <strong>kerahasiaannya</strong> dan hanya digunakan untuk kepentingan penelitian ini semata. Identitas pribadi Saudara/i tidak akan dipublikasikan dalam bentuk apapun. Partisipasi Saudara/i dalam penelitian ini bersifat <strong>sukarela</strong> dan tanpa paksaan dari pihak manapun.</p>
-        <div class="consent-check">
-          <input type="checkbox" id="consent" name="consent" required>
-          <label for="consent">Saya telah membaca informasi di atas dan <strong>bersedia berpartisipasi</strong> dalam penelitian ini secara sukarela.</label>
+      <!-- Card 2: Bagian B -->
+      <div class="float-card fc-2">
+        <div class="fc-header"><span class="fc-dot" style="background:#b5294a"></span>Bagian B · X1</div>
+        <div class="fc-title">Kualitas Hubungan Romantis</div>
+        <div class="fc-tag-row">
+          <span class="fc-tag fc-tag-rose">Kepuasan</span>
+          <span class="fc-tag fc-tag-rose">Kepercayaan</span>
+          <span class="fc-tag fc-tag-rose">Komitmen</span>
+          <span class="fc-tag fc-tag-rose">Komunikasi</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Status hubungan -->
+      <div class="float-card fc-3">
+        <div class="fc-header"><span class="fc-dot" style="background:#c9894c"></span>Status Hubungan</div>
+        <div class="fc-title">Sedang / Pernah Berpacaran</div>
+        <div class="fc-sub">Minimal 3 bulan selama masa studi di FEB UPR</div>
+      </div>
+
+      <!-- Card 4: Skala Likert -->
+      <div class="float-card fc-4">
+        <div class="fc-header"><span class="fc-dot" style="background:#6b35a8"></span>Skala Pengukuran</div>
+        <div class="fc-title">Skala Likert 1–5</div>
+        <div class="fc-scale">
+          <div class="fc-scale-dot" style="background:#f5c2cc;color:#7a0a28;">1</div>
+          <div class="fc-scale-dot" style="background:#e8a0b5;color:#5a0820;">2</div>
+          <div class="fc-scale-dot" style="background:#d97090;color:#fff;">3</div>
+          <div class="fc-scale-dot" style="background:#c94d74;color:#fff;">4</div>
+          <div class="fc-scale-dot" style="background:#b5294a;color:#fff;">5</div>
+        </div>
+        <div class="fc-sub" style="margin-top:8px;">STS &nbsp;·&nbsp; TS &nbsp;·&nbsp; N &nbsp;·&nbsp; S &nbsp;·&nbsp; SS</div>
+      </div>
+
+      <!-- Card 5: Variabel Y -->
+      <div class="float-card fc-5">
+        <div class="fc-header"><span class="fc-dot" style="background:#1a7a6e"></span>Bagian D · Y</div>
+        <div class="fc-title">Kinerja Akademik</div>
+        <div class="fc-stat-row">
+          <div class="fc-stat-item"><div class="num">5</div><div class="lbl">Indikator</div></div>
+          <div class="fc-stat-item"><div class="num">15</div><div class="lbl">Item</div></div>
+        </div>
+      </div>
+
+      <!-- Card 6: Motivasi -->
+      <div class="float-card fc-6">
+        <div class="fc-header"><span class="fc-dot" style="background:#6b35a8"></span>Bagian C · X2</div>
+        <div class="fc-title">Motivasi Belajar</div>
+        <div class="fc-tag-row">
+          <span class="fc-tag fc-tag-purp">Intrinsik</span>
+          <span class="fc-tag fc-tag-purp">Ekstrinsik</span>
+        </div>
+      </div>
+
+    </div><!-- /hero-cards-bg -->
+
+    <!-- Center text block (above cards) -->
+    <div class="hero-center">
+      <div class="hero-tag">Perilaku Keorganisasian · Manajemen FEB UPR</div>
+
+      <h1 class="hero-title">
+        Pengaruh <em>Hubungan Romantis</em> &amp; Motivasi Belajar<br>terhadap Kinerja Akademik Mahasiswa
+      </h1>
+
+      <p class="hero-desc">
+        Kuesioner ini merupakan bagian dari penelitian mahasiswa Jurusan Manajemen FEB UPR.
+        Diperuntukkan bagi mahasiswa/i aktif yang <strong>sedang atau pernah berpacaran</strong> selama
+        masa studi dengan durasi minimal 3 bulan.
+      </p>
+
+      <!-- Info pills -->
+      <div class="hero-info-pills">
+        <div class="hero-pill"><span class="hero-pill-icon">📍</span> FEB · Universitas Palangka Raya</div>
+        <div class="hero-pill"><span class="hero-pill-icon">⏱️</span> ±10 menit pengisian</div>
+        <div class="hero-pill"><span class="hero-pill-icon">🔒</span> Data dijaga kerahasiaannya</div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hero-cta-wrap">
+        <button type="button" class="btn-hero-cta" onclick="changePage(1)">
+          Mulai Mengisi Kuesioner &nbsp;→
+        </button>
+        <div class="hero-cta-note">
+          <strong>Satu kali per perangkat.</strong><br>Jawab dengan jujur sesuai kondisi Anda.
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-lbl">Halaman<br>Kuesioner</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-lbl">Variabel<br>Penelitian</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">33</div>
+          <div class="hero-stat-lbl">Total Item<br>Pernyataan</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-lbl">Skala<br>Likert</div>
+        </div>
+      </div>
+    </div><!-- /hero-center -->
+
+  </div><!-- /hero-body -->
+
+  <!-- Consent card at bottom -->
+  <div class="hero-consent">
+    <div class="hero-consent-inner">
+      <div class="hero-consent-card">
+        <div class="hero-consent-icon">🔒</div>
+        <div class="hero-consent-text">
+          <h3>Pernyataan Kerahasiaan &amp; Persetujuan Partisipasi</h3>
+          <p>Seluruh data yang Saudara/i berikan dijaga <strong>kerahasiaannya</strong> dan hanya digunakan untuk kepentingan penelitian. Partisipasi bersifat <strong>sukarela</strong> tanpa paksaan dari pihak manapun. Identitas pribadi tidak akan dipublikasikan dalam bentuk apapun.</p>
+          <div class="hero-consent-check">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">Saya telah membaca informasi di atas dan <strong>bersedia berpartisipasi</strong> dalam penelitian ini secara sukarela.</label>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-</div><!-- /page-1 -->
+</div><!-- /hero-page -->
+</div>
 
-
-<!-- ════════════════════════════════════════
-     HALAMAN 2 – DATA RESPONDEN
-════════════════════════════════════════ -->
+<!-- PAGE 2 -->
 <div class="page" id="page-2">
-
-  <div class="section-card" style="animation-delay:0.05s">
+  <div class="section-card">
     <div class="section-header">
-      <div class="section-icon">👤</div>
+      <div class="section-icon">&#x1F464;</div>
       <div>
-        <div class="section-title">Bagian A – Identitas Responden</div>
+        <div class="section-title">Bagian A &#x2013; Identitas Responden</div>
         <div class="section-subtitle">Isilah data diri Saudara/i sesuai kondisi yang sebenarnya.</div>
       </div>
     </div>
     <div class="section-body">
 
       <div class="form-group">
-        <label class="form-label" for="jenkel">1. Jenis Kelamin <span class="req">*</span></label>
+        <label class="form-label" for="nama">1. Nama Lengkap <span class="req">*</span></label>
+        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">2. Jenis Kelamin <span class="req">*</span></label>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="jenkel" value="Laki-laki" required> Laki-laki</label>
           <label class="radio-option"><input type="radio" name="jenkel" value="Perempuan"> Perempuan</label>
@@ -593,25 +1459,19 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="usia">2. Usia <span class="req">*</span></label>
+        <label class="form-label" for="usia">3. Usia <span class="req">*</span></label>
         <select class="form-control" id="usia" name="usia" required>
-          <option value="" disabled selected>— Pilih usia Anda —</option>
-          <option>17 tahun</option>
-          <option>18 tahun</option>
-          <option>19 tahun</option>
-          <option>20 tahun</option>
-          <option>21 tahun</option>
-          <option>22 tahun</option>
-          <option>23 tahun</option>
-          <option>24 tahun</option>
-          <option>≥ 25 tahun</option>
+          <option value="" disabled selected>&#x2014; Pilih usia Anda &#x2014;</option>
+          <option>17 &#x2013; 19 tahun</option>
+          <option>20 &#x2013; 22 tahun</option>
+          <option>&#x2265; 23 tahun</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="prodi">3. Jurusan <span class="req">*</span></label>
+        <label class="form-label" for="prodi">4. Jurusan <span class="req">*</span></label>
         <select class="form-control" id="prodi" name="prodi" required>
-          <option value="" disabled selected>— Pilih jurusan —</option>
+          <option value="" disabled selected>&#x2014; Pilih jurusan &#x2014;</option>
           <option>Manajemen</option>
           <option>Akuntansi</option>
           <option>Ekonomi Pembangunan</option>
@@ -619,37 +1479,31 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="semester">4. Semester <span class="req">*</span></label>
+        <label class="form-label" for="semester">5. Semester <span class="req">*</span></label>
         <select class="form-control" id="semester" name="semester" required>
-          <option value="" disabled selected>— Pilih semester —</option>
-          <option>Semester 1</option>
-          <option>Semester 2</option>
-          <option>Semester 3</option>
-          <option>Semester 4</option>
-          <option>Semester 5</option>
-          <option>Semester 6</option>
-          <option>Semester 7</option>
-          <option>Semester 8</option>
-          <option>Semester ≥ 9</option>
+          <option value="" disabled selected>&#x2014; Pilih semester &#x2014;</option>
+          <option>Semester 1</option><option>Semester 2</option><option>Semester 3</option>
+          <option>Semester 4</option><option>Semester 5</option><option>Semester 6</option>
+          <option>Semester 7</option><option>Semester 8</option><option>Semester &#x2265; 9</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="ipk">5. IPK pada semester Terakhir <span class="req">*</span></label>
+        <label class="form-label" for="ipk">6. IPK pada Semester Terakhir <span class="req">*</span></label>
         <select class="form-control" id="ipk" name="ipk" required>
-          <option value="" disabled selected>— Pilih rentang IPK —</option>
-          <option>2,00 – 2,49</option>
-          <option>2,50 – 2,99</option>
-          <option>3,00 – 3,49</option>
-          <option>3,50 – 4,00</option>
+          <option value="" disabled selected>&#x2014; Pilih rentang IPK &#x2014;</option>
+          <option>2,00 &#x2013; 2,49</option>
+          <option>2,50 &#x2013; 2,99</option>
+          <option>3,00 &#x2013; 3,49</option>
+          <option>3,50 &#x2013; 4,00</option>
         </select>
       </div>
 
       <hr class="section-divider">
 
       <div class="form-group">
-        <label class="form-label">6. Status Hubungan Romantis Saat Ini <span class="req">*</span></label>
-        <div class="info-box" style="margin-bottom:14px;font-size:13px;">ℹ️ Kuesioner ini diperuntukkan bagi mahasiswa yang sedang atau pernah menjalani hubungan romantis (pacaran) selama studi di FEB UPR. Jika Anda belum pernah berpacaran, Anda tidak perlu melanjutkan pengisian.</div>
+        <label class="form-label">7. Status Hubungan Romantis Saat Ini <span class="req">*</span></label>
+        <div class="info-box" style="margin-bottom:12px;font-size:13px;">&#x2139;&#xFE0F; Kuesioner ini diperuntukkan bagi mahasiswa yang sedang atau pernah menjalani hubungan romantis (pacaran) selama studi di FEB UPR.</div>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="status" value="Sedang berpacaran" required> Sedang berpacaran</label>
           <label class="radio-option"><input type="radio" name="status" value="Pernah berpacaran"> Pernah berpacaran (sudah tidak)</label>
@@ -657,398 +1511,308 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label">7. Durasi Hubungan Romantis (terlama / saat ini) <span class="req">*</span></label>
+        <label class="form-label">8. Durasi Hubungan Romantis (terlama / saat ini) <span class="req">*</span></label>
         <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="durasi" value="3–6 bulan"> 3 – 6 bulan</label>
-          <label class="radio-option"><input type="radio" name="durasi" value="7–12 bulan"> 7 – 12 bulan</label>
-          <label class="radio-option"><input type="radio" name="durasi" value="1–2 tahun"> 1 – 2 tahun</label>
+          <label class="radio-option"><input type="radio" name="durasi" value="3-6 bulan" required> 3 &#x2013; 6 bulan</label>
+          <label class="radio-option"><input type="radio" name="durasi" value="7-12 bulan"> 7 &#x2013; 12 bulan</label>
+          <label class="radio-option"><input type="radio" name="durasi" value="1-2 tahun"> 1 &#x2013; 2 tahun</label>
           <label class="radio-option"><input type="radio" name="durasi" value="> 2 tahun"> Lebih dari 2 tahun</label>
         </div>
       </div>
 
     </div>
   </div>
+</div>
 
-</div><!-- /page-2 -->
-
-
-<!-- ════════════════════════════════════════
-     HALAMAN 3 – VARIABEL X1 & X2
-════════════════════════════════════════ -->
+<!-- PAGE 3 -->
 <div class="page" id="page-3">
-
-  <div class="section-card" style="animation-delay:0.05s">
+  <div class="section-card">
     <div class="section-header">
-      <div class="section-icon">❤️</div>
+      <div class="section-icon">&#x2764;&#xFE0F;</div>
       <div>
-        <div class="section-title">Bagian B – Kualitas Hubungan Romantis (X1)</div>
+        <div class="section-title">Bagian B &#x2013; Kualitas Hubungan Romantis (X1)</div>
         <div class="section-subtitle">Pernyataan mengenai kualitas hubungan romantis yang Anda jalani saat ini atau terakhir kali.</div>
       </div>
     </div>
     <div class="section-body">
-
-      <div class="likert-instruction">
-        Berikan tanda pada pilihan yang paling sesuai dengan kondisi Anda. Pilihan: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong>
-      </div>
-
-      <!-- INDIKATOR 1: Kepuasan -->
-      <div class="variable-group">
-        <div class="variable-label">Indikator 1 – Kepuasan terhadap Hubungan</div>
-        <div id="items-x1-1"></div>
-      </div>
-
-      <!-- INDIKATOR 2: Kepercayaan -->
-      <div class="variable-group">
-        <div class="variable-label">Indikator 2 – Kepercayaan terhadap Pasangan</div>
-        <div id="items-x1-2"></div>
-      </div>
-
-      <!-- INDIKATOR 3: Komitmen -->
-      <div class="variable-group">
-        <div class="variable-label">Indikator 3 – Komitmen dalam Hubungan</div>
-        <div id="items-x1-3"></div>
-      </div>
-
-      <!-- INDIKATOR 4: Komunikasi -->
-      <div class="variable-group">
-        <div class="variable-label">Indikator 4 – Kualitas Komunikasi</div>
-        <div id="items-x1-4"></div>
-      </div>
-
-      <!-- INDIKATOR 5: Dukungan Emosional -->
-      <div class="variable-group">
-        <div class="variable-label">Indikator 5 – Dukungan Emosional dari Pasangan</div>
-        <div id="items-x1-5"></div>
-      </div>
-
-      <!-- INDIKATOR 6: Minimnya Konflik -->
-      <div class="variable-group">
-        <div class="variable-label">Indikator 6 – Minimnya Konflik Destruktif</div>
-        <div id="items-x1-6"></div>
-      </div>
-
+      <div class="likert-instruction">Pilih angka yang paling sesuai: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong></div>
+      <div class="variable-group"><div class="variable-label lbl-b1">Indikator 1 &#x2013; Kepuasan terhadap Hubungan</div><div id="items-x1-1" class="theme-b"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-b2">Indikator 2 &#x2013; Kepercayaan terhadap Pasangan</div><div id="items-x1-2" class="theme-b"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-b3">Indikator 3 &#x2013; Komitmen dalam Hubungan</div><div id="items-x1-3" class="theme-b"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-b4">Indikator 4 &#x2013; Kualitas Komunikasi</div><div id="items-x1-4" class="theme-b"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-b5">Indikator 5 &#x2013; Dukungan Emosional dari Pasangan</div><div id="items-x1-5" class="theme-b"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-b6">Indikator 6 &#x2013; Minimnya Konflik Destruktif</div><div id="items-x1-6" class="theme-b"></div></div>
     </div>
   </div>
 
-  <div class="section-card" style="animation-delay:0.10s;margin-top:28px;">
+  <div class="section-card" style="margin-top:28px;">
     <div class="section-header">
-      <div class="section-icon">📚</div>
+      <div class="section-icon">&#x1F4DA;</div>
       <div>
-        <div class="section-title">Bagian C – Motivasi Belajar (X2)</div>
+        <div class="section-title">Bagian C &#x2013; Motivasi Belajar (X2)</div>
         <div class="section-subtitle">Pernyataan mengenai dorongan belajar yang Anda rasakan selama kuliah.</div>
       </div>
     </div>
     <div class="section-body">
-
-      <div class="likert-instruction">
-        Pilih angka yang paling menggambarkan kondisi Anda: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong>
-      </div>
-
+      <div class="likert-instruction">Pilih angka yang paling sesuai: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong></div>
       <div class="variable-group">
-        <div class="variable-label">Motivasi Intrinsik</div>
+        <div class="variable-label lbl-ci">Motivasi Intrinsik</div>
         <div class="variable-desc">Dorongan belajar yang berasal dari dalam diri sendiri (internal)</div>
-        <div id="items-x2-intr"></div>
+        <div id="items-x2-intr" class="theme-c"></div>
       </div>
-
       <div class="variable-group">
-        <div class="variable-label">Motivasi Ekstrinsik</div>
+        <div class="variable-label lbl-ce">Motivasi Ekstrinsik</div>
         <div class="variable-desc">Dorongan belajar yang berasal dari faktor luar (eksternal)</div>
-        <div id="items-x2-ekst"></div>
+        <div id="items-x2-ekst" class="theme-c"></div>
       </div>
-
     </div>
   </div>
+</div>
 
-</div><!-- /page-3 -->
-
-
-<!-- ════════════════════════════════════════
-     HALAMAN 4 – VARIABEL Y
-════════════════════════════════════════ -->
+<!-- PAGE 4 -->
 <div class="page" id="page-4">
-
-  <div class="section-card" style="animation-delay:0.05s">
+  <div class="section-card">
     <div class="section-header">
-      <div class="section-icon">🎓</div>
+      <div class="section-icon">&#x1F393;</div>
       <div>
-        <div class="section-title">Bagian D – Kinerja Akademik Mahasiswa (Y)</div>
+        <div class="section-title">Bagian D &#x2013; Kinerja Akademik Mahasiswa (Y)</div>
         <div class="section-subtitle">Pernyataan mengenai pencapaian dan perilaku akademik Anda selama satu semester terakhir.</div>
       </div>
     </div>
     <div class="section-body">
-
-      <div class="likert-instruction">
-        Pilih angka yang paling menggambarkan kondisi Anda: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong>
-      </div>
-
-      <div class="variable-group">
-        <div class="variable-label">Indikator 1 – Pencapaian Nilai / IPK</div>
-        <div id="items-y-1"></div>
-      </div>
-
-      <div class="variable-group">
-        <div class="variable-label">Indikator 2 – Kehadiran dalam Perkuliahan</div>
-        <div id="items-y-2"></div>
-      </div>
-
-      <div class="variable-group">
-        <div class="variable-label">Indikator 3 – Ketepatan Pengumpulan Tugas</div>
-        <div id="items-y-3"></div>
-      </div>
-
-      <div class="variable-group">
-        <div class="variable-label">Indikator 4 – Partisipasi Aktif dalam Akademik</div>
-        <div id="items-y-4"></div>
-      </div>
-
-      <div class="variable-group">
-        <div class="variable-label">Indikator 5 – Penguasaan Materi Perkuliahan</div>
-        <div id="items-y-5"></div>
-      </div>
-
+      <div class="likert-instruction">Pilih angka yang paling sesuai: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong></div>
+      <div class="variable-group"><div class="variable-label lbl-d1">Indikator 1 &#x2013; Pencapaian Nilai / IPK</div><div id="items-y-1" class="theme-d"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-d2">Indikator 2 &#x2013; Kehadiran dalam Perkuliahan</div><div id="items-y-2" class="theme-d"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-d3">Indikator 3 &#x2013; Ketepatan Pengumpulan Tugas</div><div id="items-y-3" class="theme-d"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-d4">Indikator 4 &#x2013; Partisipasi Aktif dalam Akademik</div><div id="items-y-4" class="theme-d"></div></div>
+      <div class="variable-group"><div class="variable-label lbl-d5">Indikator 5 &#x2013; Penguasaan Materi Perkuliahan</div><div id="items-y-5" class="theme-d"></div></div>
     </div>
   </div>
 
-  <div class="section-card" style="animation-delay:0.10s;">
+  <div class="section-card">
     <div class="submit-area" id="submit-area">
-      <p style="font-size:14px;color:var(--gray-500);margin-bottom:20px;line-height:1.6;">Pastikan semua pernyataan telah diisi sebelum mengirimkan kuesioner.<br>Terima kasih atas partisipasi dan kejujuran Anda!</p>
-      <button type="submit" class="btn-submit">
-        <span>✉️</span> Kirim Kuesioner
-      </button>
+      <div class="back-btn-wrap">
+        <button type="button" class="btn-back" onclick="changePage(-1)">&#x2190; Kembali ke Bagian Sebelumnya</button>
+      </div>
+      <p style="font-size:14px;color:var(--gray-500);margin-bottom:18px;line-height:1.6;">Pastikan semua pernyataan telah diisi sebelum mengirimkan kuesioner.<br>Terima kasih atas partisipasi dan kejujuran Anda!</p>
+      <button type="submit" class="btn-submit"><span>&#x2665;</span> Kirim Kuesioner</button>
       <div class="submit-note">Data Anda dijaga kerahasiaannya dan hanya digunakan untuk kepentingan penelitian.</div>
     </div>
     <div class="thankyou" id="thankyou">
-      <div class="icon">🎉</div>
+      <div class="icon">&#x1F339;</div>
       <h2>Terima Kasih!</h2>
-      <p>Respons Anda telah berhasil dikirim. Terima Kasih, partisipasi anda sangat berarti bagi kelancaran penelitian kami. Semoga sukses selalu dalam studi Anda!</p>
+      <p>Respons Anda telah berhasil dikirim. Partisipasi Anda sangat berarti bagi kelancaran penelitian kami. Semoga sukses selalu dalam studi Anda!</p>
     </div>
-  </div>
-
-</div><!-- /page-4 -->
-
-</form>
-</div><!-- /container -->
-
-<!-- STICKY NAV -->
-<div class="sticky-nav" id="sticky-nav">
-  <div class="nav-info"><strong id="nav-section">Bagian Pengantar</strong></div>
-  <div class="nav-btns">
-    <button type="button" class="btn-nav btn-prev" id="btn-prev" onclick="changePage(-1)" style="display:none">← Sebelumnya</button>
-    <button type="button" class="btn-nav btn-next" id="btn-next" onclick="changePage(1)">Lanjut →</button>
   </div>
 </div>
 
+</form>
+</div>
+
+<div class="sticky-nav" id="sticky-nav">
+  <div class="nav-info"><strong id="nav-section">Bagian Pengantar</strong></div>
+  <div class="nav-btns">
+    <button type="button" class="btn-nav btn-prev" id="btn-prev" onclick="changePage(-1)" style="display:none">&#x2190; Sebelumnya</button>
+    <button type="button" class="btn-nav btn-next" id="btn-next" onclick="changePage(1)">Lanjut &#x2192;</button>
+  </div>
+</div>
 
 <script>
-// ── ITEM DATA ──────────────────────────────────────────────────
+// ALREADY SUBMITTED CHECK
+if (localStorage.getItem('kuesioner_feb_upr_2026_submitted') === 'true') {
+  document.body.innerHTML = '<div class="already-done"><div class="icon">&#x1F339;</div><h2>Anda Sudah Mengisi!</h2><p>Kuesioner ini hanya dapat diisi satu kali per perangkat. Data Anda sudah tercatat. Terima kasih atas partisipasi Anda!</p></div>';
+}
+
 const items = {
   "x1-1": [
-    { code:"X1.1", text:"Secara keseluruhan, saya merasa puas dengan hubungan romantis yang saya jalani.", fav:true },
-    { code:"X1.2", text:"Hubungan romantis saya memberikan kebahagiaan dalam kehidupan sehari-hari.", fav:true },
-    { code:"X1.3", text:"Saya merasa hubungan romantis saya berjalan sesuai harapan.", fav:true },
+    {code:"X1.1",text:"Secara keseluruhan, saya merasa puas dengan hubungan romantis yang saya jalani.",section:"b"},
+    {code:"X1.2",text:"Hubungan romantis saya memberikan kebahagiaan dalam kehidupan sehari-hari.",section:"b"},
+    {code:"X1.3",text:"Saya merasa hubungan romantis saya berjalan sesuai harapan.",section:"b"},
   ],
   "x1-2": [
-    { code:"X1.4", text:"Saya percaya bahwa pasangan saya selalu jujur kepada saya.", fav:true },
-    { code:"X1.5", text:"Saya merasa aman dan nyaman membagi cerita pribadi dengan pasangan saya.", fav:true },
-    { code:"X1.6", text:"Saya dapat mengandalkan pasangan saya ketika menghadapi kesulitan.", fav:true },
+    {code:"X1.4",text:"Saya percaya bahwa pasangan saya selalu jujur kepada saya.",section:"b"},
+    {code:"X1.5",text:"Saya merasa aman dan nyaman membagi cerita pribadi dengan pasangan saya.",section:"b"},
+    {code:"X1.6",text:"Saya dapat mengandalkan pasangan saya ketika menghadapi kesulitan.",section:"b"},
   ],
   "x1-3": [
-    { code:"X1.7", text:"Saya dan pasangan sama-sama berkomitmen untuk menjaga hubungan kami.", fav:true },
-    { code:"X1.8", text:"Saya memiliki niat yang serius dalam menjalani hubungan romantis ini.", fav:true },
-    { code:"X1.9", text:"Kami berdua berusaha menyelesaikan masalah bersama demi kelangsungan hubungan.", fav:true },
+    {code:"X1.7",text:"Saya dan pasangan sama-sama berkomitmen untuk menjaga hubungan kami.",section:"b"},
+    {code:"X1.8",text:"Saya memiliki niat yang serius dalam menjalani hubungan romantis ini.",section:"b"},
+    {code:"X1.9",text:"Kami berdua berusaha menyelesaikan masalah bersama demi kelangsungan hubungan.",section:"b"},
   ],
   "x1-4": [
-    { code:"X1.10", text:"Saya dan pasangan dapat berkomunikasi secara terbuka mengenai berbagai hal.", fav:true },
-    { code:"X1.11", text:"Ketika terjadi perbedaan pendapat, kami dapat mendiskusikannya dengan baik.", fav:true },
-    { code:"X1.12", text:"Pasangan saya mendengarkan pendapat dan perasaan saya dengan sungguh-sungguh.", fav:true },
+    {code:"X1.10",text:"Saya dan pasangan dapat berkomunikasi secara terbuka mengenai berbagai hal.",section:"b"},
+    {code:"X1.11",text:"Ketika terjadi perbedaan pendapat, kami dapat mendiskusikannya dengan baik.",section:"b"},
+    {code:"X1.12",text:"Pasangan saya mendengarkan pendapat dan perasaan saya dengan sungguh-sungguh.",section:"b"},
   ],
   "x1-5": [
-    { code:"X1.13", text:"Pasangan saya memberikan semangat ketika saya menghadapi tekanan akademik.", fav:true },
-    { code:"X1.14", text:"Saya merasa didukung oleh pasangan dalam mengejar tujuan akademik saya.", fav:true },
-    { code:"X1.15", text:"Pasangan saya memberikan perhatian ketika saya sedang dalam kondisi stres.", fav:true },
+    {code:"X1.13",text:"Pasangan saya memberikan semangat ketika saya menghadapi tekanan akademik.",section:"b"},
+    {code:"X1.14",text:"Saya merasa didukung oleh pasangan dalam mengejar tujuan akademik saya.",section:"b"},
+    {code:"X1.15",text:"Pasangan saya memberikan perhatian ketika saya sedang dalam kondisi stres.",section:"b"},
   ],
   "x1-6": [
-    { code:"X1.16", text:"Konflik dalam hubungan romantis saya jarang terjadi dan dapat diselesaikan dengan baik.", fav:true },
-    { code:"X1.17", text:"Pertengkaran dengan pasangan tidak mengganggu konsentrasi belajar saya secara berkepanjangan.", fav:true },
-    { code:"X1.18", text:"Masalah dalam hubungan romantis saya tidak berdampak negatif pada aktivitas akademik saya.", fav:true },
+    {code:"X1.16",text:"Konflik dalam hubungan romantis saya jarang terjadi dan dapat diselesaikan dengan baik.",section:"b"},
+    {code:"X1.17",text:"Pertengkaran dengan pasangan tidak mengganggu konsentrasi belajar saya secara berkepanjangan.",section:"b"},
+    {code:"X1.18",text:"Masalah dalam hubungan romantis saya tidak berdampak negatif pada aktivitas akademik saya.",section:"b"},
   ],
   "x2-intr": [
-    { code:"X2.1", text:"Saya belajar karena saya memang tertarik dan ingin tahu tentang materi perkuliahan.", fav:true },
-    { code:"X2.2", text:"Saya merasakan kepuasan tersendiri ketika berhasil memahami materi kuliah yang sulit.", fav:true },
-    { code:"X2.3", text:"Saya belajar secara mandiri di luar jam kuliah karena ingin memperdalam pemahaman.", fav:true },
-    { code:"X2.4", text:"Saya tetap semangat belajar meskipun tidak ada ujian atau tugas yang mendekat.", fav:true },
-    { code:"X2.5", text:"Saya menikmati proses belajar dan menganggapnya sebagai pengalaman yang berharga.", fav:true },
-    { code:"X2.6", text:"Saya merasa belajar adalah hal yang penting bagi pengembangan diri saya.", fav:true },
-    { code:"X2.7", text:"Saya berusaha memahami materi secara mendalam, bukan sekadar untuk lulus ujian.", fav:true },
-    { code:"X2.8", text:"Rasa ingin tahu saya mendorong saya untuk mencari sumber belajar di luar materi kuliah.", fav:true },
+    {code:"X2.1",text:"Saya belajar karena saya memang tertarik dan ingin tahu tentang materi perkuliahan.",section:"c"},
+    {code:"X2.2",text:"Saya merasakan kepuasan tersendiri ketika berhasil memahami materi kuliah yang sulit.",section:"c"},
+    {code:"X2.3",text:"Saya belajar secara mandiri di luar jam kuliah karena ingin memperdalam pemahaman.",section:"c"},
+    {code:"X2.4",text:"Saya tetap semangat belajar meskipun tidak ada ujian atau tugas yang mendekat.",section:"c"},
+    {code:"X2.5",text:"Saya menikmati proses belajar dan menganggapnya sebagai pengalaman yang berharga.",section:"c"},
+    {code:"X2.6",text:"Saya merasa belajar adalah hal yang penting bagi pengembangan diri saya.",section:"c"},
+    {code:"X2.7",text:"Saya berusaha memahami materi secara mendalam, bukan sekadar untuk lulus ujian.",section:"c"},
+    {code:"X2.8",text:"Rasa ingin tahu saya mendorong saya untuk mencari sumber belajar di luar materi kuliah.",section:"c"},
   ],
   "x2-ekst": [
-    { code:"X2.9",  text:"Saya belajar sungguh-sungguh agar mendapatkan nilai yang tinggi.", fav:true },
-    { code:"X2.10", text:"Keinginan membanggakan orang tua mendorong saya untuk berprestasi secara akademik.", fav:true },
-    { code:"X2.11", text:"Pujian dan pengakuan dari dosen atau teman memotivasi saya untuk belajar lebih giat.", fav:true },
-    { code:"X2.12", text:"Saya belajar dengan giat agar dapat meraih pekerjaan yang baik setelah lulus.", fav:true },
-    { code:"X2.13", text:"Beasiswa atau insentif akademik mendorong saya untuk mempertahankan prestasi belajar.", fav:true },
-    { code:"X2.14", text:"Saya merasa takut mengecewakan keluarga jika nilai akademik saya buruk.", fav:true },
-    { code:"X2.15", text:"Persaingan yang sehat dengan teman mendorong saya untuk lebih rajin belajar.", fav:true },
-    { code:"X2.16", text:"Harapan lingkungan sekitar atas prestasi saya menjadi dorongan untuk belajar lebih keras.", fav:true },
+    {code:"X2.9",text:"Saya belajar sungguh-sungguh agar mendapatkan nilai yang tinggi.",section:"c"},
+    {code:"X2.10",text:"Keinginan membanggakan orang tua mendorong saya untuk berprestasi secara akademik.",section:"c"},
+    {code:"X2.11",text:"Pujian dan pengakuan dari dosen atau teman memotivasi saya untuk belajar lebih giat.",section:"c"},
+    {code:"X2.12",text:"Saya belajar dengan giat agar dapat meraih pekerjaan yang baik setelah lulus.",section:"c"},
+    {code:"X2.13",text:"Beasiswa atau insentif akademik mendorong saya untuk mempertahankan prestasi belajar.",section:"c"},
+    {code:"X2.14",text:"Saya merasa takut mengecewakan keluarga jika nilai akademik saya buruk.",section:"c"},
+    {code:"X2.15",text:"Persaingan yang sehat dengan teman mendorong saya untuk lebih rajin belajar.",section:"c"},
+    {code:"X2.16",text:"Harapan lingkungan sekitar atas prestasi saya menjadi dorongan untuk belajar lebih keras.",section:"c"},
   ],
   "y-1": [
-    { code:"Y1.1", text:"IPK saya saat ini mencerminkan kemampuan dan usaha belajar saya selama di bangku kuliah.", fav:true },
-    { code:"Y1.2", text:"Nilai mata kuliah yang saya peroleh umumnya sesuai dengan target yang saya tetapkan.", fav:true },
-    { code:"Y1.3", text:"Saya berusaha mempertahankan atau meningkatkan IPK setiap semesternya.", fav:true },
+    {code:"Y1.1",text:"IPK saya saat ini mencerminkan kemampuan dan usaha belajar saya selama di bangku kuliah.",section:"d"},
+    {code:"Y1.2",text:"Nilai mata kuliah yang saya peroleh umumnya sesuai dengan target yang saya tetapkan.",section:"d"},
+    {code:"Y1.3",text:"Saya berusaha mempertahankan atau meningkatkan IPK setiap semesternya.",section:"d"},
   ],
   "y-2": [
-    { code:"Y1.4", text:"Saya selalu berusaha hadir dalam setiap perkuliahan kecuali ada halangan yang mendesak.", fav:true },
-    { code:"Y1.5", text:"Saya jarang meninggalkan kelas sebelum perkuliahan selesai tanpa alasan yang jelas.", fav:true },
-    { code:"Y1.6", text:"Kehadiran saya dalam perkuliahan tidak pernah sampai melebihi batas ketidakhadiran yang diperbolehkan.", fav:true },
+    {code:"Y1.4",text:"Saya selalu berusaha hadir dalam setiap perkuliahan kecuali ada halangan yang mendesak.",section:"d"},
+    {code:"Y1.5",text:"Saya jarang meninggalkan kelas sebelum perkuliahan selesai tanpa alasan yang jelas.",section:"d"},
+    {code:"Y1.6",text:"Kehadiran saya dalam perkuliahan tidak pernah sampai melebihi batas ketidakhadiran yang diperbolehkan.",section:"d"},
   ],
   "y-3": [
-    { code:"Y1.7", text:"Saya selalu mengumpulkan tugas sebelum atau tepat pada batas waktu yang ditentukan.", fav:true },
-    { code:"Y1.8", text:"Saya merencanakan waktu pengerjaan tugas agar tidak tergesa-gesa di waktu terakhir.", fav:true },
-    { code:"Y1.9", text:"Keterlambatan pengumpulan tugas jarang terjadi dalam kegiatan akademik saya.", fav:true },
+    {code:"Y1.7",text:"Saya selalu mengumpulkan tugas sebelum atau tepat pada batas waktu yang ditentukan.",section:"d"},
+    {code:"Y1.8",text:"Saya merencanakan waktu pengerjaan tugas agar tidak tergesa-gesa di waktu terakhir.",section:"d"},
+    {code:"Y1.9",text:"Keterlambatan pengumpulan tugas jarang terjadi dalam kegiatan akademik saya.",section:"d"},
   ],
   "y-4": [
-    { code:"Y1.10", text:"Saya aktif bertanya atau menyampaikan pendapat selama proses perkuliahan berlangsung.", fav:true },
-    { code:"Y1.11", text:"Saya ikut berpartisipasi dengan serius ketika ada kegiatan diskusi atau presentasi kelompok.", fav:true },
-    { code:"Y1.12", text:"Saya terlibat aktif dalam kegiatan akademik di luar perkuliahan seperti seminar atau forum ilmiah.", fav:true },
+    {code:"Y1.10",text:"Saya aktif bertanya atau menyampaikan pendapat selama proses perkuliahan berlangsung.",section:"d"},
+    {code:"Y1.11",text:"Saya ikut berpartisipasi dengan serius ketika ada kegiatan diskusi atau presentasi kelompok.",section:"d"},
+    {code:"Y1.12",text:"Saya terlibat aktif dalam kegiatan akademik di luar perkuliahan seperti seminar atau forum ilmiah.",section:"d"},
   ],
   "y-5": [
-    { code:"Y1.13", text:"Saya dapat memahami dan menjelaskan kembali materi yang telah disampaikan dosen.", fav:true },
-    { code:"Y1.14", text:"Saya mampu menerapkan konsep-konsep yang dipelajari untuk menyelesaikan soal atau kasus.", fav:true },
-    { code:"Y1.15", text:"Secara keseluruhan, saya merasa cukup menguasai materi perkuliahan yang telah ditempuh.", fav:true },
+    {code:"Y1.13",text:"Saya dapat memahami dan menjelaskan kembali materi yang telah disampaikan dosen.",section:"d"},
+    {code:"Y1.14",text:"Saya mampu menerapkan konsep-konsep yang dipelajari untuk menyelesaikan soal atau kasus.",section:"d"},
+    {code:"Y1.15",text:"Secara keseluruhan, saya merasa cukup menguasai materi perkuliahan yang telah ditempuh.",section:"d"},
   ],
 };
 
 const LABELS = ["STS","TS","N","S","SS"];
-const COLORS = ["#e74c3c","#e67e22","#95a5a6","#27ae60","#2980b9"];
 
 function buildItems(containerId, groupKey) {
-  const container = document.getElementById(containerId);
+  var container = document.getElementById(containerId);
   if (!container) return;
-  const data = items[groupKey];
-  data.forEach(item => {
-    const div = document.createElement('div');
+  var data = items[groupKey];
+  var sec  = data[0].section;
+  data.forEach(function(item) {
+    var div = document.createElement('div');
     div.className = 'likert-item';
-    div.innerHTML = `
-      <div class="likert-item-code">${item.code}</div>
-      <div class="likert-item-right">
-        <div class="likert-item-text">${item.text}</div>
-        <div class="likert-options">
-          ${[1,2,3,4,5].map(n => `
-            <button type="button" class="likert-btn" data-code="${item.code}" data-val="${n}" onclick="selectLikert(this,'${item.code}',${n})">
-              <span class="num">${n}</span>
-              <span class="lbl">${LABELS[n-1]}</span>
-            </button>
-          `).join('')}
-        </div>
-      </div>`;
+    div.innerHTML =
+      '<div class="likert-item-code code-' + sec + '">' + item.code + '</div>' +
+      '<div class="likert-item-right">' +
+        '<div class="likert-item-text">' + item.text + '</div>' +
+        '<div class="likert-options">' +
+          [1,2,3,4,5].map(function(n) {
+            return '<button type="button" class="likert-btn" data-code="' + item.code + '" data-val="' + n + '" onclick="selectLikert(this,&quot;' + item.code + '&quot;,' + n + ')">' +
+              '<span class="num">' + n + '</span>' +
+              '<span class="lbl">' + LABELS[n-1] + '</span>' +
+            '</button>';
+          }).join('') +
+        '</div>' +
+      '</div>';
     container.appendChild(div);
   });
 }
 
+Object.keys(items).forEach(function(key) { buildItems('items-' + key, key); });
+
+var currentPage = 1;
+var totalPages  = 4;
+var pageLabels  = ["Bagian Pengantar","Identitas Responden","Variabel X1 & X2","Variabel Y & Submit"];
+
+function updateProgress() {
+  var totalItems = Object.values(items).flat().length;
+  var answered   = window._responses ? Object.keys(window._responses).length : 0;
+  var pct = Math.round(((currentPage-1)/totalPages + (answered/totalItems)/totalPages)*100);
+  document.getElementById('prog-fill').style.width = Math.min(pct,100)+'%';
+  document.getElementById('prog-pct').textContent  = Math.min(pct,100)+'%';
+  document.getElementById('prog-label').textContent = 'Bagian ' + currentPage + ' dari ' + totalPages;
+  document.getElementById('nav-section').textContent = pageLabels[currentPage-1];
+}
+
 function selectLikert(btn, code, val) {
-  const siblings = document.querySelectorAll(`.likert-btn[data-code="${code}"]`);
-  siblings.forEach(b => { b.className = 'likert-btn'; });
-  btn.classList.add(`sel-${val}`);
+  document.querySelectorAll('.likert-btn[data-code="' + code + '"]').forEach(function(b){ b.className = 'likert-btn'; });
+  btn.classList.add('sel-' + val);
   window._responses = window._responses || {};
   window._responses[code] = val;
   updateProgress();
 }
 
-// Build all items
-Object.keys(items).forEach(key => {
-  const id = "items-" + key;
-  buildItems(id, key);
-});
-
-// ── PAGE NAVIGATION ──────────────────────────────────────────
-let currentPage = 1;
-const totalPages = 4;
-const pageLabels = ["Bagian Pengantar","Identitas Responden","Variabel X1 & X2","Variabel Y & Submit"];
-
-function updateProgress() {
-  const totalItems = Object.values(items).flat().length;
-  const answered = window._responses ? Object.keys(window._responses).length : 0;
-  const pct = Math.round(((currentPage-1)/totalPages + (answered/totalItems)/totalPages)*100);
-  document.getElementById('prog-fill').style.width = Math.min(pct,100)+'%';
-  document.getElementById('prog-pct').textContent = Math.min(pct,100)+'%';
-  document.getElementById('prog-label').textContent = `Bagian ${currentPage} dari ${totalPages}`;
-  document.getElementById('nav-section').textContent = pageLabels[currentPage-1];
-}
-
 function changePage(dir) {
-  // Validate current page
   if (dir > 0) {
-    if (currentPage === 1) {
-      const consent = document.getElementById('consent');
-      if (!consent.checked) { alert('Mohon centang persetujuan keikutsertaan terlebih dahulu.'); return; }
+    if (currentPage === 1 && !document.getElementById('consent').checked) {
+      alert('Mohon centang persetujuan keikutsertaan terlebih dahulu.'); return;
     }
     if (currentPage === 2) {
-      const jenkel = document.querySelector('input[name="jenkel"]:checked');
-      const usia   = document.getElementById('usia').value;
-      const prodi  = document.getElementById('prodi').value;
-      const sem    = document.getElementById('semester').value;
-      const ipk    = document.getElementById('ipk').value;
-      const status = document.querySelector('input[name="status"]:checked');
-      const durasi = document.querySelector('input[name="durasi"]:checked');
-      if (!jenkel||!usia||!prodi||!sem||!ipk||!status||!durasi) {
+      var nama   = document.getElementById('nama').value.trim();
+      var jenkel = document.querySelector('input[name="jenkel"]:checked');
+      var usia   = document.getElementById('usia').value;
+      var prodi  = document.getElementById('prodi').value;
+      var sem    = document.getElementById('semester').value;
+      var ipk    = document.getElementById('ipk').value;
+      var status = document.querySelector('input[name="status"]:checked');
+      var durasi = document.querySelector('input[name="durasi"]:checked');
+      if (!nama||!jenkel||!usia||!prodi||!sem||!ipk||!status||!durasi) {
         alert('Mohon lengkapi semua data diri sebelum melanjutkan.'); return;
       }
     }
     if (currentPage === 3) {
-      const page3Keys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6","x2-intr","x2-ekst"];
-      const allCodes = page3Keys.flatMap(k => items[k].map(i => i.code));
-      const ans = window._responses || {};
-      const missing = allCodes.filter(c => !ans[c]);
+      var page3Keys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6","x2-intr","x2-ekst"];
+      var allCodes  = page3Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+      var ans       = window._responses || {};
+      var missing   = allCodes.filter(function(c){ return !ans[c]; });
       if (missing.length > 0) {
-        alert(`Masih ada ${missing.length} pernyataan yang belum diisi di halaman ini.\n\nKode yang belum diisi: ${missing.slice(0,5).join(', ')}${missing.length>5?' ...':''}`);
-        return;
+        alert('Masih ada ' + missing.length + ' pernyataan yang belum diisi.\n\nKode belum diisi: ' + missing.slice(0,5).join(', ') + (missing.length>5?' ...':'')); return;
       }
     }
   }
-
-  const pages = document.querySelectorAll('.page');
-  pages[currentPage-1].classList.remove('active');
+  document.querySelectorAll('.page')[currentPage-1].classList.remove('active');
   currentPage = Math.max(1, Math.min(totalPages, currentPage + dir));
-  pages[currentPage-1].classList.add('active');
+  document.querySelectorAll('.page')[currentPage-1].classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
-
   document.getElementById('btn-prev').style.display = currentPage > 1 ? 'block' : 'none';
   document.getElementById('btn-next').style.display = currentPage < totalPages ? 'block' : 'none';
-
-  if (currentPage === totalPages) {
-    document.getElementById('sticky-nav').style.display = 'none';
+  document.getElementById('sticky-nav').style.display = (currentPage === totalPages || currentPage === 1) ? 'none' : 'flex';
+  // Toggle header/progress visibility based on page
+  if (currentPage === 1) {
+    document.body.classList.add('on-page-1');
   } else {
-    document.getElementById('sticky-nav').style.display = 'flex';
+    document.body.classList.remove('on-page-1');
   }
   updateProgress();
 }
 
-// ── FORM SUBMIT ──────────────────────────────────────────────
-// ═══════════════════════════════════════════════════════════
-// KONFIGURASI — PASTE URL GOOGLE APPS SCRIPT KAMU DI SINI
-// ═══════════════════════════════════════════════════════════
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxk3KFEyuM9Ca2_4uCqQXU1Hjb2KOA-QBAIKuwRlDBmZ0rU-Q-Ma3uv2l5NcnTWMaM3/exec";
 
 document.getElementById('mainForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-
-  const page4Keys = ["y-1","y-2","y-3","y-4","y-5"];
-  const allCodesY = page4Keys.flatMap(k => items[k].map(i => i.code));
-  const ans = window._responses || {};
-  const missing = allCodesY.filter(c => !ans[c]);
+  var page4Keys = ["y-1","y-2","y-3","y-4","y-5"];
+  var allCodesY = page4Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+  var ans       = window._responses || {};
+  var missing   = allCodesY.filter(function(c){ return !ans[c]; });
   if (missing.length > 0) {
-    const msg = 'Masih ada ' + missing.length + ' pernyataan Bagian D yang belum diisi.\n\nKode belum diisi: ' + missing.slice(0,5).join(', ') + (missing.length>5?' ...':'');
-    alert(msg);
-    return;
+    alert('Masih ada ' + missing.length + ' pernyataan Bagian D yang belum diisi.\n\nKode belum diisi: ' + missing.slice(0,5).join(', ') + (missing.length>5?' ...':'')); return;
   }
-
-  const jk = document.querySelector('input[name="jenkel"]:checked');
-  const st = document.querySelector('input[name="status"]:checked');
-  const du = document.querySelector('input[name="durasi"]:checked');
-
-  const identity = {
+  var jk = document.querySelector('input[name="jenkel"]:checked');
+  var st = document.querySelector('input[name="status"]:checked');
+  var du = document.querySelector('input[name="durasi"]:checked');
+  var identity = {
     timestamp:       new Date().toLocaleString('id-ID', { timeZone: 'Asia/Makassar' }),
+    nama:            document.getElementById('nama').value.trim(),
     jenis_kelamin:   jk ? jk.value : '',
     usia:            document.getElementById('usia').value,
     prodi:           document.getElementById('prodi').value,
@@ -1057,44 +1821,135 @@ document.getElementById('mainForm').addEventListener('submit', async function(e)
     status_hubungan: st ? st.value : '',
     durasi_hubungan: du ? du.value : '',
   };
-
-  const payload = Object.assign({}, identity, ans);
-  const btnSubmit = document.querySelector('.btn-submit');
+  var payload   = Object.assign({}, identity, ans);
+  var btnSubmit = document.querySelector('.btn-submit');
   btnSubmit.disabled = true;
-  btnSubmit.innerHTML = '<span>⏳</span> Mengirim data...';
-
-  if (GOOGLE_SCRIPT_URL === "PASTE_URL_APPS_SCRIPT_DI_SINI") {
-    setTimeout(function() {
-      document.getElementById('submit-area').style.display = 'none';
-      document.getElementById('thankyou').style.display = 'block';
-      document.getElementById('prog-fill').style.width = '100%';
-      document.getElementById('prog-pct').textContent = '100%';
-      window.scrollTo({top:0,behavior:'smooth'});
-    }, 900);
-    return;
-  }
-
+  btnSubmit.innerHTML = '<span>&#x23F3;</span> Mengirim data...';
   try {
     await fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
+      method: 'POST', mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
+    localStorage.setItem('kuesioner_feb_upr_2026_submitted', 'true');
     document.getElementById('submit-area').style.display = 'none';
     document.getElementById('thankyou').style.display = 'block';
     document.getElementById('prog-fill').style.width = '100%';
     document.getElementById('prog-pct').textContent = '100%';
-    window.scrollTo({top:0,behavior:'smooth'});
+    window.scrollTo({top:0, behavior:'smooth'});
   } catch(err) {
     btnSubmit.disabled = false;
-    btnSubmit.innerHTML = '<span>✉️</span> Kirim Kuesioner';
+    btnSubmit.innerHTML = '<span>&#x2665;</span> Kirim Kuesioner';
     alert('Gagal mengirim. Pastikan koneksi internet aktif lalu coba lagi.');
     console.error(err);
   }
 });
 
 updateProgress();
+</script>
+<script>
+// Init: page 1 = hero, hide header & sticky nav
+document.body.classList.add('on-page-1');
+document.getElementById('sticky-nav').style.display = 'none';
+// Ensure page fits viewport height immediately
+document.documentElement.style.height = '100%';
+document.body.style.height = '100%';
+
+(function () {
+  function setVhUnit() {
+    var vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', vh + 'px');
+  }
+  setVhUnit();
+  window.addEventListener('resize', setVhUnit, { passive: true });
+  window.addEventListener('orientationchange', setVhUnit, { passive: true });
+
+  var mq = window.matchMedia('(max-width: 768px), (pointer: coarse)');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#page-1 .float-card'));
+  var heroPage = document.querySelector('#page-1 .hero-page');
+  var heroCardsBg = document.querySelector('#page-1 .hero-cards-bg');
+  var zCounter = 1;
+
+  function bringToFront(card) {
+    zCounter += 1;
+    card.style.zIndex = String(1000 + zCounter);
+  }
+
+  function enableDrag() {
+    if (!heroPage || !heroCardsBg || !mq.matches) return;
+
+    var parentRect = heroCardsBg.getBoundingClientRect();
+
+    cards.forEach(function (card) {
+      var rect = card.getBoundingClientRect();
+      var left = rect.left - parentRect.left;
+      var top = rect.top - parentRect.top;
+
+      card.style.left = left + 'px';
+      card.style.top = top + 'px';
+      card.style.right = 'auto';
+      card.style.bottom = 'auto';
+      card.dataset.dragLeft = String(left);
+      card.dataset.dragTop = String(top);
+
+      var state = { dragging: false, startX: 0, startY: 0, startLeft: left, startTop: top };
+      card._dragState = state;
+
+      card.addEventListener('pointerdown', function (e) {
+        if (!mq.matches) return;
+        state.dragging = true;
+        state.startX = e.clientX;
+        state.startY = e.clientY;
+        state.startLeft = parseFloat(card.dataset.dragLeft || '0');
+        state.startTop = parseFloat(card.dataset.dragTop || '0');
+        bringToFront(card);
+        card.classList.add('dragging');
+        card.style.animationPlayState = 'paused';
+        card.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      });
+
+      card.addEventListener('pointermove', function (e) {
+        if (!state.dragging || !mq.matches) return;
+        var bounds = heroCardsBg.getBoundingClientRect();
+        var cardW = card.offsetWidth;
+        var cardH = card.offsetHeight;
+        var marginX = 0;
+        var marginY = 0;
+        var dx = e.clientX - state.startX;
+        var dy = e.clientY - state.startY;
+        var nextLeft = Math.max(marginX, Math.min(bounds.width - cardW - marginX, state.startLeft + dx));
+        var nextTop = Math.max(marginY, Math.min(bounds.height - cardH - marginY, state.startTop + dy));
+        card.style.left = nextLeft + 'px';
+        card.style.top = nextTop + 'px';
+        card.dataset.dragLeft = String(nextLeft);
+        card.dataset.dragTop = String(nextTop);
+        bringToFront(card);
+      });
+
+      function endDrag(e) {
+        if (!state.dragging) return;
+        state.dragging = false;
+        card.classList.remove('dragging');
+        card.style.animationPlayState = 'running';
+        bringToFront(card);
+        try { card.releasePointerCapture(e.pointerId); } catch (err) {}
+      }
+
+      card.addEventListener('pointerup', endDrag);
+      card.addEventListener('pointercancel', endDrag);
+      card.addEventListener('pointerleave', function (e) {
+        if (state.dragging) endDrag(e);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', enableDrag, { once: true });
+  } else {
+    enableDrag();
+  }
+})();
 </script>
 </body>
 </html>
