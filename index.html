@@ -47,8 +47,24 @@
   .progress-wrap { background: #7a0a28; padding: 0 32px 16px; }
   .progress-inner { max-width: 780px; margin: 0 auto; }
   .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
-  .progress-bar { background: rgba(255,255,255,0.15); border-radius: 100px; height: 5px; overflow: hidden; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg, #fbb6c8, #f7d6dd); border-radius: 100px; width: 0%; transition: width 0.5s ease; }
+  .progress-bar { background: rgba(255,255,255,0.15); border-radius: 100px; height: 5px; overflow: visible; position: relative; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #fbb6c8, #f7d6dd); border-radius: 100px; width: 0%; transition: width 0.5s ease; position: relative; }
+  .progress-emoji {
+    position: absolute;
+    right: -11px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    line-height: 1;
+    transition: opacity 0.3s ease;
+    filter: drop-shadow(0 1px 3px rgba(181,41,74,0.3));
+    animation: emojiFloat 2s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes emojiFloat {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50%       { transform: translateY(-60%) scale(1.12); }
+  }
 
   .container { max-width: 780px; margin: 0 auto; padding: 32px 24px 100px; }
 
@@ -1433,9 +1449,120 @@
   }
   .hero-pill-btn-icon { font-size: 14px; }
 
+
+  /* ── TOAST NOTIFICATION ── */
+  .toast-wrap {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+  }
+  .toast {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px 14px 14px;
+    border-radius: 14px;
+    min-width: 260px;
+    max-width: 320px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    pointer-events: auto;
+    animation: toastIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+    position: relative;
+    border-left: 4px solid transparent;
+    overflow: hidden;
+  }
+  .toast.hiding {
+    animation: toastOut 0.3s ease forwards;
+  }
+  @keyframes toastIn {
+    from { opacity:0; transform:translateX(-60px) scale(0.92); }
+    to   { opacity:1; transform:translateX(0) scale(1); }
+  }
+  @keyframes toastOut {
+    from { opacity:1; transform:translateX(0) scale(1); }
+    to   { opacity:0; transform:translateX(-60px) scale(0.88); }
+  }
+  .toast-emoji { font-size: 22px; flex-shrink: 0; line-height: 1.2; }
+  .toast-content { flex: 1; }
+  .toast-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; line-height: 1.3; }
+  .toast-msg { font-size: 12.5px; line-height: 1.55; opacity: 0.85; }
+  .toast-close {
+    position: absolute; top: 8px; right: 10px;
+    background: none; border: none; font-size: 14px;
+    cursor: pointer; opacity: 0.5; line-height: 1;
+    padding: 2px 4px; border-radius: 4px; transition: opacity 0.2s;
+  }
+  .toast-close:hover { opacity: 1; }
+  .toast-progress {
+    position: absolute; bottom: 0; left: 0;
+    height: 3px; border-radius: 0 0 14px 14px;
+    animation: toastProgress 4s linear forwards;
+  }
+  @keyframes toastProgress { from { width:100%; } to { width:0%; } }
+
+  /* Toast themes */
+  .toast-rose   { background: linear-gradient(135deg,#fff0f3,#fce8ed); border-left-color:#b5294a; color:#7a0a28; }
+  .toast-rose   .toast-title   { color: #b5294a; }
+  .toast-rose   .toast-close   { color: #b5294a; }
+  .toast-rose   .toast-progress { background: #b5294a; }
+
+  .toast-purple { background: linear-gradient(135deg,#f5f0ff,#ede0ff); border-left-color:#6b35a8; color:#3d1d70; }
+  .toast-purple .toast-title   { color: #6b35a8; }
+  .toast-purple .toast-close   { color: #6b35a8; }
+  .toast-purple .toast-progress { background: #6b35a8; }
+
+  .toast-teal   { background: linear-gradient(135deg,#edfaf7,#d8f5f2); border-left-color:#1a7a6e; color:#0d4a42; }
+  .toast-teal   .toast-title   { color: #1a7a6e; }
+  .toast-teal   .toast-close   { color: #1a7a6e; }
+  .toast-teal   .toast-progress { background: #1a7a6e; }
+
+  .toast-red    { background: linear-gradient(135deg,#fdecea,#fce0dd); border-left-color:#c0392b; color:#7b1f17; }
+  .toast-red    .toast-title   { color: #c0392b; }
+  .toast-red    .toast-close   { color: #c0392b; }
+  .toast-red    .toast-progress { background: #c0392b; }
+
+  /* ── HIGHLIGHT MISSING FIELD ── */
+  /* Likert item highlight */
+  .likert-item.missing-highlight {
+    animation: missingPulse 0.5s ease 0s, missingPulse 0.5s ease 0.6s, missingPulse 0.5s ease 1.2s;
+    border-color: inherit;
+  }
+  .likert-item.missing-rose   { border-color: #b5294a !important; box-shadow: 0 0 0 3px rgba(181,41,74,0.18) !important; }
+  .likert-item.missing-purple { border-color: #6b35a8 !important; box-shadow: 0 0 0 3px rgba(107,53,168,0.18) !important; }
+  .likert-item.missing-teal   { border-color: #1a7a6e !important; box-shadow: 0 0 0 3px rgba(26,122,110,0.18) !important; }
+
+  @keyframes missingPulse {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(-6px); }
+    40%  { transform: translateX(6px); }
+    60%  { transform: translateX(-4px); }
+    80%  { transform: translateX(4px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* Form field highlight for page 2 */
+  .form-control.missing-field,
+  .radio-group.missing-field {
+    animation: missingPulse 0.5s ease;
+  }
+  .form-control.missing-field {
+    border-color: #b5294a !important;
+    box-shadow: 0 0 0 3px rgba(181,41,74,0.15) !important;
+  }
+  .radio-group.missing-field > .radio-option {
+    border-color: #b5294a !important;
+  }
+
 </style>
 </head>
 <body>
+<div class="toast-wrap" id="toast-wrap"></div>
+
 
 <div class="site-header">
   <div class="header-inner">
@@ -1453,7 +1580,7 @@
       <span id="prog-label">Bagian 1 dari 4</span>
       <span id="prog-pct">0%</span>
     </div>
-    <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill"><span class="progress-emoji" id="prog-emoji">&#x1F496;</span></div></div>
   </div>
 </div>
 
@@ -1933,10 +2060,14 @@ function updateProgress() {
   var totalItems = Object.values(items).flat().length;
   var answered   = window._responses ? Object.keys(window._responses).length : 0;
   var pct = Math.round(((currentPage-1)/totalPages + (answered/totalItems)/totalPages)*100);
-  document.getElementById('prog-fill').style.width = Math.min(pct,100)+'%';
-  document.getElementById('prog-pct').textContent  = Math.min(pct,100)+'%';
+  var finalPct = Math.min(pct,100);
+  document.getElementById('prog-fill').style.width = finalPct+'%';
+  document.getElementById('prog-pct').textContent  = finalPct+'%';
   document.getElementById('prog-label').textContent = 'Bagian ' + currentPage + ' dari ' + totalPages;
   document.getElementById('nav-section').textContent = pageLabels[currentPage-1];
+  // Show/hide progress emoji
+  var emoji = document.getElementById('prog-emoji');
+  if (emoji) emoji.style.opacity = finalPct > 3 ? '1' : '0';
 }
 
 function selectLikert(btn, code, val) {
@@ -1950,7 +2081,14 @@ function selectLikert(btn, code, val) {
 function changePage(dir) {
   if (dir > 0) {
     if (currentPage === 1 && !document.getElementById('consent').checked) {
-      alert('Mohon centang persetujuan keikutsertaan terlebih dahulu.'); return;
+      showToast('Persetujuan Diperlukan', 'Mohon centang persetujuan keikutsertaan terlebih dahulu.', 'rose');
+      var cb = document.getElementById('consent');
+      if (cb) {
+        cb.classList.remove('missing-field'); void cb.offsetWidth; cb.classList.add('missing-field');
+        cb.scrollIntoView({ behavior:'smooth', block:'center' });
+        setTimeout(function(){ cb.classList.remove('missing-field'); }, 2000);
+      }
+      return;
     }
     if (currentPage === 2) {
       var nama   = document.getElementById('nama').value.trim();
@@ -1962,7 +2100,9 @@ function changePage(dir) {
       var status = document.querySelector('input[name="status"]:checked');
       var durasi = document.querySelector('input[name="durasi"]:checked');
       if (!nama||!jenkel||!usia||!prodi||!sem||!ipk||!status||!durasi) {
-        alert('Mohon lengkapi semua data diri sebelum melanjutkan.'); return;
+        showToast('Data Belum Lengkap', 'Mohon lengkapi semua data diri sebelum melanjutkan.', 'rose');
+        scrollToFirstMissingField();
+        return;
       }
     }
     if (currentPage === 3) {
@@ -1971,7 +2111,10 @@ function changePage(dir) {
       var ans       = window._responses || {};
       var missing   = allCodes.filter(function(c){ return !ans[c]; });
       if (missing.length > 0) {
-        alert('Masih ada ' + missing.length + ' pernyataan yang belum diisi.\n\nKode belum diisi: ' + missing.slice(0,5).join(', ') + (missing.length>5?' ...':'')); return;
+        var theme3 = pageTheme(currentPage, missing[0]);
+        showToast('Pernyataan Belum Lengkap', 'Masih ada ' + missing.length + ' pernyataan yang belum diisi. Kode: ' + missing.slice(0,3).join(', ') + (missing.length>3?' ...':''), theme3);
+        scrollToFirstMissingLikert(missing, theme3);
+        return;
       }
     }
   }
@@ -2000,7 +2143,9 @@ document.getElementById('mainForm').addEventListener('submit', async function(e)
   var ans       = window._responses || {};
   var missing   = allCodesY.filter(function(c){ return !ans[c]; });
   if (missing.length > 0) {
-    alert('Masih ada ' + missing.length + ' pernyataan Bagian D yang belum diisi.\n\nKode belum diisi: ' + missing.slice(0,5).join(', ') + (missing.length>5?' ...':'')); return;
+    showToast('Bagian D Belum Lengkap', 'Masih ada ' + missing.length + ' pernyataan yang belum diisi. Kode: ' + missing.slice(0,3).join(', ') + (missing.length>3?' ...':''), 'teal');
+    scrollToFirstMissingLikert(missing, 'teal');
+    return;
   }
   var jk = document.querySelector('input[name="jenkel"]:checked');
   var st = document.querySelector('input[name="status"]:checked');
@@ -2035,7 +2180,7 @@ document.getElementById('mainForm').addEventListener('submit', async function(e)
   } catch(err) {
     btnSubmit.disabled = false;
     btnSubmit.innerHTML = '<span>&#x2665;</span> Kirim Kuesioner';
-    alert('Gagal mengirim. Pastikan koneksi internet aktif lalu coba lagi.');
+    showToast('Gagal Mengirim', 'Pastikan koneksi internet aktif, lalu coba lagi.', 'red');
     console.error(err);
   }
 });
@@ -2071,6 +2216,137 @@ document.addEventListener('keydown', function(e) {
     });
   }
 });
+
+
+// ── TOAST SYSTEM ────────────────────────────────────────────
+var toastTimers = {};
+
+function showToast(title, msg, theme) {
+  var wrap = document.getElementById('toast-wrap');
+  var id   = 'toast-' + Date.now();
+  var themeClass = 'toast-' + (theme || 'rose');
+  var emojis = { rose:'🌹', purple:'💜', teal:'🎓', red:'❌' };
+  var emoji  = emojis[theme || 'rose'] || '🌹';
+
+  var el = document.createElement('div');
+  el.className = 'toast ' + themeClass;
+  el.id = id;
+  el.innerHTML =
+    '<div class="toast-emoji">' + emoji + '</div>' +
+    '<div class="toast-content">' +
+      '<div class="toast-title">' + title + '</div>' +
+      '<div class="toast-msg">' + msg + '</div>' +
+    '</div>' +
+    '<button class="toast-close" onclick="dismissToast(&quot;' + id + '&quot;)">&#x2715;</button>' +
+    '<div class="toast-progress"></div>';
+
+  wrap.appendChild(el);
+  toastTimers[id] = setTimeout(function() { dismissToast(id); }, 4000);
+}
+
+function dismissToast(id) {
+  if (toastTimers[id]) { clearTimeout(toastTimers[id]); delete toastTimers[id]; }
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('hiding');
+  setTimeout(function() { if (el && el.parentNode) el.parentNode.removeChild(el); }, 320);
+}
+
+function pageTheme(page, firstMissingCode) {
+  if (page === 1) return 'rose';
+  if (page === 2) return 'rose';
+  if (page === 3) {
+    // Halaman 3 punya 2 bagian:
+    // Bagian B (X1) = rose, Bagian C (X2) = purple
+    // Tentukan berdasarkan kode item yang pertama belum diisi
+    if (firstMissingCode && firstMissingCode.indexOf('X1') === 0) return 'rose';
+    if (firstMissingCode && firstMissingCode.indexOf('X2') === 0) return 'purple';
+    return 'rose'; // default ke rose jika tidak jelas
+  }
+  if (page === 4) return 'teal';
+  return 'rose';
+}
+
+// ── SCROLL & HIGHLIGHT MISSING ───────────────────────────────
+function highlightAndScrollTo(el, theme) {
+  if (!el) return;
+  // Remove any existing highlight first
+  el.classList.remove('missing-rose','missing-purple','missing-teal','missing-highlight');
+  void el.offsetWidth; // force reflow to restart animation
+  el.classList.add('missing-highlight', 'missing-' + (theme || 'rose'));
+
+  // Scroll smoothly with offset for sticky nav
+  var rect   = el.getBoundingClientRect();
+  var offset = 80;
+  var top    = window.pageYOffset + rect.top - offset;
+  window.scrollTo({ top: top, behavior: 'smooth' });
+
+  // Remove highlight class after animation finishes
+  setTimeout(function() {
+    el.classList.remove('missing-highlight','missing-rose','missing-purple','missing-teal');
+  }, 2000);
+}
+
+function scrollToFirstMissingLikert(missingCodes, theme) {
+  if (!missingCodes || missingCodes.length === 0) return;
+  var firstCode = missingCodes[0];
+  // Find the likert-item that contains a button with data-code matching firstCode
+  var btn = document.querySelector('.likert-btn[data-code="' + firstCode + '"]');
+  if (btn) {
+    var item = btn.closest('.likert-item');
+    if (item) highlightAndScrollTo(item, theme);
+  }
+}
+
+function scrollToFirstMissingField() {
+  // For page 2 — find first missing form field
+  var fields = [
+    { id: 'nama',     type: 'text'   },
+    { name: 'jenkel', type: 'radio'  },
+    { id: 'usia',     type: 'select' },
+    { id: 'prodi',    type: 'select' },
+    { id: 'semester', type: 'select' },
+    { id: 'ipk',      type: 'select' },
+    { name: 'status', type: 'radio'  },
+    { name: 'durasi', type: 'radio'  },
+  ];
+
+  for (var i = 0; i < fields.length; i++) {
+    var f = fields[i];
+    var el = null;
+    var empty = false;
+
+    if (f.type === 'text') {
+      el = document.getElementById(f.id);
+      empty = !el || !el.value.trim();
+    } else if (f.type === 'select') {
+      el = document.getElementById(f.id);
+      empty = !el || !el.value;
+    } else if (f.type === 'radio') {
+      var checked = document.querySelector('input[name="' + f.name + '"]:checked');
+      empty = !checked;
+      if (empty) {
+        // Highlight the radio group
+        var group = document.querySelector('input[name="' + f.name + '"]');
+        if (group) el = group.closest('.radio-group');
+      }
+    }
+
+    if (empty && el) {
+      // Add highlight
+      el.classList.remove('missing-field');
+      void el.offsetWidth;
+      el.classList.add('missing-field');
+      var rect   = el.getBoundingClientRect();
+      var offset = 80;
+      window.scrollTo({ top: window.pageYOffset + rect.top - offset, behavior: 'smooth' });
+      setTimeout(function(e) {
+        return function() { e.classList.remove('missing-field'); };
+      }(el), 2000);
+      break;
+    }
+  }
+}
 
 updateProgress();
 </script>
