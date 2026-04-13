@@ -29,7 +29,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
-  body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: #2d1a22; min-height: 100vh; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: #7a0a28; min-height: 100vh; }
 
   /* HEADER */
   .site-header { background: linear-gradient(135deg, #7a0a28 0%, #b5294a 45%, #d94f6e 100%); color: white; position: relative; overflow: hidden; }
@@ -128,7 +128,7 @@
   .likert-instruction::before { content:'\1F4A1'; flex-shrink:0; }
 
   /* LIKERT ITEMS */
-  .likert-item { display:grid; grid-template-columns:auto 1fr; margin-bottom:12px; border:1.5px solid var(--gray-300); border-radius:var(--radius-sm); overflow:hidden; transition:border-color 0.2s,box-shadow 0.2s; }
+  .likert-item { display:grid; grid-template-columns:52px minmax(0,1fr); margin-bottom:12px; border:1.5px solid var(--gray-300); border-left:3px solid transparent; border-radius:var(--radius-sm); overflow:hidden; transition:border-color 0.2s,box-shadow 0.2s; box-sizing:border-box; }
   .likert-item:hover { box-shadow:0 2px 10px rgba(181,41,74,0.10); }
   .likert-item-code { font-size:11px; font-weight:700; letter-spacing:0.5px; padding:14px 10px; display:flex; align-items:center; justify-content:center; min-width:52px; text-align:center; }
   .code-b { background:var(--rose); color:#fde8ed; }
@@ -136,8 +136,8 @@
   .code-d { background:#1a7a6e; color:#d6f5f1; }
   .likert-item-right { padding:13px 15px; }
   .likert-item-text { font-size:14px; color:#2d1a22; line-height:1.55; margin-bottom:12px; }
-  .likert-options { display:flex; gap:6px; flex-wrap:wrap; }
-  .likert-btn { flex:1; min-width:40px; padding:7px 3px; border:1.5px solid var(--gray-300); border-radius:6px; background:white; cursor:pointer; font-family:'Source Sans 3',sans-serif; font-size:12px; font-weight:600; color:var(--gray-700); transition:all 0.16s; text-align:center; display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .likert-options { display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:6px; width:100%; }
+  .likert-btn { width:100%; min-width:0; padding:7px 3px; border:1.5px solid var(--gray-300); border-radius:6px; background:white; cursor:pointer; font-family:'Source Sans 3',sans-serif; font-size:12px; font-weight:600; color:var(--gray-700); transition:all 0.16s; text-align:center; display:flex; flex-direction:column; align-items:center; gap:2px; }
   .likert-btn span.num { font-size:15px; font-weight:700; }
   .likert-btn span.lbl { font-size:8px; font-weight:500; letter-spacing:0.3px; line-height:1.2; }
   .likert-btn:hover { border-color:#999; background:var(--gray-100); }
@@ -184,7 +184,22 @@
   .already-done p { font-size:15px; color:var(--gray-500); line-height:1.7; }
 
   /* STICKY NAV */
-  .sticky-nav { position:fixed; bottom:0; left:0; right:0; background:white; border-top:2px solid var(--rose-light); padding:11px 22px; display:flex; justify-content:space-between; align-items:center; z-index:100; box-shadow:0 -4px 20px rgba(181,41,74,0.08); gap:12px; }
+  .sticky-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 2px solid var(--rose-light);
+    padding: 11px 22px;
+    padding-bottom: max(11px, env(safe-area-inset-bottom, 11px));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99999;
+    box-shadow: 0 -4px 20px rgba(181,41,74,0.08);
+    gap: 12px;
+  }
   .sticky-nav .nav-info { font-size:13px; color:var(--gray-500); }
   .sticky-nav .nav-info strong { color:var(--rose); }
   .nav-btns { display:flex; gap:10px; }
@@ -269,7 +284,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 15px;
     font-weight: 700;
-    color: #2d1a22;
+    color: #7a0a28;
     letter-spacing: -0.2px;
   }
   .hero-nav-sub {
@@ -395,7 +410,7 @@
     line-height: 1.5;
     text-align: left;
   }
-  .hero-cta-note strong { color: #2d1a22; }
+  .hero-cta-note strong { color: #7a0a28; }
 
   .hero-stats {
     display: flex;
@@ -454,8 +469,8 @@
   }
 
   /* Cards sit in left/right gutters (each ~260px wide) */
-  .fc-1 { --rot:-3deg;   top:40px;  left:16px;  width:230px; animation: floatUp .7s ease .10s both, bob1 5s   ease-in-out 1s   infinite; }
-  .fc-2 { --rot:2deg;    top:32px;  right:14px; width:218px; animation: floatUp .7s ease .25s both, bob2 6s   ease-in-out 1.2s infinite; }
+  .fc-1 { --rot:-3deg;   top:165px; left:16px;  width:230px; animation: floatUp .7s ease .10s both, bob1 5s   ease-in-out 1s   infinite; }
+  .fc-2 { --rot:2deg;    top:155px; right:14px; width:218px; animation: floatUp .7s ease .25s both, bob2 6s   ease-in-out 1.2s infinite; }
   .fc-3 { --rot:-1.5deg; top:310px; left:12px;  width:210px; animation: floatUp .7s ease .40s both, bob3 4.5s ease-in-out .8s  infinite; }
   .fc-4 { --rot:3deg;    top:290px; right:10px; width:238px; animation: floatUp .7s ease .55s both, bob1 5.5s ease-in-out 1.5s infinite; }
   .fc-5 { --rot:-2deg;   top:570px; left:18px;  width:200px; animation: floatUp .7s ease .35s both, bob2 7s   ease-in-out 1s   infinite; }
@@ -496,7 +511,7 @@
     border-radius: 7px;
     padding: 8px 12px;
     font-size: 12px;
-    color: #b5294a;
+    color: #d94f6e;
     font-weight: 600;
     margin-top: 8px;
     display: flex;
@@ -1307,12 +1322,12 @@
     font-family: 'Playfair Display', serif;
     font-size: 17px;
     font-weight: 700;
-    color: #b5294a;
+    color: #d94f6e;
     margin-bottom: 2px;
   }
   .modal-header-sub {
     font-size: 12px;
-    color: #9a878e;
+    color: #c96a86;
   }
   .modal-close {
     position: absolute;
@@ -1320,8 +1335,8 @@
     width: 32px; height: 32px;
     border-radius: 50%;
     border: none;
-    background: #fce8ed;
-    color: #b5294a;
+    background: #ffdce7;
+    color: #d94f6e;
     font-size: 16px;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center;
@@ -1336,14 +1351,14 @@
     margin-bottom: 12px;
   }
   .modal-body p:last-child { margin-bottom: 0; }
-  .modal-body strong { color: #b5294a; }
+  .modal-body strong { color: #d94f6e; }
   .modal-section-title {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #b5294a;
-    background: #fce8ed;
+    color: #d94f6e;
+    background: #ffdce7;
     display: inline-block;
     padding: 4px 12px;
     border-radius: 4px;
@@ -1375,8 +1390,8 @@
     flex-shrink: 0;
   }
   .member-info { flex: 1; }
-  .member-name { font-size: 14px; font-weight: 600; color: #2d1a22; margin-bottom: 2px; }
-  .member-nim  { font-size: 12px; color: #9a878e; }
+  .member-name { font-size: 14px; font-weight: 600; color: #7a0a28; margin-bottom: 2px; }
+  .member-nim  { font-size: 12px; color: #c96a86; }
 
   /* Guide list */
   .guide-list { display: flex; flex-direction: column; gap: 10px; }
@@ -1401,12 +1416,12 @@
     margin-top: 1px;
   }
   .guide-text { font-size: 13.5px; color: #4a3840; line-height: 1.6; }
-  .guide-text strong { color: #b5294a; }
+  .guide-text strong { color: #d94f6e; }
 
   /* Syarat box */
   .syarat-box {
     background: #fff3f5;
-    border: 1.5px solid #f5c2cc;
+    border: 1.5px solid #f0a8b8;
     border-radius: 10px;
     padding: 14px 16px;
     margin-top: 14px;
@@ -1422,7 +1437,7 @@
     line-height: 1.55;
   }
   .syarat-item:last-child { margin-bottom: 0; }
-  .syarat-dot { color: #b5294a; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .syarat-dot { color: #d94f6e; font-size: 16px; flex-shrink: 0; margin-top: 1px; }
 
   /* Pill buttons */
   .hero-pill-btn {
@@ -1439,11 +1454,12 @@
     cursor: pointer;
     font-family: 'Source Sans 3', sans-serif;
     transition: all 0.2s;
+    text-decoration: none;
   }
   .hero-pill-btn:hover {
-    border-color: #b5294a;
+    border-color: #d94f6e;
     background: #fff0f3;
-    color: #b5294a;
+    color: #d94f6e;
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(181,41,74,0.14);
   }
@@ -1507,8 +1523,8 @@
 
   /* Toast themes */
   .toast-rose   { background: linear-gradient(135deg,#fff0f3,#fce8ed); border-left-color:#b5294a; color:#7a0a28; }
-  .toast-rose   .toast-title   { color: #b5294a; }
-  .toast-rose   .toast-close   { color: #b5294a; }
+  .toast-rose   .toast-title   { color: #d94f6e; }
+  .toast-rose   .toast-close   { color: #d94f6e; }
   .toast-rose   .toast-progress { background: #b5294a; }
 
   .toast-purple { background: linear-gradient(135deg,#f5f0ff,#ede0ff); border-left-color:#6b35a8; color:#3d1d70; }
@@ -1525,6 +1541,202 @@
   .toast-red    .toast-title   { color: #c0392b; }
   .toast-red    .toast-close   { color: #c0392b; }
   .toast-red    .toast-progress { background: #c0392b; }
+
+  /* ── FLOATING ITEM COUNTER BADGE ── */
+  .item-counter-badge {
+    position: fixed; bottom: 80px; right: 20px; z-index: 200;
+    background: white; border-radius: 100px;
+    padding: 8px 14px 8px 10px;
+    box-shadow: 0 4px 20px rgba(181,41,74,0.18);
+    border: 1.5px solid var(--rose-light);
+    display: none; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: var(--rose);
+    transition: all 0.3s ease;
+  }
+  .item-counter-badge.visible { display: flex; }
+  /* Theme: rose (page 3, default) */
+  .item-counter-badge.theme-rose { border-color: #f5c2cc; box-shadow: 0 4px 20px rgba(181,41,74,0.18); color: var(--rose); }
+  .item-counter-badge.theme-rose .icb-ring-bg   { stroke: #fce8ed; }
+  .item-counter-badge.theme-rose .icb-ring-fill  { stroke: var(--rose); }
+  .item-counter-badge.theme-rose .icb-ring-text  { color: var(--rose); }
+  /* Theme: purple (page 4) */
+  .item-counter-badge.theme-purple { border-color: #d8c4f5; box-shadow: 0 4px 20px rgba(107,53,168,0.18); color: #6b35a8; }
+  .item-counter-badge.theme-purple .icb-ring-bg  { stroke: #ede0ff; }
+  .item-counter-badge.theme-purple .icb-ring-fill { stroke: #6b35a8; }
+  .item-counter-badge.theme-purple .icb-ring-text { color: #6b35a8; }
+  /* Theme: teal (page 5) */
+  .item-counter-badge.theme-teal { border-color: #a0e4dc; box-shadow: 0 4px 20px rgba(26,122,110,0.18); color: #1a7a6e; }
+  .item-counter-badge.theme-teal .icb-ring-bg   { stroke: #d8f5f2; }
+  .item-counter-badge.theme-teal .icb-ring-fill  { stroke: #1a7a6e; }
+  .item-counter-badge.theme-teal .icb-ring-text  { color: #1a7a6e; }
+  .icb-ring { position: relative; width: 32px; height: 32px; flex-shrink: 0; }
+  .icb-ring svg { transform: rotate(-90deg); }
+  .icb-ring-bg   { fill: none; stroke: var(--rose-light); stroke-width: 3; }
+  .icb-ring-fill { fill: none; stroke: var(--rose); stroke-width: 3; stroke-linecap: round; transition: stroke-dashoffset 0.4s ease; }
+  .icb-ring-text {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800; color: var(--rose);
+  }
+  .icb-label { line-height: 1.3; }
+  .icb-label .icb-count { font-size: 14px; font-weight: 800; display: block; }
+  .icb-label .icb-sub   { font-size: 10px; color: var(--gray-500); font-weight: 500; display: block; }
+
+  /* ── ANSWERED ITEM VISUAL STATE ── */
+  .likert-item {
+    position: relative;
+  }
+  .likert-item.is-answered {
+    background: linear-gradient(135deg, rgba(255,255,255,0.98), #fff);
+  }
+  .likert-item.is-answered::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    pointer-events: none;
+  }
+  .likert-item.is-answered.ans-b::before { background: var(--rose); }
+  .likert-item.is-answered.ans-c::before { background: #6b35a8; }
+  .likert-item.is-answered.ans-d::before { background: #1a7a6e; }
+
+  /* Per-indicator mini progress */
+  .variable-label-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .variable-label-row .variable-label { margin-bottom: 0; }
+  .variable-label-count { font-size: 11px; font-weight: 600; color: var(--gray-500); margin-left: auto; }
+  .ind-mini-progress { height: 3px; background: var(--gray-100); border-radius: 100px; margin-bottom: 14px; overflow: hidden; }
+  .ind-mini-fill { height: 100%; border-radius: 100px; width: 0%; transition: width 0.3s ease; }
+  .fill-b { background: var(--rose); }
+  .fill-c { background: #6b35a8; }
+  .fill-d { background: #1a7a6e; }
+
+  /* ── BACK BUTTON IN CONTENT ── */
+  .page-back-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: white; color: var(--rose);
+    border: 1.5px solid var(--rose-light);
+    padding: 8px 18px; border-radius: 100px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: all 0.2s; margin-bottom: 16px;
+  }
+  .page-back-btn:hover { background: var(--rose-pale); border-color: var(--rose); }
+
+  /* Top nav row khusus mobile: Kembali + Lanjut — semua halaman */
+  .page-top-nav {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+  .page-top-nav .page-back-btn { margin-bottom: 0; }
+  .page-top-next {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--rose); color: white;
+    border: 1.5px solid var(--rose);
+    padding: 8px 18px; border-radius: 100px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .page-top-next:hover { background: var(--rose-mid); border-color: var(--rose-mid); }
+  @media (max-width: 768px) {
+    .page-top-nav { display: flex; }
+    .page-back-desktop { display: none !important; }
+  }
+
+  /* ── SUMMARY PAGE ── */
+  .summary-section {
+    background: white; border-radius: var(--radius);
+    box-shadow: var(--shadow); margin-bottom: 20px;
+    overflow: hidden; border: 1px solid rgba(181,41,74,0.08);
+    animation: fadeUp 0.4s ease both;
+  }
+  .summary-section-head {
+    padding: 14px 20px; display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid var(--rose-light); background: var(--petal);
+  }
+  .summary-section-head.head-c { background: #f8f2ff; border-bottom-color: #e8dcf7; }
+  .summary-section-head.head-d { background: #edfaf7; border-bottom-color: #c8f0eb; }
+  .summary-section-icon {
+    width: 30px; height: 30px; border-radius: 8px;
+    background: linear-gradient(135deg, #7a0a28, var(--rose));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .summary-section-icon.ic-c { background: linear-gradient(135deg, #4a1a80, #6b35a8); }
+  .summary-section-icon.ic-d { background: linear-gradient(135deg, #0a4a42, #1a7a6e); }
+  .summary-section-title { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: var(--rose); flex: 1; }
+  .summary-section-title.tc { color: #4a1a80; }
+  .summary-section-title.td { color: #0a4a42; }
+  .summary-complete { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 100px; }
+  .sc-b { background: var(--rose-light); color: var(--rose); }
+  .sc-c { background: #e8dcf7; color: #4a1a80; }
+  .sc-d { background: #c8f0eb; color: #0a4a42; }
+  .sc-incomplete { background: #fdecea; color: #c0392b; }
+  .summary-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px; padding: 16px 20px;
+  }
+  .summary-item {
+    background: #fdf8f9; border: 1.5px solid var(--gray-100);
+    border-radius: 8px; padding: 10px 12px; text-align: center;
+  }
+  .summary-item.unanswered { border-color: #f5c2cc; background: #fff0f3; }
+  .summary-item-code { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; color: var(--gray-500); margin-bottom: 4px; }
+  .summary-item-val { font-size: 17px; font-weight: 800; line-height: 1; }
+  .summary-item-val.vb { color: var(--rose); }
+  .summary-item-val.vc { color: #6b35a8; }
+  .summary-item-val.vd { color: #1a7a6e; }
+  .summary-item-val.vm { color: #c0392b; }
+  .summary-item-label { font-size: 9px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+  .summary-val-labels { display: flex; gap: 4px; justify-content: center; margin-top: 3px; }
+  .svl { font-size: 8px; color: var(--gray-500); background: var(--gray-100); border-radius: 3px; padding: 1px 4px; }
+  .summary-alert {
+    background: #fff3f5; border: 1.5px solid #f0a8b8;
+    border-radius: var(--radius-sm); padding: 12px 16px;
+    font-size: 13px; color: #7a0a28; line-height: 1.6;
+    display: flex; gap: 10px; align-items: flex-start; margin-bottom: 16px;
+  }
+  .summary-all-good {
+    background: #edfaf7; border: 1.5px solid #c8f0eb;
+    border-radius: var(--radius-sm); padding: 12px 16px;
+    font-size: 13px; color: #0a4a42; line-height: 1.6;
+    display: flex; gap: 10px; align-items: flex-start; margin-bottom: 16px;
+  }
+
+  /* ── ENHANCED THANK YOU ── */
+  .thankyou-enhanced { display: none; padding: 0; }
+  .thankyou-hero {
+    background: linear-gradient(135deg, #7a0a28 0%, #b5294a 50%, #d94f6e 100%);
+    padding: 48px 32px 40px; text-align: center; position: relative; overflow: hidden;
+  }
+  .thankyou-hero::before { content: '♥'; position: absolute; font-size: 200px; color: rgba(255,255,255,0.05); right: -20px; top: -40px; pointer-events: none; }
+  .thankyou-hero-icon { font-size: 64px; margin-bottom: 16px; }
+  .thankyou-hero h2 { font-family: 'Playfair Display', serif; font-size: 28px; color: white; font-weight: 700; margin-bottom: 10px; }
+  .thankyou-hero p { font-size: 15px; color: rgba(255,255,255,0.80); line-height: 1.7; max-width: 420px; margin: 0 auto; }
+  .thankyou-body { padding: 28px; }
+  .thankyou-confirm {
+    background: #edfaf7; border: 1.5px solid #a8e4de;
+    border-radius: 10px; padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    font-size: 14px; color: #0a4a42; font-weight: 600;
+  }
+  .thankyou-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .tic {
+    background: var(--rose-pale); border: 1px solid var(--rose-light);
+    border-radius: 10px; padding: 14px 16px; text-align: center;
+  }
+  .tic-icon { font-size: 22px; margin-bottom: 6px; }
+  .tic-title { font-size: 12px; font-weight: 700; color: var(--rose); margin-bottom: 4px; }
+  .tic-text { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+  .thankyou-contact { background: var(--gray-100); border-radius: 10px; padding: 14px 18px; }
+  .thankyou-contact h4 { font-size: 13px; font-weight: 700; color: #7a0a28; margin-bottom: 8px; }
+  .thankyou-contact p { font-size: 12.5px; color: var(--gray-500); line-height: 1.6; }
+  .thankyou-contact a { color: var(--rose); text-decoration: none; font-weight: 600; }
 
   /* ── HIGHLIGHT MISSING FIELD ── */
   /* Likert item highlight */
@@ -1558,10 +1770,146 @@
     border-color: #b5294a !important;
   }
 
+
+  /* ── NIM STATUS ── */
+  .nim-checking {
+    display: flex; align-items: center; gap: 8px;
+    color: #c96a86; font-size: 13px;
+  }
+  .nim-ok {
+    display: flex; align-items: center; gap: 8px;
+    color: #1a7a50; font-weight: 600; font-size: 13px;
+  }
+  .nim-taken {
+    display: flex; align-items: center; gap: 8px;
+    color: #c0392b; font-weight: 600; font-size: 13px;
+  }
+  .nim-spinner {
+    width: 14px; height: 14px;
+    border: 2px solid #d8cdd1;
+    border-top-color: #d94f6e;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #nim.form-control.nim-error {
+    border-color: #c0392b !important;
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.12) !important;
+  }
+  #nim.form-control.nim-valid {
+    border-color: #1a7a50 !important;
+    box-shadow: 0 0 0 3px rgba(26,122,80,0.12) !important;
+  }
+
+  /* Mobile pink dropdowns for identity fields */
+  .mobile-select-shell { position: relative; width: 100%; }
+  .mobile-select-shell .native-mobile-select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border: 0;
+    pointer-events: none;
+  }
+  .mobile-select-btn {
+    width: 100%;
+    border: 1.5px solid #d8cdd1;
+    background: #ffffff;
+    color: #2d1a22;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    line-height: 1.35;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    cursor: pointer;
+    text-align: left;
+  }
+  .mobile-select-shell.open .mobile-select-btn {
+    border-color: #d94f6e;
+    box-shadow: 0 0 0 3px rgba(217,79,110,0.10), 0 8px 20px rgba(181,41,74,0.06);
+  }
+  .mobile-select-value { flex: 1; min-width: 0; }
+  .mobile-select-value.placeholder { color: #9a878e; }
+  .mobile-select-caret {
+    color: #9a878e;
+    font-size: 12px;
+    flex-shrink: 0;
+    transition: transform 0.18s ease;
+  }
+  .mobile-select-shell.open .mobile-select-caret { transform: rotate(180deg); }
+  .mobile-select-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: #ffffff;
+    border: 1.5px solid #f5c2cc;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 16px 36px rgba(181,41,74,0.10);
+    max-height: 280px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-select-shell.open .mobile-select-panel { display: block; }
+  .mobile-select-option {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 12px 14px;
+    text-align: left;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: #4a3840;
+    cursor: pointer;
+  }
+  .mobile-select-option + .mobile-select-option {
+    border-top: 1px solid rgba(181,41,74,0.08);
+  }
+  .mobile-select-option:hover,
+  .mobile-select-option:active {
+    background: #fff5f7;
+    color: #7a0a28;
+  }
+  .mobile-select-option.selected {
+    background: #fce8ed;
+    color: #b5294a;
+    font-weight: 700;
+  }
+  .mobile-select-shell.disabled .mobile-select-btn {
+    opacity: 0.92;
+    cursor: default;
+  }
+
 </style>
 </head>
 <body>
 <div class="toast-wrap" id="toast-wrap"></div>
+
+<!-- FLOATING ITEM COUNTER BADGE -->
+<div class="item-counter-badge" id="item-counter-badge">
+  <div class="icb-ring">
+    <svg width="32" height="32" viewBox="0 0 32 32">
+      <circle class="icb-ring-bg" cx="16" cy="16" r="13"/>
+      <circle class="icb-ring-fill" id="icb-ring-fill" cx="16" cy="16" r="13" stroke-dasharray="81.68" stroke-dashoffset="81.68"/>
+    </svg>
+    <div class="icb-ring-text" id="icb-pct">0%</div>
+  </div>
+  <div class="icb-label">
+    <span class="icb-count" id="icb-count">0/0</span>
+    <span class="icb-sub" id="icb-sub">pernyataan diisi</span>
+  </div>
+</div>
 
 
 <div class="site-header">
@@ -1700,6 +2048,7 @@
         <button class="hero-pill-btn" onclick="openModal('modal-penelitian', event)"><span class="hero-pill-btn-icon">📖</span> Tentang Penelitian</button>
         <button class="hero-pill-btn" onclick="openModal('modal-anggota', event)"><span class="hero-pill-btn-icon">👥</span> Tim Peneliti</button>
         <button class="hero-pill-btn" onclick="openModal('modal-panduan', event)"><span class="hero-pill-btn-icon">📋</span> Panduan &amp; Syarat</button>
+        <a class="hero-pill-btn" href="mailto:Kuisioner1745@gmail.com" onclick="event.stopPropagation()"><span class="hero-pill-btn-icon">✉️</span> Hubungi Kami</a>
       </div>
 
       <!-- CTA Button -->
@@ -1715,7 +2064,7 @@
       <!-- Stats row -->
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-num">6</div>
           <div class="hero-stat-lbl">Halaman<br>Kuesioner</div>
         </div>
         <div class="hero-stat">
@@ -1757,6 +2106,13 @@
 
 <!-- PAGE 2 -->
 <div class="page" id="page-2">
+  <!-- Top nav khusus mobile: Kembali + Lanjut -->
+  <div class="page-top-nav">
+    <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Pengantar</button>
+    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
+  </div>
+  <!-- Tombol kembali untuk desktop -->
+  <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Pengantar</button>
   <div class="section-card">
     <div class="section-header">
       <div class="section-icon">&#x1F464;</div>
@@ -1768,12 +2124,18 @@
     <div class="section-body">
 
       <div class="form-group">
-        <label class="form-label" for="nama">1. Nama Lengkap <span class="req">*</span></label>
-        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" required>
+        <label class="form-label" for="nama">1. Nama <span class="req">*</span></label>
+        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama Anda (boleh nama panggilan)" required>
       </div>
 
       <div class="form-group">
-        <label class="form-label">2. Jenis Kelamin <span class="req">*</span></label>
+        <label class="form-label" for="nim">2. NIM <span class="req">*</span></label>
+        <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan NIM Anda" inputmode="numeric" pattern="[0-9]*" required>
+        <div id="nim-status" style="margin-top:8px;font-size:13px;display:none;"></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">3. Jenis Kelamin <span class="req">*</span></label>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="jenkel" value="Laki-laki" required> Laki-laki</label>
           <label class="radio-option"><input type="radio" name="jenkel" value="Perempuan"> Perempuan</label>
@@ -1781,7 +2143,7 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="usia">3. Usia <span class="req">*</span></label>
+        <label class="form-label" for="usia">4. Usia <span class="req">*</span></label>
         <select class="form-control" id="usia" name="usia" required>
           <option value="" disabled selected>&#x2014; Pilih usia Anda &#x2014;</option>
           <option>17 &#x2013; 19 tahun</option>
@@ -1791,7 +2153,7 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="prodi">4. Jurusan <span class="req">*</span></label>
+        <label class="form-label" for="prodi">5. Jurusan <span class="req">*</span></label>
         <select class="form-control" id="prodi" name="prodi" required>
           <option value="" disabled selected>&#x2014; Pilih jurusan &#x2014;</option>
           <option>Manajemen</option>
@@ -1801,7 +2163,7 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="semester">5. Semester <span class="req">*</span></label>
+        <label class="form-label" for="semester">6. Semester <span class="req">*</span></label>
         <select class="form-control" id="semester" name="semester" required>
           <option value="" disabled selected>&#x2014; Pilih semester &#x2014;</option>
           <option>Semester 1</option><option>Semester 2</option><option>Semester 3</option>
@@ -1811,7 +2173,7 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="ipk">6. IPK pada Semester Terakhir <span class="req">*</span></label>
+        <label class="form-label" for="ipk">7. IPK pada Semester Terakhir <span class="req">*</span></label>
         <select class="form-control" id="ipk" name="ipk" required>
           <option value="" disabled selected>&#x2014; Pilih rentang IPK &#x2014;</option>
           <option>2,00 &#x2013; 2,49</option>
@@ -1824,7 +2186,7 @@
       <hr class="section-divider">
 
       <div class="form-group">
-        <label class="form-label">7. Status Hubungan Romantis Saat Ini <span class="req">*</span></label>
+        <label class="form-label">8. Status Hubungan Romantis Saat Ini <span class="req">*</span></label>
         <div class="info-box" style="margin-bottom:12px;font-size:13px;">&#x2139;&#xFE0F; Kuesioner ini diperuntukkan bagi mahasiswa yang sedang atau pernah menjalani hubungan romantis (pacaran) selama studi di FEB UPR.</div>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="status" value="Sedang berpacaran" required> Sedang berpacaran</label>
@@ -1833,7 +2195,7 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label">8. Durasi Hubungan Romantis (terlama / saat ini) <span class="req">*</span></label>
+        <label class="form-label">9. Durasi Hubungan Romantis (terlama / saat ini) <span class="req">*</span></label>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="durasi" value="3-6 bulan" required> 3 &#x2013; 6 bulan</label>
           <label class="radio-option"><input type="radio" name="durasi" value="7-12 bulan"> 7 &#x2013; 12 bulan</label>
@@ -1846,84 +2208,225 @@
   </div>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 – Bagian B (X1) -->
 <div class="page" id="page-3">
+  <div class="page-top-nav">
+    <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Identitas</button>
+    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
+  </div>
+  <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Identitas</button>
   <div class="section-card">
     <div class="section-header">
       <div class="section-icon">&#x2764;&#xFE0F;</div>
       <div>
         <div class="section-title">Bagian B &#x2013; Kualitas Hubungan Romantis (X1)</div>
-        <div class="section-subtitle">Pernyataan mengenai kualitas hubungan romantis yang Anda jalani saat ini atau terakhir kali.</div>
+        <div class="section-subtitle">18 pernyataan · Pilih angka 1–5 yang paling sesuai kondisi Anda</div>
       </div>
     </div>
     <div class="section-body">
       <div class="likert-instruction">Pilih angka yang paling sesuai: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong></div>
-      <div class="variable-group"><div class="variable-label lbl-b1">Indikator 1 &#x2013; Kepuasan terhadap Hubungan</div><div id="items-x1-1" class="theme-b"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-b2">Indikator 2 &#x2013; Kepercayaan terhadap Pasangan</div><div id="items-x1-2" class="theme-b"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-b3">Indikator 3 &#x2013; Komitmen dalam Hubungan</div><div id="items-x1-3" class="theme-b"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-b4">Indikator 4 &#x2013; Kualitas Komunikasi</div><div id="items-x1-4" class="theme-b"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-b5">Indikator 5 &#x2013; Dukungan Emosional dari Pasangan</div><div id="items-x1-5" class="theme-b"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-b6">Indikator 6 &#x2013; Minimnya Konflik Destruktif</div><div id="items-x1-6" class="theme-b"></div></div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-b1">Indikator 1 &#x2013; Kepuasan terhadap Hubungan</div><span class="variable-label-count" id="cnt-x1-1">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-b" id="bar-x1-1"></div></div>
+        <div id="items-x1-1" class="theme-b"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-b2">Indikator 2 &#x2013; Kepercayaan terhadap Pasangan</div><span class="variable-label-count" id="cnt-x1-2">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-b" id="bar-x1-2"></div></div>
+        <div id="items-x1-2" class="theme-b"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-b3">Indikator 3 &#x2013; Komitmen dalam Hubungan</div><span class="variable-label-count" id="cnt-x1-3">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-b" id="bar-x1-3"></div></div>
+        <div id="items-x1-3" class="theme-b"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-b4">Indikator 4 &#x2013; Kualitas Komunikasi</div><span class="variable-label-count" id="cnt-x1-4">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-b" id="bar-x1-4"></div></div>
+        <div id="items-x1-4" class="theme-b"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-b5">Indikator 5 &#x2013; Dukungan Emosional dari Pasangan</div><span class="variable-label-count" id="cnt-x1-5">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-b" id="bar-x1-5"></div></div>
+        <div id="items-x1-5" class="theme-b"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-b6">Indikator 6 &#x2013; Minimnya Konflik Destruktif</div><span class="variable-label-count" id="cnt-x1-6">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-b" id="bar-x1-6"></div></div>
+        <div id="items-x1-6" class="theme-b"></div>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="section-card" style="margin-top:28px;">
+<!-- PAGE 4 – Bagian C (X2) -->
+<div class="page" id="page-4">
+  <div class="page-top-nav">
+    <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Bagian B</button>
+    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
+  </div>
+  <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Bagian B</button>
+  <div class="section-card">
     <div class="section-header">
       <div class="section-icon">&#x1F4DA;</div>
       <div>
         <div class="section-title">Bagian C &#x2013; Motivasi Belajar (X2)</div>
-        <div class="section-subtitle">Pernyataan mengenai dorongan belajar yang Anda rasakan selama kuliah.</div>
+        <div class="section-subtitle">16 pernyataan · Pilih angka 1–5 yang paling sesuai kondisi Anda</div>
       </div>
     </div>
     <div class="section-body">
       <div class="likert-instruction">Pilih angka yang paling sesuai: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong></div>
       <div class="variable-group">
-        <div class="variable-label lbl-ci">Motivasi Intrinsik</div>
+        <div class="variable-label-row"><div class="variable-label lbl-ci">Motivasi Intrinsik</div><span class="variable-label-count" id="cnt-x2-intr">0/8</span></div>
         <div class="variable-desc">Dorongan belajar yang berasal dari dalam diri sendiri (internal)</div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-c" id="bar-x2-intr"></div></div>
         <div id="items-x2-intr" class="theme-c"></div>
       </div>
       <div class="variable-group">
-        <div class="variable-label lbl-ce">Motivasi Ekstrinsik</div>
+        <div class="variable-label-row"><div class="variable-label lbl-ce">Motivasi Ekstrinsik</div><span class="variable-label-count" id="cnt-x2-ekst">0/8</span></div>
         <div class="variable-desc">Dorongan belajar yang berasal dari faktor luar (eksternal)</div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-c" id="bar-x2-ekst"></div></div>
         <div id="items-x2-ekst" class="theme-c"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PAGE 4 -->
-<div class="page" id="page-4">
+<!-- PAGE 5 – Bagian D (Y) -->
+<div class="page" id="page-5">
+  <div class="page-top-nav">
+    <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Bagian C</button>
+    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
+  </div>
+  <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Bagian C</button>
   <div class="section-card">
     <div class="section-header">
       <div class="section-icon">&#x1F393;</div>
       <div>
         <div class="section-title">Bagian D &#x2013; Kinerja Akademik Mahasiswa (Y)</div>
-        <div class="section-subtitle">Pernyataan mengenai pencapaian dan perilaku akademik Anda selama satu semester terakhir.</div>
+        <div class="section-subtitle">15 pernyataan · Pilih angka 1–5 yang paling sesuai kondisi Anda</div>
       </div>
     </div>
     <div class="section-body">
       <div class="likert-instruction">Pilih angka yang paling sesuai: <strong>1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju</strong></div>
-      <div class="variable-group"><div class="variable-label lbl-d1">Indikator 1 &#x2013; Pencapaian Nilai / IPK</div><div id="items-y-1" class="theme-d"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-d2">Indikator 2 &#x2013; Kehadiran dalam Perkuliahan</div><div id="items-y-2" class="theme-d"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-d3">Indikator 3 &#x2013; Ketepatan Pengumpulan Tugas</div><div id="items-y-3" class="theme-d"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-d4">Indikator 4 &#x2013; Partisipasi Aktif dalam Akademik</div><div id="items-y-4" class="theme-d"></div></div>
-      <div class="variable-group"><div class="variable-label lbl-d5">Indikator 5 &#x2013; Penguasaan Materi Perkuliahan</div><div id="items-y-5" class="theme-d"></div></div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-d1">Indikator 1 &#x2013; Pencapaian Nilai / IPK</div><span class="variable-label-count" id="cnt-y-1">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-d" id="bar-y-1"></div></div>
+        <div id="items-y-1" class="theme-d"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-d2">Indikator 2 &#x2013; Kehadiran dalam Perkuliahan</div><span class="variable-label-count" id="cnt-y-2">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-d" id="bar-y-2"></div></div>
+        <div id="items-y-2" class="theme-d"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-d3">Indikator 3 &#x2013; Ketepatan Pengumpulan Tugas</div><span class="variable-label-count" id="cnt-y-3">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-d" id="bar-y-3"></div></div>
+        <div id="items-y-3" class="theme-d"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-d4">Indikator 4 &#x2013; Partisipasi Aktif dalam Akademik</div><span class="variable-label-count" id="cnt-y-4">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-d" id="bar-y-4"></div></div>
+        <div id="items-y-4" class="theme-d"></div>
+      </div>
+      <div class="variable-group">
+        <div class="variable-label-row"><div class="variable-label lbl-d5">Indikator 5 &#x2013; Penguasaan Materi Perkuliahan</div><span class="variable-label-count" id="cnt-y-5">0/3</span></div>
+        <div class="ind-mini-progress"><div class="ind-mini-fill fill-d" id="bar-y-5"></div></div>
+        <div id="items-y-5" class="theme-d"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 6 – RINGKASAN & SUBMIT -->
+<div class="page" id="page-6">
+  <div class="page-top-nav">
+    <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Bagian D</button>
+    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
+  </div>
+  <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Bagian D</button>
+
+  <!-- Summary sections -->
+  <div class="section-card" style="animation-delay:.05s">
+    <div class="section-header">
+      <div class="section-icon">📋</div>
+      <div>
+        <div class="section-title">Ringkasan Jawaban Anda</div>
+        <div class="section-subtitle">Cek kembali semua jawaban sebelum mengirim. Klik tombol kirim di bawah jika sudah yakin.</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div id="summary-status-box"></div>
+
+      <!-- Bagian B -->
+      <div class="summary-section" style="animation-delay:.1s">
+        <div class="summary-section-head">
+          <div class="summary-section-icon">❤️</div>
+          <div class="summary-section-title">Bagian B – Kualitas Hubungan Romantis (X1)</div>
+          <span class="summary-complete sc-b" id="sc-b">18/18</span>
+        </div>
+        <div class="summary-grid" id="summary-grid-b"></div>
+      </div>
+
+      <!-- Bagian C -->
+      <div class="summary-section" style="animation-delay:.15s">
+        <div class="summary-section-head head-c">
+          <div class="summary-section-icon ic-c">📚</div>
+          <div class="summary-section-title tc">Bagian C – Motivasi Belajar (X2)</div>
+          <span class="summary-complete sc-c" id="sc-c">16/16</span>
+        </div>
+        <div class="summary-grid" id="summary-grid-c"></div>
+      </div>
+
+      <!-- Bagian D -->
+      <div class="summary-section" style="animation-delay:.2s">
+        <div class="summary-section-head head-d">
+          <div class="summary-section-icon ic-d">🎓</div>
+          <div class="summary-section-title td">Bagian D – Kinerja Akademik (Y)</div>
+          <span class="summary-complete sc-d" id="sc-d">15/15</span>
+        </div>
+        <div class="summary-grid" id="summary-grid-d"></div>
+      </div>
     </div>
   </div>
 
-  <div class="section-card">
+  <!-- Submit card -->
+  <div class="section-card" style="animation-delay:.25s">
     <div class="submit-area" id="submit-area">
-      <div class="back-btn-wrap">
-        <button type="button" class="btn-back" onclick="changePage(-1)">&#x2190; Kembali ke Bagian Sebelumnya</button>
-      </div>
       <p style="font-size:14px;color:var(--gray-500);margin-bottom:18px;line-height:1.6;">Pastikan semua pernyataan telah diisi sebelum mengirimkan kuesioner.<br>Terima kasih atas partisipasi dan kejujuran Anda!</p>
       <button type="submit" class="btn-submit"><span>&#x2665;</span> Kirim Kuesioner</button>
       <div class="submit-note">Data Anda dijaga kerahasiaannya dan hanya digunakan untuk kepentingan penelitian.</div>
     </div>
-    <div class="thankyou" id="thankyou">
-      <div class="icon">&#x1F339;</div>
-      <h2>Terima Kasih!</h2>
-      <p>Respons Anda telah berhasil dikirim. Partisipasi Anda sangat berarti bagi kelancaran penelitian kami. Semoga sukses selalu dalam studi Anda!</p>
+
+    <!-- Enhanced Thank You -->
+    <div class="thankyou-enhanced" id="thankyou">
+      <div class="thankyou-hero">
+        <div class="thankyou-hero-icon">🌹</div>
+        <h2>Terima Kasih!</h2>
+        <p>Respons Anda telah berhasil dikirim dan tersimpan. Partisipasi Anda sangat berarti bagi kelancaran penelitian kami.</p>
+      </div>
+      <div class="thankyou-body">
+        <div class="thankyou-confirm">
+          <span>✅</span>
+          <span>Data Anda sudah tersimpan dengan aman di sistem kami.</span>
+        </div>
+        <div class="thankyou-info-grid">
+          <div class="tic">
+            <div class="tic-icon">🔒</div>
+            <div class="tic-title">Kerahasiaan Data</div>
+            <div class="tic-text">Identitas dan jawaban Anda tidak akan dipublikasikan dalam bentuk apapun.</div>
+          </div>
+          <div class="tic">
+            <div class="tic-icon">📊</div>
+            <div class="tic-title">Penggunaan Data</div>
+            <div class="tic-text">Data digunakan hanya untuk keperluan penelitian akademik mata kuliah Perilaku Keorganisasian.</div>
+          </div>
+        </div>
+        <div class="thankyou-contact">
+          <h4>Ada pertanyaan tentang penelitian ini?</h4>
+          <p>Hubungi tim peneliti Kelompok 9 Manajemen FEB UPR 2024 melalui koordinator penelitian. Semoga sukses selalu dalam studi Anda! 🎓</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -2028,6 +2531,8 @@ const LABELS = ["STS","TS","N","S","SS"];
 function buildItems(containerId, groupKey) {
   var container = document.getElementById(containerId);
   if (!container) return;
+  if (container.dataset.built === '1') return; // already built, skip
+  if (container.children.length > 0) { container.dataset.built = '1'; return; }
   var data = items[groupKey];
   var sec  = data[0].section;
   data.forEach(function(item) {
@@ -2048,16 +2553,54 @@ function buildItems(containerId, groupKey) {
       '</div>';
     container.appendChild(div);
   });
+  container.dataset.built = '1';
 }
 
 Object.keys(items).forEach(function(key) { buildItems('items-' + key, key); });
 
 var currentPage = 1;
-var totalPages  = 4;
-var pageLabels  = ["Bagian Pengantar","Identitas Responden","Variabel X1 & X2","Variabel Y & Submit"];
+var totalPages  = 6;
+var pageLabels  = ["Pengantar","Identitas Responden","Bagian B – X1 (18 item)","Bagian C – X2 (16 item)","Bagian D – Y (15 item)","Ringkasan & Kirim"];
+
+var isMobileViewport = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+
+function closeSoftKeyboard() {
+  var active = document.activeElement;
+  if (active && active !== document.body && typeof active.blur === 'function') {
+    active.blur();
+  }
+}
+
+function syncStickyNavState() {
+  var sticky = document.getElementById('sticky-nav');
+  var prev = document.getElementById('btn-prev');
+  var next = document.getElementById('btn-next');
+  if (!sticky) return;
+
+  if (currentPage === 1 || currentPage === totalPages) {
+    sticky.style.display = 'none';
+  } else {
+    sticky.style.display = 'flex';
+    sticky.style.bottom = '0';
+  }
+
+  if (prev) prev.style.display = currentPage > 1 ? 'block' : 'none';
+  if (next) next.style.display = currentPage < totalPages ? 'block' : 'none';
+}
+
+window.addEventListener('resize', function () {
+  // visualViewport resize — nav tidak diubah di sini
+});
+
+// Indicator group → page mapping & totals
+var indGroups = {
+  "x1-1":3,"x1-2":3,"x1-3":3,"x1-4":3,"x1-5":3,"x1-6":3,
+  "x2-intr":8,"x2-ekst":8,
+  "y-1":3,"y-2":3,"y-3":3,"y-4":3,"y-5":3
+};
 
 function updateProgress() {
-  var totalItems = Object.values(items).flat().length;
+  var totalItems = Object.values(items).flat().length; // 49
   var answered   = window._responses ? Object.keys(window._responses).length : 0;
   var pct = Math.round(((currentPage-1)/totalPages + (answered/totalItems)/totalPages)*100);
   var finalPct = Math.min(pct,100);
@@ -2065,33 +2608,129 @@ function updateProgress() {
   document.getElementById('prog-pct').textContent  = finalPct+'%';
   document.getElementById('prog-label').textContent = 'Bagian ' + currentPage + ' dari ' + totalPages;
   document.getElementById('nav-section').textContent = pageLabels[currentPage-1];
-  // Show/hide progress emoji
   var emoji = document.getElementById('prog-emoji');
   if (emoji) emoji.style.opacity = finalPct > 3 ? '1' : '0';
+
+  // Floating counter badge – show on pages 3,4,5
+  var badge = document.getElementById('item-counter-badge');
+  var pageCounterMap = {3:['x1-1','x1-2','x1-3','x1-4','x1-5','x1-6'], 4:['x2-intr','x2-ekst'], 5:['y-1','y-2','y-3','y-4','y-5']};
+  var pageThemeMap   = {3:'rose', 4:'purple', 5:'teal'};
+  if (pageCounterMap[currentPage]) {
+    badge.classList.add('visible');
+    // Apply color theme
+    badge.classList.remove('theme-rose','theme-purple','theme-teal');
+    badge.classList.add('theme-' + pageThemeMap[currentPage]);
+    var keys = pageCounterMap[currentPage];
+    var total = keys.reduce(function(s,k){ return s + items[k].length; }, 0);
+    var ans   = keys.reduce(function(s,k){ return s + items[k].filter(function(i){ return window._responses && window._responses[i.code]; }).length; }, 0);
+    var ringPct = total > 0 ? ans/total : 0;
+    var circumference = 81.68;
+    document.getElementById('icb-ring-fill').style.strokeDashoffset = (circumference * (1 - ringPct)).toFixed(2);
+    document.getElementById('icb-pct').textContent = Math.round(ringPct*100)+'%';
+    document.getElementById('icb-count').textContent = ans+'/'+total;
+    var remaining = total - ans;
+    document.getElementById('icb-sub').textContent = remaining > 0 ? remaining+' lagi tersisa' : 'Semua selesai ✓';
+  } else {
+    badge.classList.remove('visible');
+  }
+
+  // Update per-indicator mini progress bars
+  Object.keys(indGroups).forEach(function(key) {
+    var bar  = document.getElementById('bar-'+key);
+    var cnt  = document.getElementById('cnt-'+key);
+    if (!bar || !cnt) return;
+    var total = indGroups[key];
+    var ans   = items[key] ? items[key].filter(function(i){ return window._responses && window._responses[i.code]; }).length : 0;
+    bar.style.width = (ans/total*100)+'%';
+    cnt.textContent = ans+'/'+total;
+  });
 }
 
 function selectLikert(btn, code, val) {
-  document.querySelectorAll('.likert-btn[data-code="' + code + '"]').forEach(function(b){ b.className = 'likert-btn'; });
+  document.querySelectorAll('.likert-btn[data-code="' + code + '"]').forEach(function(b){ b.classList.remove('sel-1','sel-2','sel-3','sel-4','sel-5'); b.classList.add('likert-btn'); });
   btn.classList.add('sel-' + val);
   window._responses = window._responses || {};
   window._responses[code] = val;
+
+  // Mark item as answered without shifting layout
+  var item = btn.closest('.likert-item');
+  if (item) {
+    item.classList.remove('ans-b', 'ans-c', 'ans-d');
+    var sec = '';
+    if (code.startsWith('X1')) sec = 'b';
+    else if (code.startsWith('X2')) sec = 'c';
+    else sec = 'd';
+    item.classList.add('is-answered', 'ans-'+sec);
+  }
   updateProgress();
 }
 
+function buildSummaryGrid(containerId, keys, valClass) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  var ans = window._responses || {};
+  var allCodes = keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+  var labelMap = {"1":"STS","2":"TS","3":"N","4":"S","5":"SS"};
+  allCodes.forEach(function(code) {
+    var val = ans[code];
+    var div = document.createElement('div');
+    div.className = 'summary-item' + (val ? '' : ' unanswered');
+    div.innerHTML =
+      '<div class="summary-item-code">'+code+'</div>' +
+      '<div class="summary-item-val '+(val ? valClass : 'vm')+'">'+(val ? val : '–')+'</div>' +
+      '<div class="summary-item-label">'+(val ? labelMap[val] : 'belum diisi')+'</div>';
+    container.appendChild(div);
+  });
+}
+
+function buildSummaryPage() {
+  var ans = window._responses || {};
+  var bKeys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6"];
+  var cKeys = ["x2-intr","x2-ekst"];
+  var dKeys = ["y-1","y-2","y-3","y-4","y-5"];
+  buildSummaryGrid('summary-grid-b', bKeys, 'vb');
+  buildSummaryGrid('summary-grid-c', cKeys, 'vc');
+  buildSummaryGrid('summary-grid-d', dKeys, 'vd');
+
+  // Count completeness per section
+  function countSection(keys) {
+    var total = keys.reduce(function(s,k){ return s+items[k].length; },0);
+    var filled = keys.reduce(function(s,k){ return s+items[k].filter(function(i){return !!ans[i.code];}).length; },0);
+    return {total:total, filled:filled};
+  }
+  var b = countSection(bKeys), c = countSection(cKeys), d = countSection(dKeys);
+  var totalAll = b.total+c.total+d.total;
+  var filledAll = b.filled+c.filled+d.filled;
+
+  document.getElementById('sc-b').textContent = b.filled+'/'+b.total;
+  document.getElementById('sc-b').className = 'summary-complete ' + (b.filled===b.total ? 'sc-b' : 'sc-incomplete');
+  document.getElementById('sc-c').textContent = c.filled+'/'+c.total;
+  document.getElementById('sc-c').className = 'summary-complete ' + (c.filled===c.total ? 'sc-c' : 'sc-incomplete');
+  document.getElementById('sc-d').textContent = d.filled+'/'+d.total;
+  document.getElementById('sc-d').className = 'summary-complete ' + (d.filled===d.total ? 'sc-d' : 'sc-incomplete');
+
+  var statusBox = document.getElementById('summary-status-box');
+  var missing = totalAll - filledAll;
+  if (missing > 0) {
+    statusBox.innerHTML = '<div class="summary-alert"><span>⚠️</span><span>Masih ada <strong>'+missing+' pernyataan</strong> yang belum diisi (ditandai dengan "–"). Kembali ke halaman sebelumnya untuk melengkapinya sebelum mengirim.</span></div>';
+  } else {
+    statusBox.innerHTML = '<div class="summary-all-good"><span>✅</span><span>Semua <strong>49 pernyataan</strong> sudah diisi. Anda siap mengirim kuesioner!</span></div>';
+  }
+}
+
 function changePage(dir) {
+  closeSoftKeyboard();
   if (dir > 0) {
     if (currentPage === 1 && !document.getElementById('consent').checked) {
       showToast('Persetujuan Diperlukan', 'Mohon centang persetujuan keikutsertaan terlebih dahulu.', 'rose');
       var cb = document.getElementById('consent');
-      if (cb) {
-        cb.classList.remove('missing-field'); void cb.offsetWidth; cb.classList.add('missing-field');
-        cb.scrollIntoView({ behavior:'smooth', block:'center' });
-        setTimeout(function(){ cb.classList.remove('missing-field'); }, 2000);
-      }
+      if (cb) { cb.classList.remove('missing-field'); void cb.offsetWidth; cb.classList.add('missing-field'); cb.scrollIntoView({ behavior:'smooth', block:'center' }); setTimeout(function(){ cb.classList.remove('missing-field'); }, 2000); }
       return;
     }
     if (currentPage === 2) {
       var nama   = document.getElementById('nama').value.trim();
+      var nim    = document.getElementById('nim').value.trim();
       var jenkel = document.querySelector('input[name="jenkel"]:checked');
       var usia   = document.getElementById('usia').value;
       var prodi  = document.getElementById('prodi').value;
@@ -2099,22 +2738,53 @@ function changePage(dir) {
       var ipk    = document.getElementById('ipk').value;
       var status = document.querySelector('input[name="status"]:checked');
       var durasi = document.querySelector('input[name="durasi"]:checked');
-      if (!nama||!jenkel||!usia||!prodi||!sem||!ipk||!status||!durasi) {
+      if (!nama||!nim||!jenkel||!usia||!prodi||!sem||!ipk||!status||!durasi) {
         showToast('Data Belum Lengkap', 'Mohon lengkapi semua data diri sebelum melanjutkan.', 'rose');
-        scrollToFirstMissingField();
+        scrollToFirstMissingField(); return;
+      }
+      // Cek apakah NIM sudah divalidasi
+      if (window._nimValidated !== nim) {
+        // NIM belum dicek atau sudah diganti — jalankan pengecekan
+        checkNimAndProceed();
         return;
       }
+      if (window._nimExists) {
+        // NIM sudah terdaftar
+        var nimEl2 = document.getElementById('nim');
+        if (nimEl2) nimEl2.classList.add('nim-error');
+        showToast('NIM Sudah Terdaftar', 'NIM ' + nim + ' sudah pernah mengisi kuesioner ini.', 'red');
+        return;
+      }
+      // NIM sudah valid & belum terdaftar — langsung lanjut tanpa cek ulang
     }
     if (currentPage === 3) {
-      var page3Keys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6","x2-intr","x2-ekst"];
+      var page3Keys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6"];
       var allCodes  = page3Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
       var ans       = window._responses || {};
       var missing   = allCodes.filter(function(c){ return !ans[c]; });
       if (missing.length > 0) {
-        var theme3 = pageTheme(currentPage, missing[0]);
-        showToast('Pernyataan Belum Lengkap', 'Masih ada ' + missing.length + ' pernyataan yang belum diisi. Kode: ' + missing.slice(0,3).join(', ') + (missing.length>3?' ...':''), theme3);
-        scrollToFirstMissingLikert(missing, theme3);
-        return;
+        showToast('Bagian B Belum Lengkap', 'Masih ada ' + missing.length + ' pernyataan yang belum diisi. Kode: ' + missing.slice(0,3).join(', ') + (missing.length>3?' ...':''), 'rose');
+        scrollToFirstMissingLikert(missing, 'rose'); return;
+      }
+    }
+    if (currentPage === 4) {
+      var page4Keys = ["x2-intr","x2-ekst"];
+      var allCodes4 = page4Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+      var ans4      = window._responses || {};
+      var missing4  = allCodes4.filter(function(c){ return !ans4[c]; });
+      if (missing4.length > 0) {
+        showToast('Bagian C Belum Lengkap', 'Masih ada ' + missing4.length + ' pernyataan yang belum diisi. Kode: ' + missing4.slice(0,3).join(', ') + (missing4.length>3?' ...':''), 'purple');
+        scrollToFirstMissingLikert(missing4, 'purple'); return;
+      }
+    }
+    if (currentPage === 5) {
+      var page5Keys = ["y-1","y-2","y-3","y-4","y-5"];
+      var allCodes5 = page5Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+      var ans5      = window._responses || {};
+      var missing5  = allCodes5.filter(function(c){ return !ans5[c]; });
+      if (missing5.length > 0) {
+        showToast('Bagian D Belum Lengkap', 'Masih ada ' + missing5.length + ' pernyataan yang belum diisi. Kode: ' + missing5.slice(0,3).join(', ') + (missing5.length>3?' ...':''), 'teal');
+        scrollToFirstMissingLikert(missing5, 'teal'); return;
       }
     }
   }
@@ -2122,15 +2792,16 @@ function changePage(dir) {
   currentPage = Math.max(1, Math.min(totalPages, currentPage + dir));
   document.querySelectorAll('.page')[currentPage-1].classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
-  document.getElementById('btn-prev').style.display = currentPage > 1 ? 'block' : 'none';
-  document.getElementById('btn-next').style.display = currentPage < totalPages ? 'block' : 'none';
-  document.getElementById('sticky-nav').style.display = (currentPage === totalPages || currentPage === 1) ? 'none' : 'flex';
-  // Toggle header/progress visibility based on page
+  syncStickyNavState();
+  setTimeout(syncStickyNavState, 60);
+  setTimeout(syncStickyNavState, 180);
   if (currentPage === 1) {
     document.body.classList.add('on-page-1');
   } else {
     document.body.classList.remove('on-page-1');
   }
+  // Build summary when reaching page 6
+  if (currentPage === 6) { buildSummaryPage(); }
   updateProgress();
 }
 
@@ -2138,13 +2809,13 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxk3KFEyuM9Ca
 
 document.getElementById('mainForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  var page4Keys = ["y-1","y-2","y-3","y-4","y-5"];
-  var allCodesY = page4Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
-  var ans       = window._responses || {};
-  var missing   = allCodesY.filter(function(c){ return !ans[c]; });
+  var allKeys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6","x2-intr","x2-ekst","y-1","y-2","y-3","y-4","y-5"];
+  var allCodes = allKeys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+  var ans      = window._responses || {};
+  var missing  = allCodes.filter(function(c){ return !ans[c]; });
   if (missing.length > 0) {
-    showToast('Bagian D Belum Lengkap', 'Masih ada ' + missing.length + ' pernyataan yang belum diisi. Kode: ' + missing.slice(0,3).join(', ') + (missing.length>3?' ...':''), 'teal');
-    scrollToFirstMissingLikert(missing, 'teal');
+    showToast('Kuesioner Belum Lengkap', 'Masih ada ' + missing.length + ' pernyataan yang belum diisi.', 'red');
+    buildSummaryPage();
     return;
   }
   var jk = document.querySelector('input[name="jenkel"]:checked');
@@ -2185,6 +2856,17 @@ document.getElementById('mainForm').addEventListener('submit', async function(e)
   }
 });
 
+// Close the keyboard before the sticky buttons are activated on mobile.
+['btn-prev', 'btn-next'].forEach(function(id) {
+  var btn = document.getElementById(id);
+  if (!btn) return;
+  ['touchstart', 'pointerdown', 'mousedown'].forEach(function(evt) {
+    btn.addEventListener(evt, function () {
+      closeSoftKeyboard();
+    }, { passive: true });
+  });
+});
+
 
 // ── MODAL FUNCTIONS ────────────────────────────────────────
 function openModal(id, event) {
@@ -2223,6 +2905,11 @@ var toastTimers = {};
 
 function showToast(title, msg, theme) {
   var wrap = document.getElementById('toast-wrap');
+
+  // Dismiss semua toast yang sedang tampil sebelum munculkan yang baru
+  var existing = wrap.querySelectorAll('.toast:not(.hiding)');
+  existing.forEach(function(t) { dismissToast(t.id); });
+
   var id   = 'toast-' + Date.now();
   var themeClass = 'toast-' + (theme || 'rose');
   var emojis = { rose:'🌹', purple:'💜', teal:'🎓', red:'❌' };
@@ -2348,9 +3035,121 @@ function scrollToFirstMissingField() {
   }
 }
 
+
+// ── NIM DUPLICATE CHECK ──────────────────────
+function checkNimAndProceed() {
+  var nim      = document.getElementById('nim').value.trim();
+  var nimEl    = document.getElementById('nim');
+  var statusEl = document.getElementById('nim-status');
+  var btnNext  = document.getElementById('btn-next');
+
+  statusEl.style.display = 'flex';
+  statusEl.innerHTML = '<div class="nim-checking"><div class="nim-spinner"></div> Memeriksa NIM...</div>';
+  nimEl.classList.remove('nim-error','nim-valid');
+  if (btnNext) btnNext.disabled = true;
+
+  fetch(GOOGLE_SCRIPT_URL + '?action=checkNim&nim=' + encodeURIComponent(nim))
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (btnNext) btnNext.disabled = false;
+      // Simpan hasil pengecekan — tidak perlu cek ulang selama NIM tidak berubah
+      window._nimValidated = nim;
+      window._nimExists    = data.exists;
+
+      if (data.exists) {
+        nimEl.classList.add('nim-error');
+        statusEl.innerHTML = '<div class="nim-taken">&#x274C; NIM ini sudah terdaftar. Setiap mahasiswa hanya dapat mengisi kuesioner satu kali.</div>';
+        showToast('NIM Sudah Terdaftar', 'NIM ' + nim + ' sudah pernah mengisi kuesioner ini.', 'red');
+      } else {
+        nimEl.classList.add('nim-valid');
+        statusEl.innerHTML = '<div class="nim-ok">&#x2705; NIM tersedia, melanjutkan...</div>';
+        setTimeout(function() {
+          statusEl.style.display = 'none';
+          nimEl.classList.remove('nim-valid');
+          var pages = document.querySelectorAll('.page');
+          pages[currentPage-1].classList.remove('active');
+          currentPage = currentPage + 1;
+          pages[currentPage-1].classList.add('active');
+          window.scrollTo({top:0, behavior:'smooth'});
+          syncStickyNavState();
+          updateProgress();
+        }, 600);
+      }
+    })
+    .catch(function() {
+      // Gagal fetch — tetap lanjutkan (fail open)
+      if (btnNext) btnNext.disabled = false;
+      window._nimValidated = nim;
+      window._nimExists    = false;
+      statusEl.style.display = 'none';
+      var pages = document.querySelectorAll('.page');
+      pages[currentPage-1].classList.remove('active');
+      currentPage = currentPage + 1;
+      pages[currentPage-1].classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+      syncStickyNavState();
+      updateProgress();
+    });
+}
+
+// NIM realtime blur check
+document.addEventListener('DOMContentLoaded', function() {
+  var nimEl = document.getElementById('nim');
+  if (!nimEl) return;
+  // Reset cache saat user mengedit NIM
+  nimEl.addEventListener('focus', function() {
+    // nav tidak diubah saat focus
+  });
+
+  nimEl.addEventListener('input', function() {
+    window._nimValidated = null;
+    window._nimExists    = false;
+    nimEl.classList.remove('nim-error','nim-valid');
+    var statusEl = document.getElementById('nim-status');
+    if (statusEl) statusEl.style.display = 'none';
+  });
+
+  nimEl.addEventListener('blur', function() {
+    var nim = nimEl.value.trim();
+    if (!nim || nim.length < 5) return;
+    // Sudah dicek dengan NIM yang sama — skip
+    if (window._nimValidated === nim) return;
+    var statusEl = document.getElementById('nim-status');
+    statusEl.style.display = 'flex';
+    statusEl.innerHTML = '<div class="nim-checking"><div class="nim-spinner"></div> Memeriksa NIM...</div>';
+    nimEl.classList.remove('nim-error','nim-valid');
+    fetch(GOOGLE_SCRIPT_URL + '?action=checkNim&nim=' + encodeURIComponent(nim))
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        window._nimValidated = nim;
+        window._nimExists    = data.exists;
+        if (data.exists) {
+          nimEl.classList.add('nim-error');
+          statusEl.innerHTML = '<div class="nim-taken">&#x274C; NIM ini sudah terdaftar.</div>';
+        } else {
+          nimEl.classList.add('nim-valid');
+          statusEl.innerHTML = '<div class="nim-ok">&#x2705; NIM belum terdaftar.</div>';
+          setTimeout(function(){ statusEl.style.display='none'; nimEl.classList.remove('nim-valid'); }, 2500);
+        }
+      })
+      .catch(function(){ statusEl.style.display='none'; });
+  });
+});
+
 updateProgress();
 </script>
 <script>
+// ── SEMBUNYIKAN NAV SAAT KEYBOARD MUNCUL ─────────────────────
+// Flag window._navHiddenByKeyboard direspek oleh syncStickyNavState
+// sehingga TIDAK ADA kode lain yang bisa override hide ini.
+(function () {
+  // Nav dikunci di bottom: 0 dan tidak pernah bergerak.
+  // User harus tutup keyboard dulu sebelum bisa klik tombol nav.
+  window._navHiddenByKeyboard = false;
+})();
+</script>
+<script>
+
 // Init: page 1 = hero, hide header & sticky nav
 document.body.classList.add('on-page-1');
 document.getElementById('sticky-nav').style.display = 'none';
@@ -2588,5 +3387,120 @@ document.body.style.height = '100%';
         </div>
       </div>
 
+
+
+<script>
+// Mobile-only pink dropdowns for identity fields on page 2
+(function () {
+  var mq = window.matchMedia('(max-width: 768px), (pointer: coarse)');
+
+  function closeAll(except) {
+    document.querySelectorAll('.mobile-select-shell.open').forEach(function (shell) {
+      if (shell !== except) shell.classList.remove('open');
+    });
+  }
+
+  function enhanceSelect(select) {
+    if (!select || select.dataset.pinkEnhanced === '1') return;
+    var parent = select.parentNode;
+    if (!parent) return;
+
+    var shell = document.createElement('div');
+    shell.className = 'mobile-select-shell';
+
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'mobile-select-btn';
+
+    var value = document.createElement('span');
+    value.className = 'mobile-select-value';
+
+    var caret = document.createElement('span');
+    caret.className = 'mobile-select-caret';
+    caret.textContent = '▾';
+
+    var panel = document.createElement('div');
+    panel.className = 'mobile-select-panel';
+
+    var placeholderText = '';
+    Array.from(select.options).forEach(function (opt, idx) {
+      if (idx === 0) {
+        placeholderText = opt.textContent.trim();
+        return;
+      }
+      var item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'mobile-select-option';
+      item.textContent = opt.textContent.trim();
+      item.dataset.value = opt.value || opt.textContent.trim();
+      if (select.value && select.value === item.dataset.value) item.classList.add('selected');
+      panel.appendChild(item);
+    });
+
+    function refresh() {
+      var opt = select.options[select.selectedIndex];
+      var hasValue = !!(opt && opt.value);
+      value.textContent = hasValue ? opt.textContent.trim() : placeholderText;
+      value.classList.toggle('placeholder', !hasValue);
+      panel.querySelectorAll('.mobile-select-option').forEach(function (b) {
+        b.classList.toggle('selected', b.dataset.value === select.value);
+      });
+    }
+
+    button.appendChild(value);
+    button.appendChild(caret);
+    shell.appendChild(button);
+    shell.appendChild(panel);
+    parent.insertBefore(shell, select);
+    shell.appendChild(select);
+    select.classList.add('native-mobile-select');
+    select.dataset.pinkEnhanced = '1';
+
+    refresh();
+
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAll(shell);
+      shell.classList.toggle('open');
+    });
+
+    panel.addEventListener('click', function (e) {
+      var btn = e.target.closest('.mobile-select-option');
+      if (!btn) return;
+      select.value = btn.dataset.value;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      refresh();
+      shell.classList.remove('open');
+    });
+
+    select.addEventListener('change', refresh);
+  }
+
+  function initPinkDropdowns() {
+    var targets = [
+      document.getElementById('usia'),
+      document.getElementById('prodi'),
+      document.getElementById('semester'),
+      document.getElementById('ipk')
+    ].filter(Boolean);
+
+    if (mq.matches) {
+      targets.forEach(function (select) {
+        enhanceSelect(select);
+      });
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.mobile-select-shell')) closeAll(null);
+  });
+
+  if (mq.addEventListener) mq.addEventListener('change', initPinkDropdowns);
+  else if (mq.addListener) mq.addListener(initPinkDropdowns);
+
+  initPinkDropdowns();
+})();
+</script>
 </body>
 </html>
