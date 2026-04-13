@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kuesioner Penelitian – Kelompok 9</title>
+<title>Kuesioner Penelitian – FEB UPR 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1553,12 +1553,6 @@
     font-size: 13px; font-weight: 600; color: var(--rose);
     transition: all 0.3s ease;
   }
-  @media (max-width: 768px) and (orientation: portrait) {
-    .item-counter-badge {
-      bottom: calc(72px + env(safe-area-inset-bottom, 0px));
-      right: 16px;
-    }
-  }
   .item-counter-badge.visible { display: flex; }
   /* Theme: rose (page 3, default) */
   .item-counter-badge.theme-rose { border-color: #f5c2cc; box-shadow: 0 4px 20px rgba(181,41,74,0.18); color: var(--rose); }
@@ -2054,7 +2048,7 @@
         <button class="hero-pill-btn" onclick="openModal('modal-penelitian', event)"><span class="hero-pill-btn-icon">📖</span> Tentang Penelitian</button>
         <button class="hero-pill-btn" onclick="openModal('modal-anggota', event)"><span class="hero-pill-btn-icon">👥</span> Tim Peneliti</button>
         <button class="hero-pill-btn" onclick="openModal('modal-panduan', event)"><span class="hero-pill-btn-icon">📋</span> Panduan &amp; Syarat</button>
-        <a class="hero-pill-btn" href="/cdn-cgi/l/email-protection#d79ca2bea4beb8b9b2a5e6e0e3e297b0bab6bebbf9b4b8ba" onclick="event.stopPropagation()"><span class="hero-pill-btn-icon">✉️</span> Hubungi Kami</a>
+        <a class="hero-pill-btn" href="mailto:Kuisioner1745@gmail.com" onclick="event.stopPropagation()"><span class="hero-pill-btn-icon">✉️</span> Hubungi Kami</a>
       </div>
 
       <!-- CTA Button -->
@@ -2131,7 +2125,7 @@
 
       <div class="form-group">
         <label class="form-label" for="nama">1. Nama <span class="req">*</span></label>
-        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama Anda (boleh nama panggilan)" required>
       </div>
 
       <div class="form-group">
@@ -2448,7 +2442,7 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ALREADY SUBMITTED CHECK
 if (localStorage.getItem('kuesioner_feb_upr_2026_submitted') === 'true') {
   document.body.innerHTML = '<div class="already-done"><div class="icon">&#x1F339;</div><h2>Anda Sudah Mengisi!</h2><p>Kuesioner ini hanya dapat diisi satu kali per perangkat. Data Anda sudah tercatat. Terima kasih atas partisipasi Anda!</p></div>';
@@ -3502,4 +3496,11 @@ document.body.style.height = '100%';
     if (!e.target.closest('.mobile-select-shell')) closeAll(null);
   });
 
-  if (mq.addEventListener) mq.addEventLi
+  if (mq.addEventListener) mq.addEventListener('change', initPinkDropdowns);
+  else if (mq.addListener) mq.addListener(initPinkDropdowns);
+
+  initPinkDropdowns();
+})();
+</script>
+</body>
+</html>
