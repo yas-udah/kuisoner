@@ -1544,7 +1544,7 @@
 
   /* ── FLOATING ITEM COUNTER BADGE ── */
   .item-counter-badge {
-    position: fixed; bottom: 80px; right: 20px; z-index: 200;
+    position: fixed; bottom: 76px; right: 20px; z-index: 200;
     background: white; border-radius: 100px;
     padding: 8px 14px 8px 10px;
     box-shadow: 0 4px 20px rgba(181,41,74,0.18);
@@ -1552,6 +1552,12 @@
     display: none; align-items: center; gap: 8px;
     font-size: 13px; font-weight: 600; color: var(--rose);
     transition: all 0.3s ease;
+  }
+  @media (max-width: 768px) and (orientation: portrait) {
+    .item-counter-badge {
+      bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+      right: 16px;
+    }
   }
   .item-counter-badge.visible { display: flex; }
   /* Theme: rose (page 3, default) */
@@ -1626,29 +1632,41 @@
 
   /* Top nav row khusus mobile: Kembali + Lanjut — semua halaman */
   .page-top-nav {
-    display: none;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
     gap: 10px;
   }
   .page-top-nav .page-back-btn { margin-bottom: 0; }
-  .page-top-next {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--rose); color: white;
-    border: 1.5px solid var(--rose);
-    padding: 8px 18px; border-radius: 100px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 13px; font-weight: 600; cursor: pointer;
-    transition: all 0.2s;
+  .page-top-next { display: none; }
+
+  /* Desktop/mobile summary button cleanup: keep only one visible button per page */
+  .page-back-desktop,
+  #bts-3d, #bts-4d, #bts-5d {
+    display: none !important;
   }
   .page-top-next:hover { background: var(--rose-mid); border-color: var(--rose-mid); }
   @media (max-width: 768px) {
-    .page-top-nav { display: flex; }
     .page-back-desktop { display: none !important; }
   }
 
   /* ── SUMMARY PAGE ── */
+  /* Tombol kembali ke ringkasan — hanya muncul saat masuk via jumpToItem */
+  .btn-back-to-summary {
+    display: none;
+    align-items: center; gap: 7px;
+    background: var(--rose); color: white;
+    border: none;
+    padding: 9px 20px; border-radius: 100px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(181,41,74,0.25);
+    white-space: nowrap;
+  }
+  .btn-back-to-summary:hover { background: #7a0a28; box-shadow: 0 6px 20px rgba(181,41,74,0.35); }
+  .btn-back-to-summary.visible { display: inline-flex; }
   .summary-section {
     background: white; border-radius: var(--radius);
     box-shadow: var(--shadow); margin-bottom: 20px;
@@ -1677,30 +1695,68 @@
   .sc-c { background: #e8dcf7; color: #4a1a80; }
   .sc-d { background: #c8f0eb; color: #0a4a42; }
   .sc-incomplete { background: #fdecea; color: #c0392b; }
+  /* ── REVIEW PAGE ── */
   .summary-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 8px; padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 20px 16px;
   }
   .summary-item {
-    background: #fdf8f9; border: 1.5px solid var(--gray-100);
-    border-radius: 8px; padding: 10px 12px; text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-bottom: 1px solid #f5e8eb;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 0;
+    text-align: left;
+    background: white;
   }
-  .summary-item.unanswered { border-color: #f5c2cc; background: #fff0f3; }
-  .summary-item-code { font-size: 10px; font-weight: 700; letter-spacing: 0.5px; color: var(--gray-500); margin-bottom: 4px; }
-  .summary-item-val { font-size: 17px; font-weight: 800; line-height: 1; }
-  .summary-item-val.vb { color: var(--rose); }
-  .summary-item-val.vc { color: #6b35a8; }
-  .summary-item-val.vd { color: #1a7a6e; }
-  .summary-item-val.vm { color: #c0392b; }
-  .summary-item-label { font-size: 9px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
-  .summary-val-labels { display: flex; gap: 4px; justify-content: center; margin-top: 3px; }
-  .svl { font-size: 8px; color: var(--gray-500); background: var(--gray-100); border-radius: 3px; padding: 1px 4px; }
-  .summary-alert {
-    background: #fff3f5; border: 1.5px solid #f0a8b8;
-    border-radius: var(--radius-sm); padding: 12px 16px;
-    font-size: 13px; color: #7a0a28; line-height: 1.6;
-    display: flex; gap: 10px; align-items: flex-start; margin-bottom: 16px;
+  .summary-item:first-child { border-radius: 8px 8px 0 0; }
+  .summary-item:last-child  { border-bottom: none; border-radius: 0 0 8px 8px; }
+  .summary-item:hover { background: #fff5f7; }
+  .summary-item.unanswered {
+    background: #fff0f3;
   }
+  .summary-item.unanswered:hover { background: #fce8ed; }
+  .summary-item-badge {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 800;
+    border: 2px solid transparent;
+  }
+  .summary-item-badge.unanswered-badge {
+    background: #fce8ed; color: #b5294a; border-color: #f5c2cc;
+    font-size: 16px;
+  }
+  /* answered badge colors per section */
+  .summary-item-badge.vb { background: #fce8ed; color: #b5294a; border-color: #f0a8b8; }
+  .summary-item-badge.vc { background: #ede0ff; color: #6b35a8; border-color: #c4a4ef; }
+  .summary-item-badge.vd { background: #d8f5f2; color: #1a7a6e; border-color: #80d4cc; }
+  .summary-item-meta { flex: 1; min-width: 0; }
+  .summary-item-code {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; margin-bottom: 3px;
+  }
+  .summary-item-code.cb { color: #b5294a; }
+  .summary-item-code.cc { color: #6b35a8; }
+  .summary-item-code.cd { color: #1a7a6e; }
+  .summary-item-code.cm { color: #9a878e; }
+  .summary-item-text {
+    font-size: 12.5px; color: #4a3840;
+    line-height: 1.45;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .summary-item-text.unanswered-text { color: #b5294a; font-style: italic; }
+  .summary-item-arrow {
+    flex-shrink: 0; font-size: 13px; color: #d8cdd1;
+    margin-left: 4px;
+  }
+  .summary-item:hover .summary-item-arrow { color: #b5294a; }
   .summary-all-good {
     background: #edfaf7; border: 1.5px solid #c8f0eb;
     border-radius: var(--radius-sm); padding: 12px 16px;
@@ -1771,40 +1827,44 @@
   }
 
 
-  /* ── NIM STATUS ── */
-  .nim-checking {
-    display: flex; align-items: center; gap: 8px;
-    color: #c96a86; font-size: 13px;
-  }
-  .nim-ok {
-    display: flex; align-items: center; gap: 8px;
-    color: #1a7a50; font-weight: 600; font-size: 13px;
-  }
-  .nim-taken {
-    display: flex; align-items: center; gap: 8px;
-    color: #c0392b; font-weight: 600; font-size: 13px;
-  }
-  .nim-spinner {
-    width: 14px; height: 14px;
-    border: 2px solid #d8cdd1;
-    border-top-color: #d94f6e;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    flex-shrink: 0;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  
 
-  #nim.form-control.nim-error {
-    border-color: #c0392b !important;
-    box-shadow: 0 0 0 3px rgba(192,57,43,0.12) !important;
+  /* ── CUSTOM PINK DROPDOWN (pdd) — menggantikan native select ── */
+  .pdd-shell { position: relative; width: 100%; margin-bottom: 0; }
+  .pdd-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; padding: 11px 16px;
+    border: 1.5px solid #d8cdd1; border-radius: 8px;
+    background: #fff; cursor: pointer; text-align: left;
+    font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #2d1a22;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
-  #nim.form-control.nim-valid {
-    border-color: #1a7a50 !important;
-    box-shadow: 0 0 0 3px rgba(26,122,80,0.12) !important;
+  .pdd-shell.open .pdd-btn {
+    border-color: #d94f6e;
+    box-shadow: 0 0 0 3px rgba(181,41,74,0.10);
   }
-
-  /* Mobile pink dropdowns for identity fields */
-  .mobile-select-shell { position: relative; width: 100%; }
+  .pdd-val { flex: 1; }
+  .pdd-val.placeholder { color: #9a878e; }
+  .pdd-caret { font-size: 11px; color: #9a878e; transition: transform 0.18s; flex-shrink: 0; }
+  .pdd-shell.open .pdd-caret { transform: rotate(180deg); }
+  .pdd-panel {
+    display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+    z-index: 99998; background: #fff;
+    border: 1.5px solid #f5c2cc; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(181,41,74,0.13);
+    max-height: 260px; overflow-y: auto;
+  }
+  .pdd-shell.open .pdd-panel { display: block; }
+  .pdd-opt {
+    display: block; width: 100%; padding: 13px 16px;
+    border: none; border-bottom: 1px solid rgba(181,41,74,0.08);
+    background: transparent; text-align: left;
+    font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: #4a3840;
+    cursor: pointer;
+  }
+  .pdd-opt:last-child { border-bottom: none; }
+  .pdd-opt:hover, .pdd-opt:active { background: #fff5f7; color: #7a0a28; }
+  .pdd-opt.selected { background: #fce8ed; color: #b5294a; font-weight: 700; }
   .mobile-select-shell .native-mobile-select {
     position: absolute;
     inset: 0;
@@ -1891,6 +1951,23 @@
     cursor: default;
   }
 
+
+  /* ── ANON NOTICE ── */
+  .anon-notice {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #fff0f3, #fce8ed);
+    border: 1.5px solid #f5c2cc;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    font-size: 13.5px;
+    color: #4a3840;
+    line-height: 1.65;
+  }
+  .anon-notice-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .anon-notice-text strong { color: #b5294a; }
 </style>
 </head>
 <body>
@@ -2048,7 +2125,7 @@
         <button class="hero-pill-btn" onclick="openModal('modal-penelitian', event)"><span class="hero-pill-btn-icon">📖</span> Tentang Penelitian</button>
         <button class="hero-pill-btn" onclick="openModal('modal-anggota', event)"><span class="hero-pill-btn-icon">👥</span> Tim Peneliti</button>
         <button class="hero-pill-btn" onclick="openModal('modal-panduan', event)"><span class="hero-pill-btn-icon">📋</span> Panduan &amp; Syarat</button>
-        <a class="hero-pill-btn" href="mailto:Kuisioner1745@gmail.com" onclick="event.stopPropagation()"><span class="hero-pill-btn-icon">✉️</span> Hubungi Kami</a>
+        <a class="hero-pill-btn" href="/cdn-cgi/l/email-protection#a2e9d7cbd1cbcdccc7d093959697e2c5cfc3cbce8cc1cdcf" onclick="event.stopPropagation()"><span class="hero-pill-btn-icon">✉️</span> Hubungi Kami</a>
       </div>
 
       <!-- CTA Button -->
@@ -2091,7 +2168,7 @@
         <div class="hero-consent-icon">🔒</div>
         <div class="hero-consent-text">
           <h3>Pernyataan Kerahasiaan &amp; Persetujuan Partisipasi</h3>
-          <p>Seluruh data yang Saudara/i berikan dijaga <strong>kerahasiaannya</strong> dan hanya digunakan untuk kepentingan penelitian. Partisipasi bersifat <strong>sukarela</strong> tanpa paksaan dari pihak manapun. Identitas pribadi tidak akan dipublikasikan dalam bentuk apapun.</p>
+          <p>Kuesioner ini bersifat <strong>sepenuhnya anonim</strong> — kami tidak mengumpulkan nama, NIM, atau identitas pribadi apapun. Seluruh data hanya berupa pilihan jawaban dan digunakan semata-mata untuk kepentingan penelitian. Partisipasi bersifat <strong>sukarela</strong> tanpa paksaan dari pihak manapun.</p>
           <div class="hero-consent-check">
             <input type="checkbox" id="consent" name="consent" required>
             <label for="consent">Saya telah membaca informasi di atas dan <strong>bersedia berpartisipasi</strong> dalam penelitian ini secara sukarela.</label>
@@ -2109,7 +2186,6 @@
   <!-- Top nav khusus mobile: Kembali + Lanjut -->
   <div class="page-top-nav">
     <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Pengantar</button>
-    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
   </div>
   <!-- Tombol kembali untuk desktop -->
   <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Pengantar</button>
@@ -2123,19 +2199,17 @@
     </div>
     <div class="section-body">
 
-      <div class="form-group">
-        <label class="form-label" for="nama">1. Nama <span class="req">*</span></label>
-        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama Anda (boleh nama panggilan)" required>
+      <!-- Anon notice -->
+      <div class="anon-notice">
+        <div class="anon-notice-icon">🔒</div>
+        <div class="anon-notice-text">
+          <strong>Pengisian ini bersifat anonim.</strong><br>
+          Kami tidak mengumpulkan nama, NIM, atau identitas pribadi apapun. Data yang Anda isi hanya berupa pilihan jawaban dan digunakan semata-mata untuk kepentingan penelitian. Privasi Anda sepenuhnya terjaga.
+        </div>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="nim">2. NIM <span class="req">*</span></label>
-        <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan NIM Anda" inputmode="numeric" pattern="[0-9]*" required>
-        <div id="nim-status" style="margin-top:8px;font-size:13px;display:none;"></div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">3. Jenis Kelamin <span class="req">*</span></label>
+        <label class="form-label">1. Jenis Kelamin <span class="req">*</span></label>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="jenkel" value="Laki-laki" required> Laki-laki</label>
           <label class="radio-option"><input type="radio" name="jenkel" value="Perempuan"> Perempuan</label>
@@ -2143,50 +2217,76 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="usia">4. Usia <span class="req">*</span></label>
-        <select class="form-control" id="usia" name="usia" required>
-          <option value="" disabled selected>&#x2014; Pilih usia Anda &#x2014;</option>
-          <option>17 &#x2013; 19 tahun</option>
-          <option>20 &#x2013; 22 tahun</option>
-          <option>&#x2265; 23 tahun</option>
-        </select>
+        <label class="form-label" for="usia">2. Usia <span class="req">*</span></label>
+        <input type="hidden" id="usia" name="usia" required>
+        <div class="pdd-shell" id="pdd-usia">
+          <button type="button" class="pdd-btn" onclick="pddToggle('pdd-usia')">
+            <span class="pdd-val placeholder">&#x2014; Pilih usia Anda &#x2014;</span>
+            <span class="pdd-caret">&#x25BE;</span>
+          </button>
+          <div class="pdd-panel">
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-usia','usia','17 – 19 tahun')">17 – 19 tahun</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-usia','usia','20 – 22 tahun')">20 – 22 tahun</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-usia','usia','≥ 23 tahun')">≥ 23 tahun</button>
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="prodi">5. Jurusan <span class="req">*</span></label>
-        <select class="form-control" id="prodi" name="prodi" required>
-          <option value="" disabled selected>&#x2014; Pilih jurusan &#x2014;</option>
-          <option>Manajemen</option>
-          <option>Akuntansi</option>
-          <option>Ekonomi Pembangunan</option>
-        </select>
+        <label class="form-label" for="prodi">3. Jurusan <span class="req">*</span></label>
+        <input type="hidden" id="prodi" name="prodi" required>
+        <div class="pdd-shell" id="pdd-prodi">
+          <button type="button" class="pdd-btn" onclick="pddToggle('pdd-prodi')">
+            <span class="pdd-val placeholder">&#x2014; Pilih jurusan &#x2014;</span>
+            <span class="pdd-caret">&#x25BE;</span>
+          </button>
+          <div class="pdd-panel">
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-prodi','prodi','Manajemen')">Manajemen</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-prodi','prodi','Akuntansi')">Akuntansi</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-prodi','prodi','Ekonomi Pembangunan')">Ekonomi Pembangunan</button>
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="semester">6. Semester <span class="req">*</span></label>
-        <select class="form-control" id="semester" name="semester" required>
-          <option value="" disabled selected>&#x2014; Pilih semester &#x2014;</option>
-          <option>Semester 1</option><option>Semester 2</option><option>Semester 3</option>
-          <option>Semester 4</option><option>Semester 5</option><option>Semester 6</option>
-          <option>Semester 7</option><option>Semester 8</option><option>Semester &#x2265; 9</option>
-        </select>
+        <label class="form-label" for="semester">4. Semester <span class="req">*</span></label>
+        <input type="hidden" id="semester" name="semester" required>
+        <div class="pdd-shell" id="pdd-semester">
+          <button type="button" class="pdd-btn" onclick="pddToggle('pdd-semester')">
+            <span class="pdd-val placeholder">&#x2014; Pilih semester &#x2014;</span>
+            <span class="pdd-caret">&#x25BE;</span>
+          </button>
+          <div class="pdd-panel">
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-semester','semester','Semester 2')">Semester 2</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-semester','semester','Semester 4')">Semester 4</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-semester','semester','Semester 6')">Semester 6</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-semester','semester','Semester 8')">Semester 8</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-semester','semester','Semester &gt;8')">Semester &gt;8</button>
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="ipk">7. IPK pada Semester Terakhir <span class="req">*</span></label>
-        <select class="form-control" id="ipk" name="ipk" required>
-          <option value="" disabled selected>&#x2014; Pilih rentang IPK &#x2014;</option>
-          <option>2,00 &#x2013; 2,49</option>
-          <option>2,50 &#x2013; 2,99</option>
-          <option>3,00 &#x2013; 3,49</option>
-          <option>3,50 &#x2013; 4,00</option>
-        </select>
+        <label class="form-label" for="ipk">5. IPK pada Semester Terakhir <span class="req">*</span></label>
+        <input type="hidden" id="ipk" name="ipk" required>
+        <div class="pdd-shell" id="pdd-ipk">
+          <button type="button" class="pdd-btn" onclick="pddToggle('pdd-ipk')">
+            <span class="pdd-val placeholder">&#x2014; Pilih rentang IPK &#x2014;</span>
+            <span class="pdd-caret">&#x25BE;</span>
+          </button>
+          <div class="pdd-panel">
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-ipk','ipk','2,00 – 2,49')">2,00 – 2,49</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-ipk','ipk','2,50 – 2,99')">2,50 – 2,99</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-ipk','ipk','3,00 – 3,49')">3,00 – 3,49</button>
+            <button type="button" class="pdd-opt" onclick="pddSelect('pdd-ipk','ipk','3,50 – 4,00')">3,50 – 4,00</button>
+          </div>
+        </div>
       </div>
 
       <hr class="section-divider">
 
       <div class="form-group">
-        <label class="form-label">8. Status Hubungan Romantis Saat Ini <span class="req">*</span></label>
+        <label class="form-label">6. Status Hubungan Romantis Saat Ini <span class="req">*</span></label>
         <div class="info-box" style="margin-bottom:12px;font-size:13px;">&#x2139;&#xFE0F; Kuesioner ini diperuntukkan bagi mahasiswa yang sedang atau pernah menjalani hubungan romantis (pacaran) selama studi di FEB UPR.</div>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="status" value="Sedang berpacaran" required> Sedang berpacaran</label>
@@ -2195,7 +2295,7 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label">9. Durasi Hubungan Romantis (terlama / saat ini) <span class="req">*</span></label>
+        <label class="form-label">7. Durasi Hubungan Romantis (terlama / saat ini) <span class="req">*</span></label>
         <div class="radio-group">
           <label class="radio-option"><input type="radio" name="durasi" value="3-6 bulan" required> 3 &#x2013; 6 bulan</label>
           <label class="radio-option"><input type="radio" name="durasi" value="7-12 bulan"> 7 &#x2013; 12 bulan</label>
@@ -2212,9 +2312,10 @@
 <div class="page" id="page-3">
   <div class="page-top-nav">
     <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Identitas</button>
-    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
+    <button type="button" class="btn-back-to-summary" id="bts-3" onclick="goBackToReview()">← Ringkasan</button>
   </div>
   <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Identitas</button>
+  <button type="button" class="btn-back-to-summary" id="bts-3d" onclick="goBackToReview()" style="margin-bottom:16px;"></button>
   <div class="section-card">
     <div class="section-header">
       <div class="section-icon">&#x2764;&#xFE0F;</div>
@@ -2263,9 +2364,10 @@
 <div class="page" id="page-4">
   <div class="page-top-nav">
     <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Bagian B</button>
-    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
+    <button type="button" class="btn-back-to-summary" id="bts-4" onclick="goBackToReview()">← Ringkasan</button>
   </div>
   <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Bagian B</button>
+  <button type="button" class="btn-back-to-summary" id="bts-4d" onclick="goBackToReview()" style="margin-bottom:16px;"></button>
   <div class="section-card">
     <div class="section-header">
       <div class="section-icon">&#x1F4DA;</div>
@@ -2296,9 +2398,10 @@
 <div class="page" id="page-5">
   <div class="page-top-nav">
     <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Bagian C</button>
-    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
+    <button type="button" class="btn-back-to-summary" id="bts-5" onclick="goBackToReview()">← Ringkasan</button>
   </div>
   <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Bagian C</button>
+  <button type="button" class="btn-back-to-summary" id="bts-5d" onclick="goBackToReview()" style="margin-bottom:16px;"></button>
   <div class="section-card">
     <div class="section-header">
       <div class="section-icon">&#x1F393;</div>
@@ -2342,7 +2445,6 @@
 <div class="page" id="page-6">
   <div class="page-top-nav">
     <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Bagian D</button>
-    <button type="button" class="page-top-next" onclick="changePage(1)">Lanjut →</button>
   </div>
   <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Bagian D</button>
 
@@ -2352,7 +2454,7 @@
       <div class="section-icon">📋</div>
       <div>
         <div class="section-title">Ringkasan Jawaban Anda</div>
-        <div class="section-subtitle">Cek kembali semua jawaban sebelum mengirim. Klik tombol kirim di bawah jika sudah yakin.</div>
+        <div class="section-subtitle">Klik salah satu pernyataan untuk mengubah jawaban. Tombol kirim ada di bawah.</div>
       </div>
     </div>
     <div class="section-body">
@@ -2442,10 +2544,54 @@
   </div>
 </div>
 
-<script>
-// ALREADY SUBMITTED CHECK
-if (localStorage.getItem('kuesioner_feb_upr_2026_submitted') === 'true') {
-  document.body.innerHTML = '<div class="already-done"><div class="icon">&#x1F339;</div><h2>Anda Sudah Mengisi!</h2><p>Kuesioner ini hanya dapat diisi satu kali per perangkat. Data Anda sudah tercatat. Terima kasih atas partisipasi Anda!</p></div>';
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── DEVICE FINGERPRINT + ALREADY SUBMITTED CHECK ──────────────────
+function getDeviceFingerprint() {
+  var components = [
+    navigator.userAgent         || '',
+    navigator.language          || '',
+    screen.width + 'x' + screen.height,
+    screen.colorDepth            || '',
+    new Date().getTimezoneOffset(),
+    navigator.hardwareConcurrency || '',
+    navigator.maxTouchPoints     || '',
+    (navigator.deviceMemory      || ''),
+    screen.pixelDepth            || '',
+  ];
+  // Simple hash function
+  var str = components.join('|');
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    var chr = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  return 'fp_' + Math.abs(hash).toString(36);
+}
+
+var _deviceFP = getDeviceFingerprint();
+var _submittedFPs = JSON.parse(localStorage.getItem('kuesioner_feb_upr_2026_fps') || '[]');
+var _submittedFlag = localStorage.getItem('kuesioner_feb_upr_2026_submitted') === 'true';
+
+if (_submittedFlag || _submittedFPs.indexOf(_deviceFP) !== -1) {
+  document.body.innerHTML = '' +
+    '<div style="min-height:100vh;background:linear-gradient(135deg,#fff0f3,#faf8f9);display:flex;align-items:center;justify-content:center;padding:24px;">' +
+      '<div style="background:white;border-radius:20px;box-shadow:0 8px 40px rgba(181,41,74,0.14);max-width:480px;width:100%;overflow:hidden;">' +
+        '<div style="background:linear-gradient(135deg,#7a0a28,#b5294a);padding:32px 28px 24px;text-align:center;">' +
+          '<div style="font-size:52px;margin-bottom:12px;">🌹</div>' +
+          '<h2 style="font-family:Georgia,serif;color:white;font-size:22px;margin:0;">Terima Kasih!</h2>' +
+        '</div>' +
+        '<div style="padding:24px 28px 28px;">' +
+          '<p style="font-size:14px;line-height:1.75;color:#4a3840;margin-bottom:16px;">' +
+            'Sistem kami mendeteksi perangkat ini sudah digunakan untuk mengisi kuesioner.' +
+          '</p>' +
+          '<div style="background:#fff0f3;border:1.5px solid #f5c2cc;border-radius:10px;padding:14px 16px;font-size:13px;color:#7a3040;line-height:1.7;">' +
+            'Jika Anda merasa belum pernah mengisi, mohon gunakan perangkat lain atau hubungi<br>' +
+            '<strong><a href="mailto:kuisioner1745@gmail.com" style="color:#b5294a;">kuisioner1745@gmail.com</a></strong>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
 }
 
 const items = {
@@ -2531,9 +2677,10 @@ const LABELS = ["STS","TS","N","S","SS"];
 function buildItems(containerId, groupKey) {
   var container = document.getElementById(containerId);
   if (!container) return;
-  if (container.dataset.built === '1') return; // already built, skip
+  if (container.dataset.built === '1') return;
   if (container.children.length > 0) { container.dataset.built = '1'; return; }
   var data = items[groupKey];
+  if (!data || !data.length) return; // guard against undefined key
   var sec  = data[0].section;
   data.forEach(function(item) {
     var div = document.createElement('div');
@@ -2600,14 +2747,15 @@ var indGroups = {
 };
 
 function updateProgress() {
-  var totalItems = Object.values(items).flat().length; // 49
+  var totalItems = Object.keys(items).reduce(function(a,k){return a+items[k].length;},0); // 49
   var answered   = window._responses ? Object.keys(window._responses).length : 0;
   var pct = Math.round(((currentPage-1)/totalPages + (answered/totalItems)/totalPages)*100);
   var finalPct = Math.min(pct,100);
   document.getElementById('prog-fill').style.width = finalPct+'%';
   document.getElementById('prog-pct').textContent  = finalPct+'%';
   document.getElementById('prog-label').textContent = 'Bagian ' + currentPage + ' dari ' + totalPages;
-  document.getElementById('nav-section').textContent = pageLabels[currentPage-1];
+  var navSection = document.getElementById('nav-section');
+  if (navSection) navSection.textContent = pageLabels[currentPage-1];
   var emoji = document.getElementById('prog-emoji');
   if (emoji) emoji.style.opacity = finalPct > 3 ? '1' : '0';
 
@@ -2615,23 +2763,29 @@ function updateProgress() {
   var badge = document.getElementById('item-counter-badge');
   var pageCounterMap = {3:['x1-1','x1-2','x1-3','x1-4','x1-5','x1-6'], 4:['x2-intr','x2-ekst'], 5:['y-1','y-2','y-3','y-4','y-5']};
   var pageThemeMap   = {3:'rose', 4:'purple', 5:'teal'};
-  if (pageCounterMap[currentPage]) {
-    badge.classList.add('visible');
-    // Apply color theme
-    badge.classList.remove('theme-rose','theme-purple','theme-teal');
-    badge.classList.add('theme-' + pageThemeMap[currentPage]);
-    var keys = pageCounterMap[currentPage];
-    var total = keys.reduce(function(s,k){ return s + items[k].length; }, 0);
-    var ans   = keys.reduce(function(s,k){ return s + items[k].filter(function(i){ return window._responses && window._responses[i.code]; }).length; }, 0);
-    var ringPct = total > 0 ? ans/total : 0;
-    var circumference = 81.68;
-    document.getElementById('icb-ring-fill').style.strokeDashoffset = (circumference * (1 - ringPct)).toFixed(2);
-    document.getElementById('icb-pct').textContent = Math.round(ringPct*100)+'%';
-    document.getElementById('icb-count').textContent = ans+'/'+total;
-    var remaining = total - ans;
-    document.getElementById('icb-sub').textContent = remaining > 0 ? remaining+' lagi tersisa' : 'Semua selesai ✓';
-  } else {
-    badge.classList.remove('visible');
+  if (badge) {
+    if (pageCounterMap[currentPage]) {
+      badge.classList.add('visible');
+      // Apply color theme
+      badge.classList.remove('theme-rose','theme-purple','theme-teal');
+      badge.classList.add('theme-' + pageThemeMap[currentPage]);
+      var keys = pageCounterMap[currentPage];
+      var total = keys.reduce(function(s,k){ return s + (items[k]?items[k].length:0); }, 0);
+      var ans   = keys.reduce(function(s,k){ return s + (items[k]?items[k].filter(function(i){ return window._responses && window._responses[i.code]; }).length:0); }, 0);
+      var ringPct = total > 0 ? ans/total : 0;
+      var circumference = 81.68;
+      var ringFill = document.getElementById('icb-ring-fill');
+      var pctNode = document.getElementById('icb-pct');
+      var countNode = document.getElementById('icb-count');
+      var subNode = document.getElementById('icb-sub');
+      if (ringFill) ringFill.style.strokeDashoffset = (circumference * (1 - ringPct)).toFixed(2);
+      if (pctNode) pctNode.textContent = Math.round(ringPct*100)+'%';
+      if (countNode) countNode.textContent = ans+'/'+total;
+      var remaining = total - ans;
+      if (subNode) subNode.textContent = remaining > 0 ? remaining+' lagi tersisa' : 'Semua selesai ✓';
+    } else {
+      badge.classList.remove('visible');
+    }
   }
 
   // Update per-indicator mini progress bars
@@ -2647,7 +2801,7 @@ function updateProgress() {
 }
 
 function selectLikert(btn, code, val) {
-  document.querySelectorAll('.likert-btn[data-code="' + code + '"]').forEach(function(b){ b.classList.remove('sel-1','sel-2','sel-3','sel-4','sel-5'); b.classList.add('likert-btn'); });
+  document.querySelectorAll('.likert-btn[data-code="' + code + '"]').forEach(function(b){ b.classList.remove('sel-1','sel-2','sel-3','sel-4','sel-5'); });
   btn.classList.add('sel-' + val);
   window._responses = window._responses || {};
   window._responses[code] = val;
@@ -2669,19 +2823,105 @@ function buildSummaryGrid(containerId, keys, valClass) {
   var container = document.getElementById(containerId);
   if (!container) return;
   container.innerHTML = '';
-  var ans = window._responses || {};
-  var allCodes = keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
-  var labelMap = {"1":"STS","2":"TS","3":"N","4":"S","5":"SS"};
-  allCodes.forEach(function(code) {
-    var val = ans[code];
+  var ans     = window._responses || {};
+  var labelMap = {'1':'Sangat Tidak Setuju','2':'Tidak Setuju','3':'Netral','4':'Setuju','5':'Sangat Setuju'};
+  // section → page mapping for click-to-edit
+  var sectionPageMap = {'b':3,'c':4,'d':5};
+  // code class per valClass
+  var codeClass = {'vb':'cb','vc':'cc','vd':'cd'};
+  var allItems = keys.reduce(function(acc,k){ return items[k] ? acc.concat(items[k]) : acc; }, []);
+
+  allItems.forEach(function(item) {
+    var code = item.code;
+    var text = item.text;
+    var sec  = item.section; // 'b','c','d'
+    var val  = ans[code];
+    var page = sectionPageMap[sec] || 3;
+
     var div = document.createElement('div');
     div.className = 'summary-item' + (val ? '' : ' unanswered');
+    div.setAttribute('title', 'Klik untuk mengubah jawaban');
+    div.onclick = function() { jumpToItem(page, code); };
+
+    var badgeClass = val ? valClass : 'unanswered-badge';
+    var badgeContent = val ? val : '?';
+    var cc = codeClass[valClass] || 'cm';
+
     div.innerHTML =
-      '<div class="summary-item-code">'+code+'</div>' +
-      '<div class="summary-item-val '+(val ? valClass : 'vm')+'">'+(val ? val : '–')+'</div>' +
-      '<div class="summary-item-label">'+(val ? labelMap[val] : 'belum diisi')+'</div>';
+      '<div class="summary-item-badge ' + badgeClass + '">' + badgeContent + '</div>' +
+      '<div class="summary-item-meta">' +
+        '<div class="summary-item-code ' + cc + '">' + code + '</div>' +
+        '<div class="summary-item-text' + (val ? '' : ' unanswered-text') + '">' +
+          (val ? labelMap[val] + ' — ' + text : '⚠ Belum diisi — ' + text) +
+        '</div>' +
+      '</div>' +
+      '<div class="summary-item-arrow">›</div>';
     container.appendChild(div);
   });
+}
+
+// Navigasi dari ringkasan ke item tertentu — tanpa sistem otomatis
+// Tombol "← Ringkasan" muncul, user kembali manual saat sudah siap
+function jumpToItem(targetPage, code) {
+  // Pindah ke halaman target
+  var pages = document.querySelectorAll('.page');
+  pages[currentPage - 1].classList.remove('active');
+  currentPage = targetPage;
+  pages[currentPage - 1].classList.add('active');
+  syncStickyNavState();
+  updateProgress();
+
+  // Tandai bahwa kita masuk dari ringkasan → tampilkan tombol kembali
+  window._fromSummary = true;
+  showBackToSummaryBtns(true);
+
+  // Scroll ke item dan highlight
+  setTimeout(function() {
+    var btn = document.querySelector('.likert-btn[data-code="' + code + '"]');
+    if (!btn) return;
+    var item = btn.closest('.likert-item');
+    if (!item) return;
+    var rect = item.getBoundingClientRect();
+    window.scrollTo({ top: window.pageYOffset + rect.top - 90, behavior: 'smooth' });
+    // Highlight border
+    item.style.transition = 'box-shadow 0.2s, border-color 0.2s';
+    item.style.boxShadow  = '0 0 0 3px rgba(181,41,74,0.30)';
+    item.style.borderColor = '#b5294a';
+    // Lepas highlight setelah 3 detik (tidak otomatis kembali)
+    setTimeout(function() {
+      item.style.boxShadow   = '';
+      item.style.borderColor = '';
+    }, 3000);
+  }, 80);
+}
+
+function showBackToSummaryBtns(show) {
+  // Tampilkan/sembunyikan tombol ringkasan yang dipakai di page-top-nav
+  ['bts-3','bts-4','bts-5'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (show) {
+      el.classList.add('visible');
+      el.textContent = '← Ringkasan';
+    } else {
+      el.classList.remove('visible');
+    }
+  });
+}
+
+function goBackToReview() {
+  var pages = document.querySelectorAll('.page');
+  pages[currentPage - 1].classList.remove('active');
+  currentPage = 6; // halaman ringkasan
+  pages[currentPage - 1].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  syncStickyNavState();
+  updateProgress();
+  // Sembunyikan tombol kembali ke ringkasan
+  window._fromSummary = false;
+  showBackToSummaryBtns(false);
+  // Rebuild ringkasan dengan jawaban terbaru
+  buildSummaryPage();
 }
 
 function buildSummaryPage() {
@@ -2695,8 +2935,8 @@ function buildSummaryPage() {
 
   // Count completeness per section
   function countSection(keys) {
-    var total = keys.reduce(function(s,k){ return s+items[k].length; },0);
-    var filled = keys.reduce(function(s,k){ return s+items[k].filter(function(i){return !!ans[i.code];}).length; },0);
+    var total = keys.reduce(function(s,k){ return s+(items[k]?items[k].length:0); },0);
+    var filled = keys.reduce(function(s,k){ return s+(items[k]?items[k].filter(function(i){return !!ans[i.code];}).length:0); },0);
     return {total:total, filled:filled};
   }
   var b = countSection(bKeys), c = countSection(cKeys), d = countSection(dKeys);
@@ -2729,8 +2969,6 @@ function changePage(dir) {
       return;
     }
     if (currentPage === 2) {
-      var nama   = document.getElementById('nama').value.trim();
-      var nim    = document.getElementById('nim').value.trim();
       var jenkel = document.querySelector('input[name="jenkel"]:checked');
       var usia   = document.getElementById('usia').value;
       var prodi  = document.getElementById('prodi').value;
@@ -2738,28 +2976,14 @@ function changePage(dir) {
       var ipk    = document.getElementById('ipk').value;
       var status = document.querySelector('input[name="status"]:checked');
       var durasi = document.querySelector('input[name="durasi"]:checked');
-      if (!nama||!nim||!jenkel||!usia||!prodi||!sem||!ipk||!status||!durasi) {
+      if (!jenkel||!usia||!prodi||!sem||!ipk||!status||!durasi) {
         showToast('Data Belum Lengkap', 'Mohon lengkapi semua data diri sebelum melanjutkan.', 'rose');
         scrollToFirstMissingField(); return;
       }
-      // Cek apakah NIM sudah divalidasi
-      if (window._nimValidated !== nim) {
-        // NIM belum dicek atau sudah diganti — jalankan pengecekan
-        checkNimAndProceed();
-        return;
-      }
-      if (window._nimExists) {
-        // NIM sudah terdaftar
-        var nimEl2 = document.getElementById('nim');
-        if (nimEl2) nimEl2.classList.add('nim-error');
-        showToast('NIM Sudah Terdaftar', 'NIM ' + nim + ' sudah pernah mengisi kuesioner ini.', 'red');
-        return;
-      }
-      // NIM sudah valid & belum terdaftar — langsung lanjut tanpa cek ulang
     }
     if (currentPage === 3) {
       var page3Keys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6"];
-      var allCodes  = page3Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+      var allCodes  = page3Keys.reduce(function(acc,k){ return items[k] ? acc.concat(items[k].map(function(i){return i.code;})) : acc; }, []);
       var ans       = window._responses || {};
       var missing   = allCodes.filter(function(c){ return !ans[c]; });
       if (missing.length > 0) {
@@ -2769,7 +2993,7 @@ function changePage(dir) {
     }
     if (currentPage === 4) {
       var page4Keys = ["x2-intr","x2-ekst"];
-      var allCodes4 = page4Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+      var allCodes4 = page4Keys.reduce(function(acc,k){ return items[k] ? acc.concat(items[k].map(function(i){return i.code;})) : acc; }, []);
       var ans4      = window._responses || {};
       var missing4  = allCodes4.filter(function(c){ return !ans4[c]; });
       if (missing4.length > 0) {
@@ -2779,7 +3003,7 @@ function changePage(dir) {
     }
     if (currentPage === 5) {
       var page5Keys = ["y-1","y-2","y-3","y-4","y-5"];
-      var allCodes5 = page5Keys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+      var allCodes5 = page5Keys.reduce(function(acc,k){ return items[k] ? acc.concat(items[k].map(function(i){return i.code;})) : acc; }, []);
       var ans5      = window._responses || {};
       var missing5  = allCodes5.filter(function(c){ return !ans5[c]; });
       if (missing5.length > 0) {
@@ -2800,17 +3024,68 @@ function changePage(dir) {
   } else {
     document.body.classList.remove('on-page-1');
   }
+  // Navigasi normal → sembunyikan tombol kembali ke ringkasan
+  window._fromSummary = false;
+  showBackToSummaryBtns(false);
   // Build summary when reaching page 6
   if (currentPage === 6) { buildSummaryPage(); }
   updateProgress();
 }
 
+
+var _formStartTs = Date.now();
+
+var ALLOWED_VALUES = {
+  jenkel: ['Laki-laki', 'Perempuan'],
+  usia: ['17 – 19 tahun', '20 – 22 tahun', '≥ 23 tahun'],
+  prodi: ['Manajemen', 'Akuntansi', 'Ekonomi Pembangunan'],
+  semester: ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5', 'Semester 6', 'Semester 7', 'Semester 8', 'Semester ≥ 9'],
+  ipk: ['2,00 – 2,49', '2,50 – 2,99', '3,00 – 3,49', '3,50 – 4,00'],
+  status: ['Sedang berpacaran', 'Pernah berpacaran'],
+  durasi: ['3-6 bulan', '7-12 bulan', '1-2 tahun', '> 2 tahun']
+};
+
+function normalizeText(v) {
+  return String(v == null ? '' : v).replace(/\s+/g, ' ').trim();
+}
+
+function isAllowedValue(value, allowed) {
+  return allowed.indexOf(normalizeText(value)) !== -1;
+}
+
+function getSelectedRadio(name) {
+  var el = document.querySelector('input[name="' + name + '"]:checked');
+  return el ? normalizeText(el.value) : '';
+}
+
+function validateIdentityData() {
+  var errors = [];
+  var jenkel = getSelectedRadio('jenkel');
+  var usia   = normalizeText(document.getElementById('usia') && document.getElementById('usia').value);
+  var prodi  = normalizeText(document.getElementById('prodi') && document.getElementById('prodi').value);
+  var sem    = normalizeText(document.getElementById('semester') && document.getElementById('semester').value);
+  var ipk    = normalizeText(document.getElementById('ipk') && document.getElementById('ipk').value);
+  var status = getSelectedRadio('status');
+  var durasi = getSelectedRadio('durasi');
+
+  if (!isAllowedValue(jenkel, ALLOWED_VALUES.jenkel)) errors.push('jenis kelamin');
+  if (!isAllowedValue(usia, ALLOWED_VALUES.usia)) errors.push('usia');
+  if (!isAllowedValue(prodi, ALLOWED_VALUES.prodi)) errors.push('jurusan');
+  if (!isAllowedValue(sem, ALLOWED_VALUES.semester)) errors.push('semester');
+  if (!isAllowedValue(ipk, ALLOWED_VALUES.ipk)) errors.push('IPK');
+  if (!isAllowedValue(status, ALLOWED_VALUES.status)) errors.push('status hubungan');
+  if (!isAllowedValue(durasi, ALLOWED_VALUES.durasi)) errors.push('durasi hubungan');
+
+  return { ok: errors.length === 0, errors: errors };
+}
+
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxk3KFEyuM9Ca2_4uCqQXU1Hjb2KOA-QBAIKuwRlDBmZ0rU-Q-Ma3uv2l5NcnTWMaM3/exec";
 
-document.getElementById('mainForm').addEventListener('submit', async function(e) {
+var mainForm = document.getElementById('mainForm');
+if (mainForm) mainForm.addEventListener('submit', async function(e) {
   e.preventDefault();
   var allKeys = ["x1-1","x1-2","x1-3","x1-4","x1-5","x1-6","x2-intr","x2-ekst","y-1","y-2","y-3","y-4","y-5"];
-  var allCodes = allKeys.reduce(function(acc,k){ return acc.concat(items[k].map(function(i){return i.code;})); }, []);
+  var allCodes = allKeys.reduce(function(acc,k){ return items[k] ? acc.concat(items[k].map(function(i){return i.code;})) : acc; }, []);
   var ans      = window._responses || {};
   var missing  = allCodes.filter(function(c){ return !ans[c]; });
   if (missing.length > 0) {
@@ -2818,22 +3093,31 @@ document.getElementById('mainForm').addEventListener('submit', async function(e)
     buildSummaryPage();
     return;
   }
+
+  var identityCheck = validateIdentityData();
+  if (!identityCheck.ok) {
+    showToast('Data Identitas Tidak Valid', 'Periksa kembali: ' + identityCheck.errors.join(', ') + '.', 'red');
+    return;
+  }
+
+
   var jk = document.querySelector('input[name="jenkel"]:checked');
   var st = document.querySelector('input[name="status"]:checked');
   var du = document.querySelector('input[name="durasi"]:checked');
   var identity = {
     timestamp:       new Date().toLocaleString('id-ID', { timeZone: 'Asia/Makassar' }),
-    nama:            document.getElementById('nama').value.trim(),
+    device_fp:       typeof _deviceFP !== 'undefined' ? _deviceFP : '',
     jenis_kelamin:   jk ? jk.value : '',
-    usia:            document.getElementById('usia').value,
-    prodi:           document.getElementById('prodi').value,
-    semester:        document.getElementById('semester').value,
-    ipk:             document.getElementById('ipk').value,
+    usia:            normalizeText(document.getElementById('usia') && document.getElementById('usia').value),
+    prodi:           normalizeText(document.getElementById('prodi') && document.getElementById('prodi').value),
+    semester:        normalizeText(document.getElementById('semester') && document.getElementById('semester').value),
+    ipk:             normalizeText(document.getElementById('ipk') && document.getElementById('ipk').value),
     status_hubungan: st ? st.value : '',
     durasi_hubungan: du ? du.value : '',
   };
   var payload   = Object.assign({}, identity, ans);
   var btnSubmit = document.querySelector('.btn-submit');
+  if (!btnSubmit) return;
   btnSubmit.disabled = true;
   btnSubmit.innerHTML = '<span>&#x23F3;</span> Mengirim data...';
   try {
@@ -2843,6 +3127,10 @@ document.getElementById('mainForm').addEventListener('submit', async function(e)
       body: JSON.stringify(payload),
     });
     localStorage.setItem('kuesioner_feb_upr_2026_submitted', 'true');
+    // Also store device fingerprint
+    var _fps = JSON.parse(localStorage.getItem('kuesioner_feb_upr_2026_fps') || '[]');
+    if (_fps.indexOf(_deviceFP) === -1) { _fps.push(_deviceFP); }
+    localStorage.setItem('kuesioner_feb_upr_2026_fps', JSON.stringify(_fps));
     document.getElementById('submit-area').style.display = 'none';
     document.getElementById('thankyou').style.display = 'block';
     document.getElementById('prog-fill').style.width = '100%';
@@ -2988,7 +3276,6 @@ function scrollToFirstMissingLikert(missingCodes, theme) {
 function scrollToFirstMissingField() {
   // For page 2 — find first missing form field
   var fields = [
-    { id: 'nama',     type: 'text'   },
     { name: 'jenkel', type: 'radio'  },
     { id: 'usia',     type: 'select' },
     { id: 'prodi',    type: 'select' },
@@ -3007,8 +3294,9 @@ function scrollToFirstMissingField() {
       el = document.getElementById(f.id);
       empty = !el || !el.value.trim();
     } else if (f.type === 'select') {
-      el = document.getElementById(f.id);
-      empty = !el || !el.value;
+      el = document.getElementById('pdd-' + f.id) || document.getElementById(f.id);
+      var hiddenInput = document.getElementById(f.id);
+      empty = !hiddenInput || !hiddenInput.value;
     } else if (f.type === 'radio') {
       var checked = document.querySelector('input[name="' + f.name + '"]:checked');
       empty = !checked;
@@ -3036,105 +3324,6 @@ function scrollToFirstMissingField() {
 }
 
 
-// ── NIM DUPLICATE CHECK ──────────────────────
-function checkNimAndProceed() {
-  var nim      = document.getElementById('nim').value.trim();
-  var nimEl    = document.getElementById('nim');
-  var statusEl = document.getElementById('nim-status');
-  var btnNext  = document.getElementById('btn-next');
-
-  statusEl.style.display = 'flex';
-  statusEl.innerHTML = '<div class="nim-checking"><div class="nim-spinner"></div> Memeriksa NIM...</div>';
-  nimEl.classList.remove('nim-error','nim-valid');
-  if (btnNext) btnNext.disabled = true;
-
-  fetch(GOOGLE_SCRIPT_URL + '?action=checkNim&nim=' + encodeURIComponent(nim))
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-      if (btnNext) btnNext.disabled = false;
-      // Simpan hasil pengecekan — tidak perlu cek ulang selama NIM tidak berubah
-      window._nimValidated = nim;
-      window._nimExists    = data.exists;
-
-      if (data.exists) {
-        nimEl.classList.add('nim-error');
-        statusEl.innerHTML = '<div class="nim-taken">&#x274C; NIM ini sudah terdaftar. Setiap mahasiswa hanya dapat mengisi kuesioner satu kali.</div>';
-        showToast('NIM Sudah Terdaftar', 'NIM ' + nim + ' sudah pernah mengisi kuesioner ini.', 'red');
-      } else {
-        nimEl.classList.add('nim-valid');
-        statusEl.innerHTML = '<div class="nim-ok">&#x2705; NIM tersedia, melanjutkan...</div>';
-        setTimeout(function() {
-          statusEl.style.display = 'none';
-          nimEl.classList.remove('nim-valid');
-          var pages = document.querySelectorAll('.page');
-          pages[currentPage-1].classList.remove('active');
-          currentPage = currentPage + 1;
-          pages[currentPage-1].classList.add('active');
-          window.scrollTo({top:0, behavior:'smooth'});
-          syncStickyNavState();
-          updateProgress();
-        }, 600);
-      }
-    })
-    .catch(function() {
-      // Gagal fetch — tetap lanjutkan (fail open)
-      if (btnNext) btnNext.disabled = false;
-      window._nimValidated = nim;
-      window._nimExists    = false;
-      statusEl.style.display = 'none';
-      var pages = document.querySelectorAll('.page');
-      pages[currentPage-1].classList.remove('active');
-      currentPage = currentPage + 1;
-      pages[currentPage-1].classList.add('active');
-      window.scrollTo({top:0, behavior:'smooth'});
-      syncStickyNavState();
-      updateProgress();
-    });
-}
-
-// NIM realtime blur check
-document.addEventListener('DOMContentLoaded', function() {
-  var nimEl = document.getElementById('nim');
-  if (!nimEl) return;
-  // Reset cache saat user mengedit NIM
-  nimEl.addEventListener('focus', function() {
-    // nav tidak diubah saat focus
-  });
-
-  nimEl.addEventListener('input', function() {
-    window._nimValidated = null;
-    window._nimExists    = false;
-    nimEl.classList.remove('nim-error','nim-valid');
-    var statusEl = document.getElementById('nim-status');
-    if (statusEl) statusEl.style.display = 'none';
-  });
-
-  nimEl.addEventListener('blur', function() {
-    var nim = nimEl.value.trim();
-    if (!nim || nim.length < 5) return;
-    // Sudah dicek dengan NIM yang sama — skip
-    if (window._nimValidated === nim) return;
-    var statusEl = document.getElementById('nim-status');
-    statusEl.style.display = 'flex';
-    statusEl.innerHTML = '<div class="nim-checking"><div class="nim-spinner"></div> Memeriksa NIM...</div>';
-    nimEl.classList.remove('nim-error','nim-valid');
-    fetch(GOOGLE_SCRIPT_URL + '?action=checkNim&nim=' + encodeURIComponent(nim))
-      .then(function(res){ return res.json(); })
-      .then(function(data){
-        window._nimValidated = nim;
-        window._nimExists    = data.exists;
-        if (data.exists) {
-          nimEl.classList.add('nim-error');
-          statusEl.innerHTML = '<div class="nim-taken">&#x274C; NIM ini sudah terdaftar.</div>';
-        } else {
-          nimEl.classList.add('nim-valid');
-          statusEl.innerHTML = '<div class="nim-ok">&#x2705; NIM belum terdaftar.</div>';
-          setTimeout(function(){ statusEl.style.display='none'; nimEl.classList.remove('nim-valid'); }, 2500);
-        }
-      })
-      .catch(function(){ statusEl.style.display='none'; });
-  });
-});
 
 updateProgress();
 </script>
@@ -3423,7 +3612,7 @@ document.body.style.height = '100%';
     panel.className = 'mobile-select-panel';
 
     var placeholderText = '';
-    Array.from(select.options).forEach(function (opt, idx) {
+    Array.prototype.slice.call(select.options).forEach(function (opt, idx) {
       if (idx === 0) {
         placeholderText = opt.textContent.trim();
         return;
@@ -3498,9 +3687,50 @@ document.body.style.height = '100%';
 
   if (mq.addEventListener) mq.addEventListener('change', initPinkDropdowns);
   else if (mq.addListener) mq.addListener(initPinkDropdowns);
-
   initPinkDropdowns();
 })();
+</script>
+
+<script>
+// ── CUSTOM PINK DROPDOWN LOGIC ──
+function pddCloseAll(except) {
+  document.querySelectorAll('.pdd-shell.open').forEach(function(s) {
+    if (s !== except) s.classList.remove('open');
+  });
+}
+function pddToggle(shellId) {
+  var shell = document.getElementById(shellId);
+  if (!shell) return;
+  var wasOpen = shell.classList.contains('open');
+  pddCloseAll(shell);
+  shell.classList.toggle('open', !wasOpen);
+}
+function pddSelect(shellId, inputId, value) {
+  var shell = document.getElementById(shellId);
+  var input = document.getElementById(inputId);
+  if (!shell || !input) return;
+
+  var allowed = (ALLOWED_VALUES[inputId] || []);
+  var cleanValue = normalizeText(value);
+  if (allowed.length && allowed.indexOf(cleanValue) === -1) return;
+
+  // Update hidden input
+  input.value = cleanValue;
+  // Update display
+  var val = shell.querySelector('.pdd-val');
+  if (val) { val.textContent = cleanValue; val.classList.remove('placeholder'); }
+  // Mark selected option
+  shell.querySelectorAll('.pdd-opt').forEach(function(b) {
+    b.classList.toggle('selected', normalizeText(b.textContent) === cleanValue);
+  });
+  shell.classList.remove('open');
+}
+// Tutup dropdown saat klik di luar
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.pdd-shell')) pddCloseAll(null);
+});
+// Validasi form: cek hidden input (bukan select lagi)
+// Patch changePage agar cek value hidden input untuk usia, prodi, semester, ipk
 </script>
 </body>
 </html>
