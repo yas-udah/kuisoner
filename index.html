@@ -2363,7 +2363,7 @@
 <div class="page" id="page-4">
   <div class="page-top-nav">
     <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Bagian B</button>
-    <button type="button" class="btn-back-to-summary" id="bts-4" onclick="goBackToReview()">← Ringkasan</button>
+    <button type="button" class="btn-back-to-summary" id="bts-4" onclick="goBackToReview()">Ringkasan →</button>
   </div>
   <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Bagian B</button>
   <button type="button" class="btn-back-to-summary" id="bts-4d" onclick="goBackToReview()" style="margin-bottom:16px;"></button>
@@ -2397,7 +2397,7 @@
 <div class="page" id="page-5">
   <div class="page-top-nav">
     <button type="button" class="page-back-btn" onclick="changePage(-1)">← Kembali ke Bagian C</button>
-    <button type="button" class="btn-back-to-summary" id="bts-5" onclick="goBackToReview()">← Ringkasan</button>
+    <button type="button" class="btn-back-to-summary" id="bts-5" onclick="goBackToReview()">Ringkasan →</button>
   </div>
   <button type="button" class="page-back-btn page-back-desktop" onclick="changePage(-1)">← Kembali ke Bagian C</button>
   <button type="button" class="btn-back-to-summary" id="bts-5d" onclick="goBackToReview()" style="margin-bottom:16px;"></button>
@@ -2901,7 +2901,7 @@ function showBackToSummaryBtns(show) {
     if (!el) return;
     if (show) {
       el.classList.add('visible');
-      el.textContent = '← Ringkasan';
+      el.textContent = 'Ringkasan →';
     } else {
       el.classList.remove('visible');
     }
